@@ -4,9 +4,11 @@ import { SITE_TITLE } from "../config";
 ---
 
 <header class="border-b-2 border-primary h-14">
-  <nav class="container mx-auto flex justify-between items-center h-full">
+  <nav
+    class="container px-12 max-w-4xl mx-auto flex justify-between items-center h-full"
+  >
     <HeaderLink href="/">Home</HeaderLink>
-    <ul class="flex gap-2">
+    <ul class="flex gap-x-2">
       <li>
         <HeaderLink href="/blog">Blog</HeaderLink>
       </li>
@@ -18,11 +20,3 @@ import { SITE_TITLE } from "../config";
     </ul>
   </nav>
 </header>
-<style>
-  header {
-    margin: 0em 0 2em;
-  }
-  h2 {
-    margin: 0.5em 0;
-  }
-</style>

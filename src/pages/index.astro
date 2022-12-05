@@ -13,9 +13,13 @@ import LockPic from "../../public/Lock-dynamic-premium.png";
   </head>
   <body>
     <Header title={SITE_TITLE} />
-    <main>
-      <div class="container mx-auto flex justify-between items-center">
-        <div class="flex flex-col gap-y-2">
+
+    <!-- Hero -->
+    <main class="relative overflow-hidden border-b border-black">
+      <div
+        class="container px-12 max-w-4xl mx-auto flex justify-around items-center"
+      >
+        <div class="flex flex-1 flex-col gap-y-4">
           <h1 class="text-3xl">
             Hi, my name is<br /><span class="font-bold">Navaneeth</span>
           </h1>
@@ -24,15 +28,22 @@ import LockPic from "../../public/Lock-dynamic-premium.png";
             BCA from Chennai
           </p>
           <button
-            class="bg-primary text-white px-2 py-2 border border-black self-start"
+            class="bg-primary text-white px-3 py-1 border border-black self-start"
             >Get in touch</button
           >
         </div>
-        <div>
-          <img src={LockPic} alt="" class="max-h-80" />
+        <div class="flex-1 flex justify-center">
+          <img src={LockPic} alt="" class="max-h-80 z-10" />
         </div>
       </div>
+      <!-- Transformed rectangle -->
+      <div
+        class="overflow-hidden bg-primary w-[55vw] h-[55vw] absolute -right-2 top-1/2 rotate-45 -translate-y-1/2 translate-x-1/2"
+      >
+      </div>
     </main>
+
+    <!-- s -->
     <Footer />
   </body>
 </html>
