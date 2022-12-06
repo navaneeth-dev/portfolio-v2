@@ -2,6 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Project from "../components/Project.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 import LockPic from "../../public/Lock-dynamic-premium.png";
 ---
@@ -15,7 +16,7 @@ import LockPic from "../../public/Lock-dynamic-premium.png";
     <Header title={SITE_TITLE} />
 
     <!-- Hero -->
-    <main class="relative overflow-hidden border-b border-black">
+    <main class="relative overflow-hidden">
       <div
         class="container px-12 max-w-4xl mx-auto flex flex-col-reverse md:flex-row justify-around items-center py-6"
       >
@@ -53,6 +54,39 @@ import LockPic from "../../public/Lock-dynamic-premium.png";
       >
       </div>
     </main>
+
+    <!-- Projects -->
+    <section class="border-y border-black py-12">
+      <div class="container px-12 max-w-4xl mx-auto">
+        <h2 class="text-primary text-2xl font-bold text-center mb-12">
+          Projects
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Project />
+          <Project />
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Blog Posts -->
+    <section class="">
+      <div class="container px-12 max-w-4xl">
+        <h2 class="text-primary text-2xl font-bold text-center py-12">
+          Latest Blog Posts
+        </h2>
+      </div>
+    </section>
+
+    <!-- Certiificates -->
+    <section
+      class="bg-neutral-200 before:content-[' '] before:bg-neutral-200 before:w-[120%] before:h-24 before:block before:-rotate-2 before:-translate-y-1/2"
+    >
+      <div class="container mx-auto px-12 max-w-4xl py-12">
+        <h2 class="text-primary text-2xl font-bold text-center">
+          Certificates
+        </h2>
+      </div>
+    </section>
 
     <!-- s -->
     <Footer />
