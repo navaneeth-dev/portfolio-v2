@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import Project from "../components/Project.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 import LockPic from "../../public/Lock-dynamic-premium.png";
+import DanteCert from "../../public/certs/dante.png";
 ---
 
 <!DOCTYPE html>
@@ -97,10 +98,17 @@ import LockPic from "../../public/Lock-dynamic-premium.png";
         <h2 class="text-primary text-2xl font-bold text-center">
           Certificates
         </h2>
+        <div class="mt-6">
+          <img
+            src={DanteCert}
+            alt="cert"
+            class="border-2 border-black max-w-xs"
+          />
+        </div>
       </div>
     </section>
 
-    <!-- s -->
+    <!-- Contact -->
     <Footer />
   </body>
 </html>
