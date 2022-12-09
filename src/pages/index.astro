@@ -150,6 +150,7 @@ import thm2Cert from "../../public/certs/THM-V39MPRBO6C.png";
     <script type="module">
       import Swiper from "https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js";
       const swiper = new Swiper(".swiper", {
+        effect: "coverflow",
         loop: true,
         autoplay: {
           delay: 2000,
@@ -157,6 +158,7 @@ import thm2Cert from "../../public/certs/THM-V39MPRBO6C.png";
         slidesPerView: 1,
         spaceBetween: 50,
         speed: 700,
+        centeredSlides: true,
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
@@ -164,6 +166,13 @@ import thm2Cert from "../../public/certs/THM-V39MPRBO6C.png";
         breakpoints: {
           768: {
             slidesPerView: 2,
+            coverflowEffect: {
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            },
           },
         },
       });
@@ -180,6 +189,19 @@ import thm2Cert from "../../public/certs/THM-V39MPRBO6C.png";
         background-position: center;
         background-size: cover;
         height: 333px;
+      }
+      .swiper-button-prev,
+      .swiper-button-next {
+        color: rgb(234 32 39);
+        border: 2px solid #6d6d6d;
+        border-radius: 100%;
+        padding: 1.2rem;
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+      .swiper-button-prev::after,
+      .swiper-button-next::after {
+        font-size: 24px;
+        font-weight: 800;
       }
     </style>
   </body>
