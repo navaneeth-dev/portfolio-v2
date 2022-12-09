@@ -6,6 +6,10 @@ import Project from "../components/Project.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 import LockPic from "../../public/Lock-dynamic-premium.png";
 import DanteCert from "../../public/certs/dante.png";
+import InCTFJCert from "../../public/certs/inctfj.jpg";
+import PEHCert from "../../public/certs/peh.png";
+import thmCert from "../../public/certs/THM-QV8UXGWYB4.png";
+import thm2Cert from "../../public/certs/THM-V39MPRBO6C.png";
 ---
 
 <!DOCTYPE html>
@@ -94,14 +98,66 @@ import DanteCert from "../../public/certs/dante.png";
             class="shape-fill fill-neutral-200"></path>
         </svg>
       </div>
-      <div class="container mx-auto px-12 max-w-4xl pt-12 pb-24">
+      <div class="pt-12 pb-24">
         <h2 class="text-primary text-2xl font-bold text-center">
           Certificates
         </h2>
-        <div class="mt-6 flex gap-6 overflow-hidden">
-          <img src={DanteCert} alt="cert" class="border-2 border-black w-1/2" />
-          <img src={DanteCert} alt="cert" class="border-2 border-black w-1/2" />
-          <img src={DanteCert} alt="cert" class="border-2 border-black w-1/2" />
+        <div class="mt-6 overflow-hidden w-full">
+          <div class="animate-scroll flex w-[calc(100% * 5)]">
+            <img
+              src={DanteCert}
+              alt="cert"
+              class="border-2 border-black w-[25%]"
+            />
+            <img
+              src={InCTFJCert}
+              alt="cert"
+              class="border-2 border-black w-[25%]"
+            />
+            <img
+              src={PEHCert}
+              alt="cert"
+              class="border-2 border-black w-[25%]"
+            />
+            <img
+              src={thmCert}
+              alt="cert"
+              class="border-2 border-black w-[25%]"
+            />
+            <img
+              src={thm2Cert}
+              alt="cert"
+              class="border-2 border-black w-[25%]"
+            />
+
+            <!-- Second time for repeat -->
+
+            <img
+              src={DanteCert}
+              alt="cert"
+              class="border-2 border-black w-[25%]"
+            />
+            <img
+              src={InCTFJCert}
+              alt="cert"
+              class="border-2 border-black w-[25%]"
+            />
+            <img
+              src={PEHCert}
+              alt="cert"
+              class="border-2 border-black w-[25%]"
+            />
+            <img
+              src={thmCert}
+              alt="cert"
+              class="border-2 border-black w-[25%]"
+            />
+            <img
+              src={thm2Cert}
+              alt="cert"
+              class="border-2 border-black w-[25%]"
+            />
+          </div>
         </div>
       </div>
     </section>
