@@ -17,9 +17,9 @@ module.exports = {
           "50%": { transform: "translateY(0)" },
         },
         scroll: {
-          "0%": { transform: "translateX(0)" },
+          "0%": { left: 0 },
           "100%": {
-            transform: "translateX( calc( (-25% * 2.5) ) )",
+            left: "-100%",
           },
         },
       },
