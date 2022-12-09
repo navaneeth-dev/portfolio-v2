@@ -16,6 +16,10 @@ import thm2Cert from "../../public/certs/THM-V39MPRBO6C.png";
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
   </head>
   <body>
     <Header title={SITE_TITLE} />
@@ -103,38 +107,80 @@ import thm2Cert from "../../public/certs/THM-V39MPRBO6C.png";
       </h2>
 
       <!-- Certificates Images -->
-      <div class="relative overflow-hidden mt-6 h-40">
-        <div class="flex justify-around absolute left-0">
-          <img
-            src={DanteCert}
-            alt="cert"
-            class="border-2 border-black w-full h-40"
-          />
-          <img
-            src={InCTFJCert}
-            alt="cert"
-            class="border-2 border-black w-full h-40"
-          />
-          <img
-            src={PEHCert}
-            alt="cert"
-            class="border-2 border-black w-full h-40"
-          />
-          <img
-            src={thmCert}
-            alt="cert"
-            class="border-2 border-black w-full h-40"
-          />
-          <img
-            src={thm2Cert}
-            alt="cert"
-            class="border-2 border-black w-full h-40"
-          />
+      <div class="container mx-auto mt-6 px-4">
+        <div
+          class="swiper before:absolute before:z-10 before:h-full before:w-11 before:content-[''] before:bg-gradient-to-r before:from-neutral-200 after:right-0 after:absolute after:z-10 after:h-full after:w-11 after:content-[''] after:bg-gradient-to-r after:from-neutral-200 after:top-0"
+        >
+          <div class="swiper-wrapper">
+            <img
+              src={DanteCert}
+              alt="cert"
+              class="border-4 border-black w-full swiper-slide"
+            />
+            <img
+              src={InCTFJCert}
+              alt="cert"
+              class="border-4 border-black w-full swiper-slide"
+            />
+            <img
+              src={PEHCert}
+              alt="cert"
+              class="border-4 border-black w-full swiper-slide"
+            />
+            <img
+              src={thmCert}
+              alt="cert"
+              class="border-4 border-black w-full swiper-slide"
+            />
+            <img
+              src={thm2Cert}
+              alt="cert"
+              class="border-4 border-black w-full swiper-slide"
+            />
+          </div>
+          <div class="swiper-button-prev z-20"></div>
+          <div class="swiper-button-next z-20"></div>
         </div>
       </div>
     </section>
 
     <!-- Contact -->
     <Footer />
+
+    <script type="module">
+      import Swiper from "https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js";
+      const swiper = new Swiper(".swiper", {
+        loop: true,
+        autoplay: {
+          delay: 2000,
+        },
+        slidesPerView: 1,
+        spaceBetween: 50,
+        speed: 700,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 2,
+          },
+        },
+      });
+    </script>
+
+    <style global>
+      .swiper {
+        height: 333px;
+      }
+      .swiper::after {
+        transform: rotateZ(180deg);
+      }
+      .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        height: 333px;
+      }
+    </style>
   </body>
 </html>
