@@ -19,60 +19,61 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
   </head>
   <body>
     <Header />
-    <main class="py-6 mb-6">
-      <ul
-        class="container mx-auto px-12 max-w-4xl grid grid-flow-row grid-row gap-6"
-      >
-        {
-          posts.map((post) => (
-            <li>
-              <a
-                href={post.url}
-                class="flex gap-3 border border-black hover:shadow-lg"
-              >
-                <img
-                  src={
-                    post.frontmatter.image
-                      ? post.frontmatter.image
-                      : "/placeholder.png"
-                  }
-                  alt=""
-                  class="object-cover w-64"
-                />
-                <div class="p-2">
-                  <time
-                    datetime={post.frontmatter.pubDate}
-                    class="text-sm text-gray-800"
-                  >
-                    {new Date(post.frontmatter.pubDate).toLocaleDateString(
-                      "en-us",
-                      {
-                        year: "numeric",
-                        month: "short",
-                        day: "numeric",
-                      }
-                    )}
-                  </time>
-                  <h2 class="text-xl font-bold mb-2">
-                    {post.frontmatter.title}
-                  </h2>
-                  <div class="flex gap-2">
-                    {post.frontmatter.tags &&
-                      post.frontmatter.tags.map((tag: string) => (
-                        <span class="border border-neutral-400 uppercase text-sm px-2">
-                          {tag}
-                        </span>
-                      ))}
+    <main class="py-6">
+      <div class="mb-6 container mx-auto px-12 max-w-4xl">
+        <h1 class="text-3xl font-bold text-primary">Posts</h1>
+        <ul class="grid grid-flow-row grid-row gap-6 mt-6">
+          {
+            posts.map((post) => (
+              <li>
+                <a
+                  href={post.url}
+                  class="bg-white flex gap-3 border border-neutral-400 hover:shadow-lg rounded-lg hover:scale-105 transition-transform"
+                >
+                  <img
+                    src={
+                      post.frontmatter.image
+                        ? post.frontmatter.image
+                        : "/placeholder.png"
+                    }
+                    alt=""
+                    class="object-cover w-64 rounded-l-lg"
+                  />
+                  <div class="p-2">
+                    <time
+                      datetime={post.frontmatter.pubDate}
+                      class="text-sm text-gray-700"
+                    >
+                      {new Date(post.frontmatter.pubDate).toLocaleDateString(
+                        "en-us",
+                        {
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                        }
+                      )}
+                    </time>
+                    <h2 class="text-xl font-bold mb-2 text-primary">
+                      {post.frontmatter.title}
+                    </h2>
+                    <div class="flex gap-2">
+                      {post.frontmatter.tags &&
+                        post.frontmatter.tags.map((tag: string) => (
+                          <span class="border border-neutral-700 uppercase text-sm text-neutral-700 px-2">
+                            {tag}
+                          </span>
+                        ))}
+                    </div>
+                    <p class="mt-2 text-neutral-700">
+                      {post.frontmatter.description}
+                    </p>
                   </div>
-                  <p class="mt-2 text-neutral-800">
-                    {post.frontmatter.description}
-                  </p>
-                </div>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </main>
     <Footer />
   </body>
