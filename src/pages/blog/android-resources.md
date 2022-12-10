@@ -4,7 +4,7 @@ title: Android Malware/Reversing Resources
 pubDate: "Jul 08 2022"
 description: "Some android malware/reversing resources. Can be useful for learning android game hacking etc."
 image: /android-malware.jpg
-tags: android resources
+tags: [android, resources]
 ---
 
 ## Emulators

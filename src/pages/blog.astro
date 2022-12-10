@@ -28,7 +28,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
             <li>
               <a
                 href={post.url}
-                class="flex gap-3 hover:underline border border-black hover:shadow-lg"
+                class="flex gap-3 border border-black hover:shadow-lg"
               >
                 <img
                   src={
@@ -56,7 +56,17 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
                   <h2 class="text-xl font-bold mb-2">
                     {post.frontmatter.title}
                   </h2>
-                  <p class="mt-2">{post.frontmatter.description}</p>
+                  <div class="flex gap-2">
+                    {post.frontmatter.tags &&
+                      post.frontmatter.tags.map((tag: string) => (
+                        <span class="border border-neutral-400 uppercase text-sm px-2">
+                          {tag}
+                        </span>
+                      ))}
+                  </div>
+                  <p class="mt-2 text-neutral-800">
+                    {post.frontmatter.description}
+                  </p>
                 </div>
               </a>
             </li>
