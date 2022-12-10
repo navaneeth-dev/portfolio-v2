@@ -15,6 +15,7 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, "");
     @apply rounded py-1 px-3 transition-colors border border-black text-primary;
   }
   a:hover {
+    @apply border-primary;
   }
   a.active {
     @apply text-primary border-primary;
