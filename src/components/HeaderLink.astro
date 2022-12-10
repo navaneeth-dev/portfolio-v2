@@ -12,11 +12,11 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, "");
 </a>
 <style>
   a {
-    display: inline-block;
-    text-decoration: none;
+    @apply rounded py-1 px-3 transition-colors border border-black text-primary;
+  }
+  a:hover {
   }
   a.active {
-    font-weight: bolder;
-    text-decoration: underline;
+    @apply text-primary border-primary;
   }
 </style>
