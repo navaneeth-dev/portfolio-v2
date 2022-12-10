@@ -28,19 +28,18 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
             <li>
               <a
                 href={post.url}
-                class="flex gap-3 outline-neutral-400 hover:underline py-3"
+                class="flex gap-3 hover:underline border border-black hover:shadow-lg"
               >
                 <img
                   src={
-                    post.frontmatter.heroImage
-                      ? post.frontmatter.heroImage
+                    post.frontmatter.image
+                      ? post.frontmatter.image
                       : "/placeholder.png"
                   }
                   alt=""
                   class="object-cover w-64"
                 />
-                <div>
-                  <h2 class="text-xl font-bold">{post.frontmatter.title}</h2>
+                <div class="p-2">
                   <time
                     datetime={post.frontmatter.pubDate}
                     class="text-sm text-gray-800"
@@ -54,11 +53,10 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
                       }
                     )}
                   </time>
-                  <p class="mt-2">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Incidunt, expedita beatae? Eaque quae officiis doloremque
-                    sapiente, expedita molestias sint ea?
-                  </p>
+                  <h2 class="text-xl font-bold mb-2">
+                    {post.frontmatter.title}
+                  </h2>
+                  <p class="mt-2">{post.frontmatter.description}</p>
                 </div>
               </a>
             </li>
