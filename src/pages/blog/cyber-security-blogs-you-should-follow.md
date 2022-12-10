@@ -4,6 +4,7 @@ title: Cyber Security Blogs You Should Follow
 image: /cyber-sec.jpg
 pubDate: "27 Sep 2022"
 description: "This post will list some cyber security blogs you should follow to keep up to date. Hopefully this helps someone like me who needed some list."
+tags: [resources]
 ---
 
 ## Cyber Security News
