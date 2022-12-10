@@ -10,16 +10,14 @@ import InCTFJCert from "../../public/certs/inctfj.jpg";
 import PEHCert from "../../public/certs/peh.png";
 import thmCert from "../../public/certs/THM-QV8UXGWYB4.png";
 import thm2Cert from "../../public/certs/THM-V39MPRBO6C.png";
+import "swiper/css";
+import "swiper/css/navigation";
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
-    />
   </head>
   <body>
     <Header title={SITE_TITLE} />
@@ -138,8 +136,8 @@ import thm2Cert from "../../public/certs/THM-V39MPRBO6C.png";
               class="border-4 border-black w-full swiper-slide"
             />
           </div>
-          <div class="swiper-button-prev z-20"></div>
-          <div class="swiper-button-next z-20"></div>
+          <div class="swiper-button-prev" style="z-index: 30 !important;"></div>
+          <div class="swiper-button-next" style="z-index: 30 !important;"></div>
         </div>
       </div>
     </section>
@@ -147,35 +145,8 @@ import thm2Cert from "../../public/certs/THM-V39MPRBO6C.png";
     <!-- Contact -->
     <Footer />
 
-    <script type="module">
-      import Swiper from "https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js";
-      const swiper = new Swiper(".swiper", {
-        effect: "coverflow",
-        loop: true,
-        autoplay: {
-          delay: 2000,
-        },
-        slidesPerView: 1,
-        spaceBetween: 50,
-        speed: 700,
-        centeredSlides: true,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        breakpoints: {
-          768: {
-            slidesPerView: 2,
-            coverflowEffect: {
-              rotate: 50,
-              stretch: 0,
-              depth: 100,
-              modifier: 1,
-              slideShadows: true,
-            },
-          },
-        },
-      });
+    <script>
+      import "../swiper-config.js";
     </script>
 
     <style global>
@@ -205,6 +176,10 @@ import thm2Cert from "../../public/certs/THM-V39MPRBO6C.png";
       }
       .swiper-wrapper img {
         cursor: grab;
+      }
+      .swiper-button-prev:hover,
+      .swiper-button-next:hover {
+        border: 2px solid black;
       }
     </style>
   </body>
