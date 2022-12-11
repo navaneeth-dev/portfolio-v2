@@ -1,0 +1,11 @@
+{
+  "useMarkdownLinks": true,
+  "attachmentFolderPath": "public",
+  "newFileLocation": "folder",
+  "newFileFolderPath": "src/pages/blog",
+  "readableLineLength": false,
+  "showFrontmatter": true,
+  "showInlineTitle": false,
+  "livePreview": false,
+  "vimMode": true
+}
