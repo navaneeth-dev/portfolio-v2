@@ -12,6 +12,14 @@ import thmCert from "../../public/certs/THM-QV8UXGWYB4.png";
 import thm2Cert from "../../public/certs/THM-V39MPRBO6C.png";
 import "swiper/css";
 import "swiper/css/navigation";
+
+const latestPosts = (await Astro.glob("./blog/*.{md,mdx}"))
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.pubDate).valueOf() -
+      new Date(a.frontmatter.pubDate).valueOf()
+  )
+  .slice(0, 3);
 ---
 
 <!DOCTYPE html>
@@ -77,10 +85,63 @@ import "swiper/css/navigation";
 
     <!-- Latest Blog Posts -->
     <section class="">
-      <div class="container px-12 max-w-4xl mx-auto">
-        <h2 class="text-primary text-2xl font-bold text-center py-12">
+      <div class="container px-12 max-w-4xl mx-auto py-12">
+        <h2 class="text-primary text-2xl font-bold text-center">
           Latest Blog Posts
         </h2>
+        <ul class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          {
+            latestPosts.map((post) => (
+              <li class="border-2 border-neutral-400 rounded-lg hover:scale-105 transition-transform">
+                <a
+                  href={post.url}
+                  class="bg-white rounded-lg flex flex-col gap-3 h-full"
+                >
+                  <div class="w-full h-[173px] relative">
+                    <img
+                      src={
+                        post.frontmatter.image
+                          ? post.frontmatter.image
+                          : "/placeholder.png"
+                      }
+                      alt=""
+                      class="size w-full h-full rounded-t-lg object-cover absolute inset-0"
+                    />
+                  </div>
+                  <div class="p-2">
+                    <time
+                      datetime={post.frontmatter.pubDate}
+                      class="text-sm text-gray-700"
+                    >
+                      {new Date(post.frontmatter.pubDate).toLocaleDateString(
+                        "en-us",
+                        {
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                        }
+                      )}
+                    </time>
+                    <h2 class="text-xl font-bold mb-2 text-primary">
+                      {post.frontmatter.title}
+                    </h2>
+                    <div class="flex gap-2">
+                      {post.frontmatter.tags &&
+                        post.frontmatter.tags.map((tag: string) => (
+                          <span class="border border-neutral-700 uppercase text-sm text-neutral-700 px-2">
+                            {tag}
+                          </span>
+                        ))}
+                    </div>
+                    <p class="mt-2 text-neutral-700">
+                      {post.frontmatter.description}
+                    </p>
+                  </div>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </section>
 

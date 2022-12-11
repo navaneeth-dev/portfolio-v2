@@ -28,7 +28,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
               <li class="border border-neutral-400 rounded-lg hover:scale-105 transition-transform">
                 <a
                   href={post.url}
-                  class="bg-white flex flex-col md:grid md:grid-cols-[30%_70%] gap-3 h-full"
+                  class="bg-white rounded-lg flex flex-col md:grid md:grid-cols-[30%_70%] gap-3 h-full"
                 >
                   <div class="w-full h-[173px] md:h-full relative">
                     <img
