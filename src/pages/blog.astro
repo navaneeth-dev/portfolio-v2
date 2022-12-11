@@ -22,23 +22,25 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
     <main class="py-6">
       <div class="mb-6 container mx-auto px-12 max-w-4xl">
         <h1 class="text-3xl font-bold text-primary">Posts</h1>
-        <ul class="grid grid-flow-row grid-row gap-6 mt-6">
+        <ul class="grid grid-flow-row auto-rows-[1fr] grid-row gap-6 mt-6">
           {
             posts.map((post) => (
-              <li>
+              <li class="border border-neutral-400 rounded-lg hover:scale-105 transition-transform">
                 <a
                   href={post.url}
-                  class="bg-white flex gap-3 border border-neutral-400 hover:shadow-lg rounded-lg hover:scale-105 transition-transform"
+                  class="bg-white grid grid-cols-[30%_70%] gap-3 h-full"
                 >
-                  <img
-                    src={
-                      post.frontmatter.image
-                        ? post.frontmatter.image
-                        : "/placeholder.png"
-                    }
-                    alt=""
-                    class="object-cover w-64 rounded-l-lg"
-                  />
+                  <div class="w-full h-full relative">
+                    <img
+                      src={
+                        post.frontmatter.image
+                          ? post.frontmatter.image
+                          : "/placeholder.png"
+                      }
+                      alt=""
+                      class="w-full h-full rounded-l-lg absolute"
+                    />
+                  </div>
                   <div class="p-2">
                     <time
                       datetime={post.frontmatter.pubDate}
