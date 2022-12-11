@@ -77,8 +77,16 @@ const latestPosts = (await Astro.glob("./blog/*.{md,mdx}"))
           Projects
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Project />
-          <Project />
+          <Project
+            name="Hacked CMRL"
+            description="When analyzing Chennai Metro Rail mobile app's traffic in burp, I found a vulnerable LFI endpoint then got access to web.config and finally got the source code by dumping a dll. After that did source code analysis and found a blind SQLI"
+            image="/cmrl.png"
+          />
+          <Project
+            name="Hacked NIOS"
+            description="Found an endpoint in National Institute Of Open Schooling website that let me scrape any users personal details using burp, it had weak captcha implementation. Wrote a golang script and scraped some data"
+            image="/nios.png"
+          />
         </div>
       </div>
     </section>
