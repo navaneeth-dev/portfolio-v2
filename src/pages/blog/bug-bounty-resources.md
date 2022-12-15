@@ -1,6 +1,5 @@
 ---
 layout: "../../layouts/BlogPost.astro"
-draft: true
 title: Tools I Use For Bug Bounty 
 image: /rafay-ansari-prhMYojFJRY-unsplash.jpg
 pubDate: "10 Dec 2022"

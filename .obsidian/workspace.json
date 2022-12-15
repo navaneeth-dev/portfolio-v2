@@ -4,59 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "7f84e15ff8d36128",
+        "id": "7593338f3c745bc9",
         "type": "tabs",
         "children": [
           {
-            "id": "0ca45aa606414c28",
+            "id": "4e2e3ea9c0533cda",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/pages/blog/android-resources.md",
-                "mode": "source",
-                "source": true
-              }
-            }
-          },
-          {
-            "id": "deb28a0b3cd1c233",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "src/pages/blog/inctfj-2021-nagini.md",
-                "mode": "source",
-                "source": true
-              }
-            }
-          },
-          {
-            "id": "9d661e16633ea822",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "src/pages/blog/inctfj-2021-leaky-pipes.md",
-                "mode": "source",
-                "source": true
-              }
-            }
-          },
-          {
-            "id": "53cae3fd0e542838",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "src/pages/blog/intercept-https-traffic-with-burp-and-wsa.md",
+                "file": "src/pages/blog/bug-bounty-resources.md",
                 "mode": "source",
                 "source": true
               }
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -122,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "src/pages/blog/intercept-https-traffic-with-burp-and-wsa.md",
+                "file": "src/pages/blog/bug-bounty-resources.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "src/pages/blog/intercept-https-traffic-with-burp-and-wsa.md",
+                "file": "src/pages/blog/bug-bounty-resources.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -162,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/pages/blog/intercept-https-traffic-with-burp-and-wsa.md"
+                "file": "src/pages/blog/bug-bounty-resources.md"
               }
             }
           }
@@ -173,14 +136,14 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "53cae3fd0e542838",
+  "active": "8da4eb233a7f5718",
   "lastOpenFiles": [
-    "src/pages/blog/inctfj-2021-leaky-pipes.md",
-    "src/pages/blog/inctfj-2021-nagini.md",
+    "src/pages/blog/cyber-security-blogs-you-should-follow.md",
     "src/pages/blog/android-resources.md",
+    "src/pages/blog/inctfj-2021-nagini.md",
+    "src/pages/blog/inctfj-2021-leaky-pipes.md",
     "src/pages/blog/intercept-https-traffic-with-burp-and-wsa.md",
     "src/pages/blog/bug-bounty-resources.md",
-    "src/pages/blog/cyber-security-blogs-you-should-follow.md",
     "src/pages/blog/external-recon.md",
     "2022-12-10.md"
   ]
