@@ -41,6 +41,22 @@ my-project/
 
 The second thing you'll notice is styles, script and UI are all in the same file like in Vue, this makes it easier to seperate everything. No special JSX syntax required etc. CSS are scoped.
 
+```
+<script>
+let hello = 'hi';
+</script>
+
+<main>
+	<h1>Hello</h1>
+</main>
+
+<style>
+main {
+	background-color: red;
+}
+</style>
+```
+
 ## Layouts
 
 The thing which I most loved is layouts, you can keep your parent layout and only change the child layout. I build a dashboard so this feature in NextJS is a pain to implement without layouts.
@@ -56,6 +72,10 @@ The thing which I most loved is layouts, you can keep your parent layout and onl
 ```
 
 When you type the variable text gets updated, its a proper binding. This is the developer productivity with Svelte, unlike NextJS where we have to use `useState` and create a function to set the value.
+
+## Excellent Typescript Support
+
+With less effort at understanding typescritp you get better autocomplete and typescript out of the box with SvelteKit. Even in dynamic routes.
 
 ## Forms
 
