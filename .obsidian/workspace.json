@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "8276ecd2ca54fb2a",
+        "id": "54a2ffd836f491c9",
         "type": "tabs",
         "children": [
           {
-            "id": "a5d4c6acf90b0e43",
+            "id": "1420c1fdb2790857",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -150,15 +150,15 @@
   },
   "active": "8da4eb233a7f5718",
   "lastOpenFiles": [
+    "public/sveltekit.png",
+    "src/pages/blog/sveltekit-from-a-nextjs-perspective.md",
     "src/pages/blog/bug-bounty-resources.md",
     "src/pages/blog/audio-array-microphone-arm-review.md",
     "src/pages/blog/intercept-https-traffic-with-burp-and-wsa.md",
-    "src/pages/blog/sveltekit-from-a-nextjs-perspective.md",
     "src/pages/blog/cyber-security-blogs-you-should-follow.md",
     "src/pages/blog/android-resources.md",
     "src/pages/blog/inctfj-2021-nagini.md",
     "src/pages/blog/inctfj-2021-leaky-pipes.md",
-    "src/pages/blog/external-recon.md",
-    "2022-12-10.md"
+    "src/pages/blog/external-recon.md"
   ]
 }

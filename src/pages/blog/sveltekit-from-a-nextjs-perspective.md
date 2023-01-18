@@ -2,8 +2,8 @@
 layout: "../../layouts/BlogPost.astro"
 title: SvelteKit From A NextJS Perspective
 tags: [sveltekit, typescript]
-pubDate: "Jul 2 2022"
-image: /resource/phone.jpg
+pubDate: "Jan 18 2023"
+image: /public/sveltekit.png
 description: SvelteKit is built on Svelte, a UI framework that uses a compiler to let you write breathtakingly concise components that do minimal work in the browser.
 ---
 
