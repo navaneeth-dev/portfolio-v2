@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 
   const tags = new Set();
   allPostsSorted.forEach((post) => {
-    post.frontmatter.tags.forEach((tag) => tags.add(tag));
+    post.frontmatter.tags.forEach((tag: any) => tags.add(tag));
   });
 
   return [...tags].map((tag) => {
@@ -51,12 +51,9 @@ const title = "Hello";
         </h1>
         <ul class="grid grid-flow-row auto-rows-[1fr] grid-row gap-6 mt-6">
           {
-            posts.map((post) => (
-              <li class="border border-neutral-400 rounded-lg hover:scale-105 transition-transform">
-                <a
-                  href={post.url}
-                  class="bg-white rounded-lg flex flex-col md:grid md:grid-cols-[30%_70%] gap-3 h-full"
-                >
+            posts.map((post: any) => (
+              <li class="border border-neutral-400 rounded-lg">
+                <div class="bg-white rounded-lg flex flex-col md:grid md:grid-cols-[30%_70%] gap-3 h-full">
                   <div class="w-full h-[173px] md:h-full relative">
                     <Image
                       width={256}
@@ -85,21 +82,25 @@ const title = "Hello";
                       )}
                     </time>
                     <h2 class="text-xl font-bold mb-2 text-primary">
-                      {post.frontmatter.title}
+                      <a href={post.url} class="hover:underline">
+                        {post.frontmatter.title}
+                      </a>
                     </h2>
                     <div class="flex gap-2">
-                      {post.frontmatter.tags &&
-                        post.frontmatter.tags.map((tag: string) => (
-                          <span class="border border-neutral-700 uppercase text-sm text-neutral-700 px-2">
-                            {tag}
-                          </span>
-                        ))}
+                      {post.frontmatter.tags.map((tag: string) => (
+                        <a
+                          class="inline uppercase border border-black px-2 text-sm hover:bg-neutral-100"
+                          href={"/tag/" + tag}
+                        >
+                          {tag}
+                        </a>
+                      ))}
                     </div>
                     <p class="mt-2 text-neutral-700">
                       {post.frontmatter.description}
                     </p>
                   </div>
-                </a>
+                </div>
               </li>
             ))
           }
