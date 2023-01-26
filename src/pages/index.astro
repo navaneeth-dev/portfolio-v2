@@ -52,10 +52,12 @@ const latestPosts = (await Astro.glob("./blog/*.{md,mdx}"))
         </div>
         <!-- Hero Image -->
         <div class="flex-1 flex justify-center">
-          <img
+          <Image
             src={LockPic}
-            alt=""
+            alt="Lock pic"
             class="max-h-80 z-10 w-5/6 md:max-w-none animate-bounce-slow"
+            format="webp"
+            quality={100}
           />
         </div>
       </div>
@@ -113,7 +115,8 @@ const latestPosts = (await Astro.glob("./blog/*.{md,mdx}"))
                           ? post.frontmatter.image
                           : "/placeholder.png"
                       }
-                      alt=""
+                      alt={post.frontmatter.title}
+                      fit="fill"
                       class="size w-full h-full rounded-t-lg object-cover absolute inset-0"
                     />
                   </div>

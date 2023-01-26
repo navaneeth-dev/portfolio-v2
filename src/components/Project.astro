@@ -1,15 +1,19 @@
 ---
 const { name, description, image } = Astro.props;
+import { Image } from "@astrojs/image/components";
 ---
 
 <div class="flex flex-col gap-y-2">
   <div
     class="h-32 bg-neutral-400 rounded-lg border-2 border-black shadow-lg hover:scale-110"
   >
-    <img
+    <Image
+      width={384}
+      height={124}
       src={image}
-      alt="Project img"
-      class="object-cover w-full h-full rounded-lg"
+      alt={name}
+      class="w-full h-full rounded-lg"
+      quality={100}
     />
   </div>
   <h3 class="text-primary font-bold text-lx mt-2">{name}</h3>
