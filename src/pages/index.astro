@@ -109,7 +109,9 @@ const latestPosts = (await Astro.glob("./blog/*.{md,mdx}"))
                   class="bg-white rounded-lg flex flex-col gap-3 h-full"
                 >
                   <div class="w-full h-[173px] relative">
-                    <img
+                    <Image
+                      width={480}
+                      height={173}
                       src={
                         post.frontmatter.image
                           ? post.frontmatter.image
