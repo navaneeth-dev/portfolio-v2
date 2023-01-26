@@ -218,7 +218,7 @@ const latestPosts = (await Astro.glob("./blog/*.{md,mdx}"))
       import "../swiper-config.js";
     </script>
 
-    <style global>
+    <style is:global>
       .swiper {
         height: 333px;
       }
