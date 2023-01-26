@@ -34,6 +34,7 @@ const {
               <Image
                 src={image}
                 alt={title}
+                class="mb-4 object-cover rounded-lg"
                 height={256}
                 width={480}
                 format="webp"
@@ -58,10 +59,5 @@ const {
       </article>
     </main>
     <Footer />
-    <style is:global>
-      .wrapper > img {
-        @apply mb-4 object-cover rounded-lg;
-      }
-    </style>
   </body>
 </html>

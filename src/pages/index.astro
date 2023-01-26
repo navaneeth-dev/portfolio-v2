@@ -10,6 +10,7 @@ import InCTFJCert from "../../public/certs/inctfj.jpg";
 import PEHCert from "../../public/certs/peh.png";
 import thmCert from "../../public/certs/THM-QV8UXGWYB4.png";
 import thm2Cert from "../../public/certs/THM-V39MPRBO6C.png";
+import { Image } from "@astrojs/image/components";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -179,30 +180,35 @@ const latestPosts = (await Astro.glob("./blog/*.{md,mdx}"))
           class="swiper before:absolute before:z-10 before:h-full before:w-11 before:content-[''] before:bg-gradient-to-r before:from-neutral-200 after:right-0 after:absolute after:z-10 after:h-full after:w-11 after:content-[''] after:bg-gradient-to-r after:from-neutral-200 after:top-0"
         >
           <div class="swiper-wrapper">
-            <img
+            <Image
               src={DanteCert}
               alt="cert"
               class="border-4 border-black w-full swiper-slide"
+              format="webp"
             />
-            <img
+            <Image
               src={InCTFJCert}
               alt="cert"
               class="border-4 border-black w-full swiper-slide"
+              format="webp"
             />
-            <img
+            <Image
               src={PEHCert}
               alt="cert"
               class="border-4 border-black w-full swiper-slide"
+              format="webp"
             />
-            <img
+            <Image
               src={thmCert}
               alt="cert"
               class="border-4 border-black w-full swiper-slide"
+              format="webp"
             />
-            <img
+            <Image
               src={thm2Cert}
               alt="cert"
               class="border-4 border-black w-full swiper-slide"
+              format="webp"
             />
           </div>
           <div class="swiper-button-prev" style="z-index: 30 !important;"></div>
