@@ -31,7 +31,7 @@ const {
       <section class="flex flex-col items-center p-6 max-w-4xl mx-auto">
         {
           image && (
-            <div class="w-full md:w-[480px] md:h-[282px] flex justify-center">
+            <div class="wrapper w-full md:w-[480px] md:h-[282px] flex justify-center">
               <Image
                 src={image}
                 alt={title}
@@ -61,5 +61,10 @@ const {
       </article>
     </main>
     <Footer />
+    <style>
+      .wrapper > :global(img) {
+        @apply mb-4 object-cover rounded-lg;
+      }
+    </style>
   </body>
 </html>
