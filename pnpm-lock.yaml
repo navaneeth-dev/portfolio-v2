@@ -13,7 +13,6 @@ specifiers:
   astro: ^2.0.1
   react: ^18.0.0
   react-dom: ^18.0.0
-  react-wrap-balancer: ^0.4.0
   rehype-autolink-headings: ^6.1.1
   sharp: ^0.31.3
   swiper: ^8.4.5
@@ -31,7 +30,6 @@ dependencies:
   astro: 2.0.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  react-wrap-balancer: 0.4.0_react@18.2.0
   sharp: 0.31.3
   swiper: 8.4.5
   tailwindcss: 3.2.4
@@ -3175,14 +3173,6 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
-    dev: false
-
-  /react-wrap-balancer/0.4.0_react@18.2.0:
-    resolution: {integrity: sha512-MUsROihHd7bFHCo9kCOifKDYBEZPgKTyGvfa8RcwRQKtT2cL7Um9Cc8A7GvuT8t3np7LAGsEkzdEyJdKrr5lVQ==}
-    peerDependencies:
-      react: ^18.0.0
-    dependencies:
-      react: 18.2.0
     dev: false
 
   /react/18.2.0:
