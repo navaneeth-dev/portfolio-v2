@@ -55,7 +55,7 @@ export default defineConfig({
           content: [
             h("span.sr-only", " permalink"),
             s(
-              "svg.autolink-svg",
+              "svg.inline.ml-2.hover:text-neutral-500",
               {
                 xmlns: "http://www.w3.org/2000/svg",
                 width: 24,
