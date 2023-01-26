@@ -27,6 +27,7 @@
     "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
+    "@astrojs/markdown-remark": "^2.0.0",
     "@tailwindcss/typography": "^0.5.8",
     "rehype-autolink-headings": "^6.1.1"
   }

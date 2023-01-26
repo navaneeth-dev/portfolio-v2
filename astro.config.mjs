@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import autolinkHeadings from "rehype-autolink-headings";
 
 // https://astro.build/config
@@ -16,7 +17,7 @@ import image from "@astrojs/image";
 export default defineConfig({
   site: "https://rizexor.com",
   markdown: {
-    rehypePlugins: [autolinkHeadings],
+    rehypePlugins: [rehypeHeadingIds, [autolinkHeadings, {}]],
   },
   integrations: [
     image({ serviceEntryPoint: "@astrojs/image/sharp" }),
