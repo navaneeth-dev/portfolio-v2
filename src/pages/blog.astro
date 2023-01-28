@@ -61,7 +61,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
                     >
                       {post.frontmatter.title}
                     </a>
-                    <div class="flex gap-2">
+                    <div class="flex gap-2 flex-wrap">
                       {post.frontmatter.tags &&
                         post.frontmatter.tags.map((tag: string) => (
                           <a
