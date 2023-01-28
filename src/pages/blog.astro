@@ -26,11 +26,8 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
         <ul class="grid grid-flow-row auto-rows-[1fr] grid-row gap-6 mt-6">
           {
             posts.map((post) => (
-              <li class="border border-neutral-400 rounded-lg hover:scale-105 transition-transform">
-                <a
-                  href={post.url}
-                  class="bg-white rounded-lg flex flex-col md:grid md:grid-cols-[30%_70%] gap-3 h-full"
-                >
+              <li class="border border-neutral-400 rounded-lg">
+                <div class="bg-white rounded-lg flex flex-col md:grid md:grid-cols-[1fr,3fr] h-full gap-3 max-w-full">
                   <div class="w-full h-[173px] md:h-full relative">
                     <Image
                       width={256}
@@ -58,22 +55,28 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
                         }
                       )}
                     </time>
-                    <h2 class="text-xl font-bold mb-2 text-primary">
+                    <a
+                      href={post.url}
+                      class="block text-xl font-bold mb-2 text-primary hover:underline"
+                    >
                       {post.frontmatter.title}
-                    </h2>
+                    </a>
                     <div class="flex gap-2">
                       {post.frontmatter.tags &&
                         post.frontmatter.tags.map((tag: string) => (
-                          <span class="border border-neutral-700 uppercase text-sm text-neutral-700 px-2">
+                          <a
+                            class="border border-neutral-700 uppercase text-sm text-neutral-700 hover:bg-neutral-100 px-2"
+                            href={"/tag/" + tag}
+                          >
                             {tag}
-                          </span>
+                          </a>
                         ))}
                     </div>
-                    <p class="mt-2 text-neutral-700">
+                    <p class="mt-2 text-neutral-700 max-w-full">
                       {post.frontmatter.description}
                     </p>
                   </div>
-                </a>
+                </div>
               </li>
             ))
           }
