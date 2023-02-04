@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@astrojs/markdown-remark": "^2.0.0",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "^0.5.8",
     "rehype-autolink-headings": "^6.1.1"
   }
