@@ -28,7 +28,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
             posts.map((post) => (
               <li class="border border-neutral-400 rounded-lg">
                 <div class="bg-white rounded-lg flex flex-col md:flex-row">
-                  <div class="w-[45%] h-full">
+                  <div class="w-full md:w-[45%] h-full">
                     <Image
                       width={600}
                       height={360}
@@ -38,7 +38,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
                           : "/placeholder.png"
                       }
                       alt={post.frontmatter.title}
-                      class="w-full h-[180px] rounded-t-lg object-cover md:rounded-l-lg md:rounded-none border-r border-neutral-400"
+                      class="w-full md:h-[180px] rounded-t-lg object-cover md:rounded-l-lg md:rounded-none border-r border-neutral-400"
                     />
                   </div>
                   <div class="pl-4 py-2 pb-2 w-full">
