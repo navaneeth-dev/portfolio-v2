@@ -13,7 +13,7 @@ The first thing you'll notice is the speed after typing `pnpm dev` it's ready al
 
 Yes there are a lot of files, which can make you overwhelmed but you only need to care about the routes folder at first. It all makes sense after you mess around with it.
 
-```sql
+```bash
 my-project/
 ├ src/
 │ ├ lib/
@@ -41,7 +41,7 @@ my-project/
 
 The second thing you'll notice is styles, script and UI are all in the same file like in Vue, this makes it easier to seperate everything. No special JSX syntax required etc. CSS are scoped.
 
-```ts
+```html
 <script>
 let hello = 'hi';
 </script>
@@ -63,7 +63,7 @@ The thing which I most loved is layouts, you can keep your parent layout and onl
 
 ## Reactivity
 
-```ts
+```html
 <script lang="ts">
 	let text = "";
 </script>
