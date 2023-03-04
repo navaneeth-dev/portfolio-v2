@@ -41,6 +41,10 @@ const createSROnlyLabel = (text) => {
 export default defineConfig({
   site: "https://rizexor.com",
   markdown: {
+    syntaxHighlight: "shiki",
+    shikiConfig: {
+      theme: "github-dark",
+    },
     rehypePlugins: [
       rehypeHeadingIds,
       [

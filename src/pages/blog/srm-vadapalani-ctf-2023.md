@@ -10,14 +10,15 @@ description: Capture the Flag Technozarre '23 Experience And Some Solutions
 ## TLDR
 
 **CTF IP**: [159.89.165.85](http://159.89.165.85)  
-**Won First Place**  
-Very Organized event
+**Place**: 1st  
+**Difficulty**: Easy-Medium  
+**Remarks**: Very Organized event
 
 ## Superbowl Star - Steganography
 
 First always check the file type in CTFs.
 
-```console?prompt=$ filename="index.js"
+```shellscript
 rize@rizexor:/mnt/c/Users/decod/Downloads$ file Superbowl1.pdf
 Superbowl1.pdf: ASCII text, with CRLF line terminators
 
@@ -27,7 +28,7 @@ It's just a text file (note that the string below has spaces in between):
 _!!__!!_ _!!_!!__ _!!____! _!!__!!! _!!!!_!! _!__!_!! _!!__!_! _!!!_!!_ _!!_!__! _!!_!!!_ _!__!!_! _!!____! _!!_!___ _!!_!!!! _!!_!!_! _!!__!_! _!!!__!! __!!___! __!!___! _!!!!!_!
 ```
 
-Initiall I thought it was morse code but online tools said it was corrupted but then I noticed the hint said spaces so I counted the _ and ! and found they were all 8 characters and then a space. I did a find and replace in CyberChef and From Binary and viola!
+Initially I thought it was morse code but online tools said it was corrupted but then I noticed the hint said spaces so I counted the _ and ! and found they were all 8 characters and then a space. I did a find and replace in CyberChef and From Binary and viola!
 
 ![](/public/srm-vadapalani-ctf-2023-from-binary.png)
 
