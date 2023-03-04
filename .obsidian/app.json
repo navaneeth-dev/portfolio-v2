@@ -7,5 +7,13 @@
   "showFrontmatter": true,
   "showInlineTitle": false,
   "livePreview": false,
-  "vimMode": true
+  "vimMode": true,
+  "newLinkFormat": "absolute",
+  "userIgnoreFilters": [
+    "node_modules/",
+    "src/components/",
+    "src/layouts/",
+    "src/styles/"
+  ],
+  "alwaysUpdateLinks": true
 }
