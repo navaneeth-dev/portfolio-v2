@@ -30,5 +30,5 @@ _!!__!!_ _!!_!!__ _!!____! _!!__!!! _!!!!_!! _!__!_!! _!!__!_! _!!!_!!_ _!!_!__!
 
 Initially I thought it was morse code but online tools said it was corrupted but then I noticed the hint said spaces so I counted the _ and ! and found they were all 8 characters and then a space. I did a find and replace in CyberChef and From Binary and viola!
 
-![](/public/srm-vadapalani-ctf-2023-from-binary.png)
+![](/srm-vadapalani-ctf-2023-from-binary.png)
 

@@ -4,40 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "3e7b69d894b0e82b",
+        "id": "3e802af0ebbd02b8",
         "type": "tabs",
         "children": [
           {
-            "id": "935caf95ace5a15f",
+            "id": "d7e49e5fd64aa845",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "src/pages/blog/srm-vadapalani-ctf-2023.md",
-                "mode": "source",
-                "source": true
-              }
-            },
-            "group": "2675acaf21f5ec8c"
-          }
-        ]
-      },
-      {
-        "id": "4ff2fcc2afe5caf8",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "6d835a831222b51c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "src/pages/blog/srm-vadapalani-ctf-2023.md",
-                "mode": "preview",
-                "source": true
-              }
-            },
-            "group": "2675acaf21f5ec8c"
+              "type": "empty",
+              "state": {}
+            }
           }
         ]
       }
@@ -105,7 +81,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "src/pages/blog/srm-vadapalani-ctf-2023.md",
+                "file": "src/pages/blog/external-recon.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +98,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "src/pages/blog/srm-vadapalani-ctf-2023.md",
+                "file": "src/pages/blog/external-recon.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -145,7 +121,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/pages/blog/srm-vadapalani-ctf-2023.md"
+                "file": "src/pages/blog/external-recon.md"
               }
             }
           }
@@ -169,11 +145,11 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "6d835a831222b51c",
+  "active": "8da4eb233a7f5718",
   "lastOpenFiles": [
+    "src/pages/blog/srm-vadapalani-ctf-2023.md",
     "src/pages/blog/sveltekit-from-a-nextjs-perspective.md",
     "BLOG-TEMPLATE.md",
-    "src/pages/blog/srm-vadapalani-ctf-2023.md",
     "public/srm-vadapalani-ctf-2023-1.png",
     "public/Pasted image 20230304111714.png",
     "src/pages/blog/Untitled.md",
