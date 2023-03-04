@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "3e802af0ebbd02b8",
+        "id": "db293ea93e08c6c0",
         "type": "tabs",
         "children": [
           {
-            "id": "d7e49e5fd64aa845",
+            "id": "a21aeb590f24fac8",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "src/pages/blog/srm-vadapalani-ctf-2023.md",
+                "mode": "source",
+                "source": true
+              }
             }
           }
         ]
@@ -81,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "src/pages/blog/external-recon.md",
+                "file": "src/pages/blog/srm-vadapalani-ctf-2023.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "src/pages/blog/external-recon.md",
+                "file": "src/pages/blog/srm-vadapalani-ctf-2023.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -121,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/pages/blog/external-recon.md"
+                "file": "src/pages/blog/srm-vadapalani-ctf-2023.md"
               }
             }
           }
@@ -147,15 +151,15 @@
   },
   "active": "8da4eb233a7f5718",
   "lastOpenFiles": [
+    "public/srm-vadapalani-ctf-2023-poster.png",
+    "public/srm-vadapalani-ctf-2023.png",
+    "public/srm-vadapalani-ctf-2023-from-binary.png",
     "src/pages/blog/srm-vadapalani-ctf-2023.md",
+    "src/pages/blog/external-recon.md",
     "src/pages/blog/sveltekit-from-a-nextjs-perspective.md",
     "BLOG-TEMPLATE.md",
     "public/srm-vadapalani-ctf-2023-1.png",
     "public/Pasted image 20230304111714.png",
-    "src/pages/blog/Untitled.md",
-    "src/pages/blog/android-resources.md",
-    "public/sveltekit.png",
-    "src/pages/blog/bug-bounty-resources.md",
-    "src/pages/blog/audio-array-microphone-arm-review.md"
+    "src/pages/blog/Untitled.md"
   ]
 }
