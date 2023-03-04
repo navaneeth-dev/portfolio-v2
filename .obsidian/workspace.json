@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "db293ea93e08c6c0",
+        "id": "9c3fccccfded78dc",
         "type": "tabs",
         "children": [
           {
-            "id": "a21aeb590f24fac8",
+            "id": "e03d70f4befad713",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -151,15 +151,15 @@
   },
   "active": "8da4eb233a7f5718",
   "lastOpenFiles": [
+    "public/srm-vadapalani-ctf-2023-poster-1.png",
     "public/srm-vadapalani-ctf-2023-poster.png",
+    "src/pages/blog/srm-vadapalani-ctf-2023.md",
     "public/srm-vadapalani-ctf-2023.png",
     "public/srm-vadapalani-ctf-2023-from-binary.png",
-    "src/pages/blog/srm-vadapalani-ctf-2023.md",
     "src/pages/blog/external-recon.md",
     "src/pages/blog/sveltekit-from-a-nextjs-perspective.md",
     "BLOG-TEMPLATE.md",
     "public/srm-vadapalani-ctf-2023-1.png",
-    "public/Pasted image 20230304111714.png",
-    "src/pages/blog/Untitled.md"
+    "public/Pasted image 20230304111714.png"
   ]
 }

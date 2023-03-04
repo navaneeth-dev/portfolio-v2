@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: SRM Vadapalani CTF
 tags: [ctf]
 pubDate: "4 Mar 2023"
-image: /srm-vadapalani-ctf-2023-poster.png
+image: /srm-vadapalani-ctf-2023-poster-1.png
 description: Capture the Flag Technozarre '23 Experience And Some Solutions
 ---
 
