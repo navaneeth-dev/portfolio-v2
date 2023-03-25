@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/BlogPost.astro"
 title: SRM KTR CTF 2023
-tags: []
+tags: [ctf]
 pubDate: "Mar 25 2023"
 image: /sveltekit.png
 description: 
