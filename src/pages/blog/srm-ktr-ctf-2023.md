@@ -3,8 +3,8 @@ layout: "../../layouts/BlogPost.astro"
 title: SRM KTR CTF 2023
 tags: [ctf]
 pubDate: "Mar 25 2023"
-image: /sveltekit.png
-description: 
+image: /ktr2.jpeg
+description: Solutions for the first five challenges for CyberHawkCTF 2023 
 ---
 
 ## Description

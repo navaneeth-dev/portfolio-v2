@@ -185,6 +185,9 @@
   },
   "active": "0273b780b822142e",
   "lastOpenFiles": [
+    "public/ktr2.jpeg",
+    "public/_7a6a68c6-61d5-4b67-b4ce-903e434ad2d2.jpeg",
+    "public/ktr.png",
     "public/srm-ktr-ctf-2023-task5-2.png",
     "public/srm-ktr-ctf-2023-task5-1.png",
     "public/srm-ktr-ctf-2023-magic.png",
@@ -195,11 +198,8 @@
     "public/srm-vadapalani-ctf-2023-poster-1.png",
     "public/srm-vadapalani-ctf-2023-poster.png",
     "public/srm-vadapalani-ctf-2023.png",
-    "public/srm-vadapalani-ctf-2023-from-binary.png",
     "src/pages/blog/external-recon.md",
     "src/pages/blog/sveltekit-from-a-nextjs-perspective.md",
-    "BLOG-TEMPLATE.md",
-    "public/srm-vadapalani-ctf-2023-1.png",
-    "public/Pasted image 20230304111714.png"
+    "BLOG-TEMPLATE.md"
   ]
 }
