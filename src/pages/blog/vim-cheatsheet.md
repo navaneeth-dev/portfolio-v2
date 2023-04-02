@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: Vim Cheatsheet
 tags: [cheatsheet, resources]
 pubDate: "Mar 31 2023"
-image: /public/vim-cheatsheet-poster.png
+image: /vim-cheatsheet-poster.png
 description: My vim shortcuts over the years of using it
 ---
 

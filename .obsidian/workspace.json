@@ -194,11 +194,12 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "8fea4d6447c59171",
+  "active": "f0ab22feda0e1ad5",
   "lastOpenFiles": [
+    "src/pages/blog/sveltekit-from-a-nextjs-perspective.md",
+    "src/pages/blog/vim-cheatsheet.md",
     "public/vim-cheatsheet-poster.png",
     "src/pages/blog/srm-ktr-ctf-2023.md",
-    "src/pages/blog/vim-cheatsheet.md",
     "public/ktr2.jpeg",
     "public/_7a6a68c6-61d5-4b67-b4ce-903e434ad2d2.jpeg",
     "public/ktr.png",
@@ -209,9 +210,7 @@
     "public/srm-ktr-ctf-2023-base45.png",
     "src/pages/blog/srm-vadapalani-ctf-2023.md",
     "public/srm-vadapalani-ctf-2023-poster-1.png",
-    "public/srm-vadapalani-ctf-2023-poster.png",
     "src/pages/blog/external-recon.md",
-    "src/pages/blog/sveltekit-from-a-nextjs-perspective.md",
     "BLOG-TEMPLATE.md"
   ]
 }
