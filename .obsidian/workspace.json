@@ -29,28 +29,40 @@
                 "mode": "source",
                 "source": true
               }
-            },
-            "group": "4314fc158ba50871"
-          }
-        ],
-        "currentTab": 1
-      },
-      {
-        "id": "1ae51d62b720777d",
-        "type": "tabs",
-        "children": [
+            }
+          },
           {
-            "id": "02fe1e176f68a9e9",
+            "id": "f0ab22feda0e1ad5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/pages/blog/srm-ktr-ctf-2023.md",
+                "file": "src/pages/blog/vim-cheatsheet.md",
+                "mode": "source",
+                "source": true
+              }
+            },
+            "group": "374a76bdf4dea757"
+          }
+        ],
+        "currentTab": 2
+      },
+      {
+        "id": "6fc73f9890373a87",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8fea4d6447c59171",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "src/pages/blog/vim-cheatsheet.md",
                 "mode": "preview",
                 "source": true
               }
             },
-            "group": "4314fc158ba50871"
+            "group": "374a76bdf4dea757"
           }
         ]
       }
@@ -102,8 +114,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "0b046d4188473830",
@@ -119,7 +130,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "src/pages/blog/srm-ktr-ctf-2023.md",
+                "file": "src/pages/blog/vim-cheatsheet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,7 +147,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "src/pages/blog/srm-ktr-ctf-2023.md",
+                "file": "src/pages/blog/vim-cheatsheet.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -159,7 +170,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/pages/blog/srm-ktr-ctf-2023.md"
+                "file": "src/pages/blog/vim-cheatsheet.md"
               }
             }
           }
@@ -183,8 +194,11 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "0273b780b822142e",
+  "active": "8fea4d6447c59171",
   "lastOpenFiles": [
+    "public/vim-cheatsheet-poster.png",
+    "src/pages/blog/srm-ktr-ctf-2023.md",
+    "src/pages/blog/vim-cheatsheet.md",
     "public/ktr2.jpeg",
     "public/_7a6a68c6-61d5-4b67-b4ce-903e434ad2d2.jpeg",
     "public/ktr.png",
@@ -194,10 +208,8 @@
     "public/srm-ktr-ctf-2023-task2.png",
     "public/srm-ktr-ctf-2023-base45.png",
     "src/pages/blog/srm-vadapalani-ctf-2023.md",
-    "src/pages/blog/srm-ktr-ctf-2023.md",
     "public/srm-vadapalani-ctf-2023-poster-1.png",
     "public/srm-vadapalani-ctf-2023-poster.png",
-    "public/srm-vadapalani-ctf-2023.png",
     "src/pages/blog/external-recon.md",
     "src/pages/blog/sveltekit-from-a-nextjs-perspective.md",
     "BLOG-TEMPLATE.md"
