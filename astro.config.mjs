@@ -87,8 +87,6 @@ export default defineConfig({
     tailwind(),
     react(),
   ],
-  output: "server",
-  adapter: vercel({
-    analytics: true,
-  }),
+  output: "static",
+  adapter: vercel(),
 });
