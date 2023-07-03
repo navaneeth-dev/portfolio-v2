@@ -159,6 +159,8 @@
   },
   "active": "97339cde3a1493f1",
   "lastOpenFiles": [
+    "pnpm-lock.yaml.1206621029",
+    "_tmp_16648_194a73f65d6b7b52b19c0b0e0f1ed52c",
     "BLOG-TEMPLATE.md",
     "src/content/blog/nvim-switch-to-vscode.md",
     "src/content/blog",
@@ -170,7 +172,6 @@
     "node_modules/@types",
     "node_modules/@tailwindcss",
     "node_modules/@astrojs",
-    "node_modules",
     "public/nvim-switch-to-vscode.png",
     "src/pages/blog/vim-cheatsheet.md",
     "src/pages/blog/nvim-switch-to-vscode.md",
