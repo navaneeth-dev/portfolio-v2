@@ -6,9 +6,9 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    image: z.string().default("/sveltekit.png"),
-    isDraft: z.boolean().optional().default(false),
     pubDate: z.string().transform((str) => new Date(str)),
+    image: z.string().optional().default("/sveltekit.png"),
+    isDraft: z.boolean().optional().default(false),
   }),
 });
 
