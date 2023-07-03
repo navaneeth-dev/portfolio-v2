@@ -4,23 +4,21 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../../config";
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
 import { Image } from "@astrojs/image/components";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const allPostsSorted = (await Astro.glob("../blog/*.{md,mdx}")).sort(
+  const allPostsSorted = (await getCollection("blog")).sort(
     (a, b) =>
-      new Date(b.frontmatter.pubDate).valueOf() -
-      new Date(a.frontmatter.pubDate).valueOf()
+      new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
   );
 
-  const tags = new Set();
+  const tags = new Set<string>();
   allPostsSorted.forEach((post) => {
-    post.frontmatter.tags.forEach((tag: any) => tags.add(tag));
+    post.data.tags.forEach((tag: any) => tags.add(tag));
   });
 
   return [...tags].map((tag) => {
-    const posts = allPostsSorted.filter((post) =>
-      post.frontmatter.tags.includes(tag)
-    );
+    const posts = allPostsSorted.filter((post) => post.data.tags.includes(tag));
     return {
       params: {
         tag,
@@ -34,7 +32,6 @@ export async function getStaticPaths() {
 
 const { posts } = Astro.props;
 const { tag } = Astro.params;
-const title = "Hello";
 ---
 
 <!DOCTYPE html>
