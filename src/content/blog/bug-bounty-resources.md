@@ -1,6 +1,5 @@
 ---
-layout: "../../layouts/BlogPost.astro"
-title: Tools I Use For Bug Bounty 
+title: Tools I Use For Bug Bounty
 image: /rafay-ansari-prhMYojFJRY-unsplash.jpg
 pubDate: "10 Dec 2022"
 description: "We will look into the tools I use for testing a target"

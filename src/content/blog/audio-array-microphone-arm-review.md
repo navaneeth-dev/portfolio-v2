@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/BlogPost.astro"
 title: My Boom Arm Buying Journey For Blue Yeti
 image: https://m.media-amazon.com/images/I/51ik3JSGdNL._SL1000_.jpg
 pubDate: "17 Jan 2023"
@@ -17,7 +16,7 @@ So I am preparing for internships for the summer and wanted to make my setup per
 
 So this blog is about my journey.
 
-First I bought Maono AU-B01 which was supposed to be compitable with blue yeti but has a known issue of not recieving parts. And as expected I recieved only the arm part. 
+First I bought Maono AU-B01 which was supposed to be compitable with blue yeti but has a known issue of not recieving parts. And as expected I recieved only the arm part.
 Then I asked Amazon for replacement and bought the second one Audio Array for 2k. The packaging was excellent but the 5/8" screw was not an exact fit for Blue yeti so I took the Maono's one and its perfect now.
 
 ## Conclusion

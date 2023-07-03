@@ -4,65 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "9c3fccccfded78dc",
+        "id": "bb1b4c3a66df0483",
         "type": "tabs",
         "children": [
           {
-            "id": "e03d70f4befad713",
+            "id": "97339cde3a1493f1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/pages/blog/srm-vadapalani-ctf-2023.md",
+                "file": "src/content/blog/nvim-switch-to-vscode.md",
                 "mode": "source",
                 "source": true
               }
             }
-          },
-          {
-            "id": "0273b780b822142e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "src/pages/blog/srm-ktr-ctf-2023.md",
-                "mode": "source",
-                "source": true
-              }
-            }
-          },
-          {
-            "id": "f0ab22feda0e1ad5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "src/pages/blog/nvim-switch-to-vscode.md",
-                "mode": "source",
-                "source": true
-              }
-            },
-            "group": "374a76bdf4dea757"
-          }
-        ],
-        "currentTab": 2
-      },
-      {
-        "id": "6fc73f9890373a87",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "8fea4d6447c59171",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "src/pages/blog/nvim-switch-to-vscode.md",
-                "mode": "preview",
-                "source": true
-              }
-            },
-            "group": "374a76bdf4dea757"
           }
         ]
       }
@@ -122,8 +77,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 219.5,
-    "collapsed": true
+    "width": 219.5
   },
   "right": {
     "id": "0b046d4188473830",
@@ -139,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "src/pages/blog/nvim-switch-to-vscode.md",
+                "file": "src/content/blog/nvim-switch-to-vscode.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -156,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "src/pages/blog/nvim-switch-to-vscode.md",
+                "file": "src/content/blog/nvim-switch-to-vscode.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -179,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/pages/blog/nvim-switch-to-vscode.md"
+                "file": "src/content/blog/nvim-switch-to-vscode.md"
               }
             }
           }
@@ -203,7 +157,7 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "f0ab22feda0e1ad5",
+  "active": "8da4eb233a7f5718",
   "lastOpenFiles": [
     "src/content/blog",
     "src/content",

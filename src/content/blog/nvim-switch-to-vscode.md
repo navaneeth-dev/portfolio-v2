@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/BlogPost.astro"
 title: Why I am also switching to VSCode from Neovim
 tags: [dev, setup]
 pubDate: "Jul 2 2023"

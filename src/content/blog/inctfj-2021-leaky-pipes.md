@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/BlogPost.astro"
 description: "Leaky pipes - InCTFJ solution. PS: Ignore this shitty post, this is for testing the blog. So I just made this in a hurry."
 tags: [inctfj, ctf]
 pubDate: "Dec 31 2021"

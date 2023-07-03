@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/BlogPost.astro"
 title: External Recon
 pubDate: "May 24 2022"
 description: Red Team External Recon Methods

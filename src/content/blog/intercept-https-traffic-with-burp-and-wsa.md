@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/BlogPost.astro"
 title: Intercept HTTPS traffic with Burp and Windows Subsystem For Android
 tags: [android, wsa]
 pubDate: "Jul 2 2022"

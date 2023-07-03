@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/BlogPost.astro"
 title: Android Malware/Reversing Resources
 pubDate: "Sep 30 2022"
 description: "Some android malware/reversing resources. Can be useful for learning android game hacking etc."

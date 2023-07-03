@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/BlogPost.astro"
 title: SvelteKit From A NextJS Perspective
 tags: [sveltekit, typescript]
 pubDate: "Jan 18 2023"
@@ -43,17 +42,17 @@ The second thing you'll notice is styles, script and UI are all in the same file
 
 ```html
 <script>
-let hello = 'hi';
+  let hello = "hi";
 </script>
 
 <main>
-	<h1>Hello</h1>
+  <h1>Hello</h1>
 </main>
 
 <style>
-main {
-	background-color: red;
-}
+  main {
+    background-color: red;
+  }
 </style>
 ```
 
@@ -65,10 +64,10 @@ The thing which I most loved is layouts, you can keep your parent layout and onl
 
 ```html
 <script lang="ts">
-	let text = "";
+  let text = "";
 </script>
 
-<input type="text" bind:value={text} />
+<input type="text" bind:value="{text}" />
 ```
 
 When you type the variable text gets updated, its a proper binding. This is the developer productivity with Svelte, unlike NextJS where we have to use `useState` and create a function to set the value.

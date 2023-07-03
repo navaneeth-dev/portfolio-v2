@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/BlogPost.astro"
 title: "InCTFJ Finals: Rebirth of Nagini"
 description: "This is how I first blooded Rebirth of Nagini in 5mins which was a hard 400 point reversing challenge in InCTF Finals by Team bi0s."
 tags: [inctfj, ctf]

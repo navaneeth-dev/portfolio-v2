@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/BlogPost.astro"
 title: Cyber Security Blogs You Should Follow
 image: /cyber-sec.jpg
 pubDate: "27 Sep 2022"
