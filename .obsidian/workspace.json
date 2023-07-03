@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "BLOG-TEMPLATE.md",
+                "file": "src/content/blog/nvim-switch-to-vscode.md",
                 "mode": "source",
                 "source": true
               }
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "BLOG-TEMPLATE.md",
+                "file": "src/content/blog/nvim-switch-to-vscode.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "BLOG-TEMPLATE.md",
+                "file": "src/content/blog/nvim-switch-to-vscode.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "BLOG-TEMPLATE.md"
+                "file": "src/content/blog/nvim-switch-to-vscode.md"
               }
             }
           }
@@ -157,8 +157,9 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "8da4eb233a7f5718",
+  "active": "97339cde3a1493f1",
   "lastOpenFiles": [
+    "BLOG-TEMPLATE.md",
     "src/content/blog/nvim-switch-to-vscode.md",
     "src/content/blog",
     "src/content",
@@ -185,7 +186,6 @@
     "public/srm-ktr-ctf-2023-task2.png",
     "public/srm-ktr-ctf-2023-base45.png",
     "src/pages/blog/srm-vadapalani-ctf-2023.md",
-    "src/pages/blog/external-recon.md",
-    "BLOG-TEMPLATE.md"
+    "src/pages/blog/external-recon.md"
   ]
 }
