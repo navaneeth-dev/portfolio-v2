@@ -1,14 +1,13 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../config";
 import { Image } from "@astrojs/image/components";
 import { getCollection } from "astro:content";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate - a.data.pubDate
-);
+const posts = await getCollection("blog");
+posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <!DOCTYPE html>
@@ -49,7 +48,7 @@ const posts = (await getCollection("blog")).sort(
                       })}
                     </time>
                     <a
-                      href={"/" + post.slug}
+                      href={"/blog/" + post.slug}
                       class="block text-xl font-bold mb-2 text-primary hover:underline"
                     >
                       {post.data.title}
