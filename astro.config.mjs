@@ -15,7 +15,7 @@ import react from "@astrojs/react";
 import image from "@astrojs/image";
 
 // The following configuration for rehype-autolink-headings was taken from https://github.com/withastro/docs/blob/main/astro.config.ts
-import vercel from "@astrojs/vercel/edge";
+import vercel from "@astrojs/vercel/serverless";
 const AnchorLinkIcon = h(
   "svg",
   {
