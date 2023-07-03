@@ -87,7 +87,7 @@ export default defineConfig({
     tailwind(),
     react(),
   ],
-  output: "hybrid",
+  output: "server",
   adapter: vercel({
     analytics: true,
   }),
