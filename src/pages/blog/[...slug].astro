@@ -54,7 +54,12 @@ const { Content } = await post.render();
         {
           pubDate && (
             <time class="mt-2 text-center text-neutral-700">
-              Last Updated: {pubDate}
+              Published:{" "}
+              {pubDate.toLocaleString("en-US", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
             </time>
           )
         }
