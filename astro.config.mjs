@@ -88,5 +88,7 @@ export default defineConfig({
     react(),
   ],
   output: "static",
-  adapter: vercel(),
+  adapter: vercel({
+    analytics: true
+  }),
 });
