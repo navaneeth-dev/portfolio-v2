@@ -4,7 +4,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../../config";
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
 import { Image } from "@astrojs/image/components";
-import { getCollection } from "astro:content";
+import { CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths() {
   const allPostsSorted = (await getCollection("blog")).sort(
@@ -30,6 +30,10 @@ export async function getStaticPaths() {
   });
 }
 
+type Props = {
+  posts: CollectionEntry<"blog">[];
+};
+
 const { posts } = Astro.props;
 const { tag } = Astro.params;
 ---
@@ -48,7 +52,7 @@ const { tag } = Astro.params;
         </h1>
         <ul class="grid grid-flow-row auto-rows-[1fr] grid-row gap-6 mt-6">
           {
-            posts.map((post: any) => (
+            posts.map((post) => (
               <li class="border border-neutral-400 rounded-lg">
                 <div class="bg-white rounded-lg flex flex-col md:grid md:grid-cols-[30%_70%] gap-3 h-full">
                   <div class="w-full h-[173px] md:h-full relative">
@@ -56,35 +60,30 @@ const { tag } = Astro.params;
                       width={256}
                       height={480}
                       src={
-                        post.frontmatter.image
-                          ? post.frontmatter.image
-                          : "/placeholder.png"
+                        post.data.image ? post.data.image : "/placeholder.png"
                       }
-                      alt={post.frontmatter.title}
+                      alt={post.data.title}
                       class="size w-full h-full rounded-t-lg object-cover md:rounded-l-lg md:rounded-none absolute inset-0 border-r border-neutral-400"
                     />
                   </div>
                   <div class="p-2">
                     <time
-                      datetime={post.frontmatter.pubDate}
+                      datetime={post.data.pubDate}
                       class="text-sm text-gray-700"
                     >
-                      {new Date(post.frontmatter.pubDate).toLocaleDateString(
-                        "en-us",
-                        {
-                          year: "numeric",
-                          month: "short",
-                          day: "numeric",
-                        }
-                      )}
+                      {new Date(post.data.pubDate).toLocaleDateString("en-us", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
                     </time>
                     <h2 class="text-xl font-bold mb-2 text-primary">
                       <a href={post.url} class="hover:underline">
-                        {post.frontmatter.title}
+                        {post.data.title}
                       </a>
                     </h2>
                     <div class="flex gap-2">
-                      {post.frontmatter.tags.map((tag: string) => (
+                      {post.data.tags.map((tag: string) => (
                         <a
                           class="inline uppercase border border-black px-2 text-sm hover:bg-neutral-100"
                           href={"/tag/" + tag}
@@ -93,9 +92,7 @@ const { tag } = Astro.params;
                         </a>
                       ))}
                     </div>
-                    <p class="mt-2 text-neutral-700">
-                      {post.frontmatter.description}
-                    </p>
+                    <p class="mt-2 text-neutral-700">{post.data.description}</p>
                   </div>
                 </div>
               </li>
