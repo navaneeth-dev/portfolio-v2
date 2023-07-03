@@ -15,7 +15,7 @@
   "enable_folder_templates": true,
   "folder_templates": [
     {
-      "folder": "src/pages/blog",
+      "folder": "src/content/blog",
       "template": "BLOG-TEMPLATE.md"
     }
   ],
