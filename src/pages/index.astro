@@ -17,7 +17,7 @@ import "swiper/css/navigation";
 import { getCollection } from "astro:content";
 
 const latestPosts = (await getCollection("blog"))
-  .sort((a, b) => b.data.pubDate - a.data.pubDate)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 ---
 
@@ -118,7 +118,7 @@ const latestPosts = (await getCollection("blog"))
                   </div>
                   <div class="p-2 flex flex-col gap-1 items-start">
                     <time
-                      datetime={post.data.pubDate}
+                      datetime={post.data.pubDate.toString()}
                       class="text-sm text-gray-700 block"
                     >
                       {new Date(post.data.pubDate).toLocaleDateString("en-us", {

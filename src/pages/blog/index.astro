@@ -38,7 +38,7 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
                   </div>
                   <div class="pl-4 py-2 pb-2 w-full">
                     <time
-                      datetime={post.data.pubDate}
+                      datetime={post.data.pubDate.toString()}
                       class="text-sm text-gray-700"
                     >
                       {new Date(post.data.pubDate).toLocaleDateString("en-us", {
