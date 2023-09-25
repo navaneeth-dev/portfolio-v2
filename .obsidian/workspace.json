@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/blog/nvim-switch-to-vscode.md",
+                "file": "src/content/blog/cloudsek-ctf-2023.md",
                 "mode": "source",
                 "source": true
               }
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "src/content/blog/nvim-switch-to-vscode.md",
+                "file": "src/content/blog/cloudsek-ctf-2023.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "src/content/blog/nvim-switch-to-vscode.md",
+                "file": "src/content/blog/cloudsek-ctf-2023.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "src/content/blog/nvim-switch-to-vscode.md"
+                "file": "src/content/blog/cloudsek-ctf-2023.md"
               }
             }
           }
@@ -159,10 +159,11 @@
   },
   "active": "97339cde3a1493f1",
   "lastOpenFiles": [
+    "src/content/blog/nvim-switch-to-vscode.md",
+    "src/content/blog/cloudsek-ctf-2023.md",
     "pnpm-lock.yaml.1206621029",
     "_tmp_16648_194a73f65d6b7b52b19c0b0e0f1ed52c",
     "BLOG-TEMPLATE.md",
-    "src/content/blog/nvim-switch-to-vscode.md",
     "src/content/blog",
     "src/content",
     "package.json.3057984951",
@@ -171,7 +172,6 @@
     "pnpm-lock.yaml.3633369705",
     "node_modules/@types",
     "node_modules/@tailwindcss",
-    "node_modules/@astrojs",
     "public/nvim-switch-to-vscode.png",
     "src/pages/blog/vim-cheatsheet.md",
     "src/pages/blog/nvim-switch-to-vscode.md",

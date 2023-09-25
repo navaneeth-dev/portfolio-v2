@@ -210,6 +210,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"cloudsek-ctf-2023.md": {
+	id: "cloudsek-ctf-2023.md";
+  slug: "cloudsek-ctf-2023";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "cyber-security-blogs-you-should-follow.md": {
 	id: "cyber-security-blogs-you-should-follow.md";
   slug: "cyber-security-blogs-you-should-follow";
