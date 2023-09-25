@@ -17,7 +17,27 @@
                 "mode": "source",
                 "source": true
               }
-            }
+            },
+            "group": "c66c1e2cf8a47225"
+          }
+        ]
+      },
+      {
+        "id": "b100cd3ae6c4d35e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "53569b20a82133ee",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "src/content/blog/cloudsek-ctf-2023.md",
+                "mode": "preview",
+                "source": true
+              }
+            },
+            "group": "c66c1e2cf8a47225"
           }
         ]
       }
@@ -77,7 +97,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 219.5
+    "width": 298.49999618530273
   },
   "right": {
     "id": "0b046d4188473830",
@@ -152,13 +172,16 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false,
       "templater-obsidian:Templater": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "97339cde3a1493f1",
+  "active": "8da4eb233a7f5718",
   "lastOpenFiles": [
+    "public/cloudsek-ctf-2023-cyberchef-found.png",
+    "public/cloudsek-ctf-2023-sha-web.png",
+    "public/cloudsek-ctf-2023-bases.png",
     "src/content/blog/nvim-switch-to-vscode.md",
     "src/content/blog/cloudsek-ctf-2023.md",
     "pnpm-lock.yaml.1206621029",
@@ -184,8 +207,6 @@
     "public/srm-ktr-ctf-2023-task5-2.png",
     "public/srm-ktr-ctf-2023-task5-1.png",
     "public/srm-ktr-ctf-2023-magic.png",
-    "public/srm-ktr-ctf-2023-task2.png",
-    "public/srm-ktr-ctf-2023-base45.png",
     "src/pages/blog/srm-vadapalani-ctf-2023.md",
     "src/pages/blog/external-recon.md"
   ]
