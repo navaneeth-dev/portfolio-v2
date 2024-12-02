@@ -16,7 +16,9 @@
                 "file": "src/content/blog/cloudsek-ctf-2023.md",
                 "mode": "source",
                 "source": true
-              }
+              },
+              "icon": "lucide-file",
+              "title": "cloudsek-ctf-2023"
             },
             "group": "c66c1e2cf8a47225"
           }
@@ -33,9 +35,11 @@
               "type": "markdown",
               "state": {
                 "file": "src/content/blog/cloudsek-ctf-2023.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": true
-              }
+              },
+              "icon": "lucide-file",
+              "title": "cloudsek-ctf-2023"
             },
             "group": "c66c1e2cf8a47225"
           }
@@ -59,7 +63,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -74,7 +80,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -82,7 +90,9 @@
             "type": "leaf",
             "state": {
               "type": "starred",
-              "state": {}
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
             }
           },
           {
@@ -90,7 +100,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -121,7 +133,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for cloudsek-ctf-2023"
             }
           },
           {
@@ -133,7 +147,9 @@
                 "file": "src/content/blog/cloudsek-ctf-2023.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from cloudsek-ctf-2023"
             }
           },
           {
@@ -144,7 +160,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -154,7 +172,9 @@
               "type": "outline",
               "state": {
                 "file": "src/content/blog/cloudsek-ctf-2023.md"
-              }
+              },
+              "icon": "lucide-list",
+              "title": "Outline of cloudsek-ctf-2023"
             }
           }
         ]
@@ -172,18 +192,19 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "templater-obsidian:Templater": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "obsidian-excalidraw-plugin:Create new drawing": false
+      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "templater-obsidian:Templater": false
     }
   },
-  "active": "8da4eb233a7f5718",
+  "active": "97339cde3a1493f1",
   "lastOpenFiles": [
+    "public/Untitled.md",
+    "src/content/blog/cloudsek-ctf-2023.md",
     "public/cloudsek-ctf-2023-cyberchef-found.png",
     "public/cloudsek-ctf-2023-sha-web.png",
     "public/cloudsek-ctf-2023-bases.png",
     "src/content/blog/nvim-switch-to-vscode.md",
-    "src/content/blog/cloudsek-ctf-2023.md",
     "pnpm-lock.yaml.1206621029",
     "_tmp_16648_194a73f65d6b7b52b19c0b0e0f1ed52c",
     "BLOG-TEMPLATE.md",
@@ -206,7 +227,6 @@
     "public/ktr.png",
     "public/srm-ktr-ctf-2023-task5-2.png",
     "public/srm-ktr-ctf-2023-task5-1.png",
-    "public/srm-ktr-ctf-2023-magic.png",
     "src/pages/blog/srm-vadapalani-ctf-2023.md",
     "src/pages/blog/external-recon.md"
   ]
