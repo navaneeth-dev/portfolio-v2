@@ -23,6 +23,7 @@
     "hastscript": "^7.2.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "sharp": "^0.33.5",
     "swiper": "^8.4.5",
     "tailwindcss": "^3.0.24"
   },
@@ -31,6 +32,6 @@
     "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "^0.5.8",
     "rehype-autolink-headings": "^6.1.1",
-    "zod": "^3.21.4"
+    "zod": "^3.23.8"
   }
 }
