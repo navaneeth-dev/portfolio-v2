@@ -8,7 +8,7 @@ description: Remote dev, Ease of config...
 
 ## Remote Development
 
-Codespaces has automatic port forwarding with VSCode unlike with Neovim where we have to manually run `gh codespace ports forward 3000:3000`. Generally remote development is better with VSCode, dev container extension support etc. 
+Codespaces has automatic port forwarding with VSCode unlike with Neovim where we have to manually run `gh codespace ports forward 3000:3000`. Generally remote development is better with VSCode, dev container extension support etc.
 
 Generally the setup which I like to go for is VSCode + Windows Terminal ssh with Tmux.
 
