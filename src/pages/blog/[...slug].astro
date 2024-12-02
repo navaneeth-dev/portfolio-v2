@@ -50,7 +50,7 @@ const { Content } = await post.render();
             </div>
           )
         }
-        <h1 class="text-2xl font-bold text-center text-primary">{title}</h1>
+        <h1 class="text-2xl lg:text-4xl font-bold text-center text-primary">{title}</h1>
         {
           pubDate && (
             <time class="mt-2 text-center text-neutral-700">
@@ -64,12 +64,14 @@ const { Content } = await post.render();
           )
         }
       </section>
-      <article
-        class="container mx-auto px-12 prose mb-6 prose-table:block prose-table:overflow-auto prose-code:before:content-none prose-code:after:content-none"
-      >
-        <hr />
-        <Content />
-      </article>
+      <div class="container mx-auto">
+          <article
+              class="px-12 max-w-none prose lg:prose-lg xl:prose-xl mb-6 prose-table:block prose-table:overflow-auto prose-code:before:content-none prose-code:after:content-none"
+          >
+            <hr />
+            <Content />
+          </article>
+      </div>
     </main>
     <Footer />
   </body>
