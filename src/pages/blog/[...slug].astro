@@ -35,7 +35,7 @@ const { Content } = await post.render();
   <body>
     <Header />
     <main class="pb-12">
-      <section class="flex flex-col items-center p-6 max-w-4xl mx-auto">
+      <section class="flex flex-col items-center p-6 mx-auto">
         {
           image && (
             <div class="wrapper w-full md:w-[480px] md:h-[282px] flex justify-center">
@@ -65,7 +65,7 @@ const { Content } = await post.render();
         }
       </section>
       <article
-        class="container mx-auto px-12 max-w-4xl prose mb-6 prose-table:block prose-table:overflow-auto prose-code:before:content-none prose-code:after:content-none"
+        class="container mx-auto px-12 prose mb-6 prose-table:block prose-table:overflow-auto prose-code:before:content-none prose-code:after:content-none"
       >
         <hr />
         <Content />
