@@ -1,6 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 ---
 
@@ -12,12 +13,14 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
   <body>
     <Header />
 
-    <div class="container px-12 mx-auto py-6">
+    <main class="container px-12 mx-auto py-6">
       <div
         class="prose max-w-none prose-code:bg-gray-200 before:prose-code:content-none after:prose-code:content-none"
       >
         <slot />
       </div>
-    </div>
+    </main>
+
+    <Footer />
   </body>
 </html>
