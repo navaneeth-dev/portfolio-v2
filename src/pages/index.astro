@@ -44,8 +44,8 @@ const latestPosts = (await getCollection("blog"))
             BCA from Chennai
           </p>
           <a
-            href="#contact"
-            class="bg-primary text-white px-3 py-1 border border-black self-center md:self-start rounded hover:shadow-[5px_5px_0_rgba(0,0,0,1)] transition-shadow"
+            href="/contact"
+            class="bg-primary text-white px-4 py-2 border border-black self-center md:self-start rounded hover:shadow-[5px_5px_0_rgba(0,0,0,1)] transition-shadow"
             >Get in touch</a
           >
         </div>
@@ -144,7 +144,7 @@ const latestPosts = (await getCollection("blog"))
                     <p class="text-neutral-700">{post.data.description}</p>
                     <a
                       href={"/blog/" + post.slug}
-                      class="bg-black text-white border rounded inline-flex items-center justify-center px-1 hover:bg-neutral-600"
+                      class="bg-black text-white border rounded inline-flex items-center justify-center px-4 py-2 hover:bg-neutral-600"
                     >
                       Read More
                       <ArrowUp />
