@@ -5,13 +5,27 @@ import HeaderLink from "./HeaderLink.astro";
 <header class="border-b-2 border-primary h-14">
   <nav class="container px-12 mx-auto flex justify-between items-center h-full">
     <HeaderLink href="/">Home</HeaderLink>
-    <ul class="flex gap-x-4">
-      <li>
-        <HeaderLink href="/blog">Blog</HeaderLink>
-      </li>
-      <li>
-        <HeaderLink href="/contact">Contact</HeaderLink>
-      </li>
-    </ul>
+    <details class="h-full flex items-center">
+      <summary class="list-none">Menu</summary>
+      <nav
+        class="top-14 left-0 z-40 absolute bg-black w-full text-center flex flex-col items-center border-b border-primary list-none"
+      >
+        <li class="w-full">
+          <HeaderLink class="py-2 text-white block" href="/achievements"
+            >Archievements</HeaderLink
+          >
+        </li>
+        <li class="w-full">
+          <HeaderLink class="py-2 text-white block" href="/blog"
+            >Blog</HeaderLink
+          >
+        </li>
+        <li class="w-full">
+          <HeaderLink class="py-2 text-white block" href="/contact"
+            >Contact</HeaderLink
+          >
+        </li>
+      </nav>
+    </details>
   </nav>
 </header>
