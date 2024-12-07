@@ -136,9 +136,12 @@ const latestPosts = (await getCollection("blog"))
                     <div class="flex gap-2">
                       {post.data.tags &&
                         post.data.tags.map((tag: string) => (
-                          <span class="border border-neutral-700 uppercase text-sm text-neutral-700 px-2">
+                          <a
+                            class="border border-neutral-700 uppercase text-sm text-neutral-700 hover:bg-neutral-100 px-2"
+                            href={"/tag/" + tag}
+                          >
                             {tag}
-                          </span>
+                          </a>
                         ))}
                     </div>
                     <p class="text-neutral-700">{post.data.description}</p>
