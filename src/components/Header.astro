@@ -3,10 +3,10 @@ import HeaderLink from "./HeaderLink.astro";
 ---
 
 <header class="border-b-2 border-primary h-14">
-  <nav class="container px-12 mx-auto flex justify-between items-center h-full">
-    <HeaderLink href="/">Home</HeaderLink>
+  <nav class="container px-12 mx-auto flex justify-between h-full">
+    <HeaderLink href="/" class="block py-4">Home</HeaderLink>
     <details class="h-full flex items-center">
-      <summary class="list-none">Menu</summary>
+      <summary class="list-none md:hidden">Menu</summary>
       <nav
         class="top-14 left-0 z-40 absolute bg-black w-full text-center flex flex-col items-center border-b border-primary list-none"
       >
@@ -27,5 +27,23 @@ import HeaderLink from "./HeaderLink.astro";
         </li>
       </nav>
     </details>
+    <nav class="hidden md:flex list-none h-full">
+      <li>
+        <HeaderLink
+          class="text-black h-full py-4 px-2 block"
+          href="/achievements">Archievements</HeaderLink
+        >
+      </li>
+      <li class="w-full">
+        <HeaderLink class="text-black h-full py-4 px-2 block" href="/blog"
+          >Blog</HeaderLink
+        >
+      </li>
+      <li class="w-full">
+        <HeaderLink class="text-black h-full py-4 px-2 block" href="/contact"
+          >Contact</HeaderLink
+        >
+      </li>
+    </nav>
   </nav>
 </header>
