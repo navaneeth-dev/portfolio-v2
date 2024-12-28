@@ -12,7 +12,7 @@ import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 
 // The following configuration for rehype-autolink-headings was taken from https://github.com/withastro/docs/blob/main/astro.config.ts
-import vercel from "@astrojs/vercel/static";
+import vercel from "@astrojs/vercel";
 const AnchorLinkIcon = h(
   "svg",
   {
