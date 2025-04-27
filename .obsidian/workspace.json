@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/blog/cloudsek-ctf-2023.md",
+                "file": "src/content/blog/reverse-engineering-icici.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "cloudsek-ctf-2023"
+              "title": "reverse-engineering-icici"
             },
             "group": "c66c1e2cf8a47225"
           }
@@ -34,12 +34,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/blog/cloudsek-ctf-2023.md",
+                "file": "src/content/blog/reverse-engineering-icici.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "cloudsek-ctf-2023"
+              "title": "reverse-engineering-icici"
             },
             "group": "c66c1e2cf8a47225"
           }
@@ -201,8 +201,18 @@
   },
   "active": "97339cde3a1493f1",
   "lastOpenFiles": [
-    "src/content/blog/nvim-switch-to-vscode.md",
+    "src/content/blog/cyber-security-blogs-you-should-follow.md",
+    "src/content/blog/reverse-engineering-icici.md",
+    "src/content/blog/android-resources.md",
+    "src/content/blog/audio-array-microphone-arm-review.md",
+    "src/content/blog/bug-bounty-resources.md",
     "src/content/blog/cloudsek-ctf-2023.md",
+    "src/content/blog/external-recon.md",
+    "src/content/blog/intercept-https-traffic-with-burp-and-wsa.md",
+    "src/content/blog/sveltekit-from-a-nextjs-perspective.md",
+    "src/content/blog/srm-vadapalani-ctf-2023.md",
+    "src/content/blog/srm-ktr-ctf-2023.md",
+    "src/content/blog/nvim-switch-to-vscode.md",
     "src/content/blog/foss-india.md",
     "src/pages/blog/[...slug].astro~",
     "public/Untitled.md",

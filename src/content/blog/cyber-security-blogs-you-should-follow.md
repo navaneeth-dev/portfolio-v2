@@ -24,6 +24,10 @@ tags: [resources]
 - [https://muha2xmad.github.io/](https://muha2xmad.github.io/)
 - [Android Malware Telegram (VERY USEFUL)](https://t.me/androidMalware)
 
+## Podcasts
+
+- [Darknet Diaries](https://darknetdiaries.com/)
+
 ## Underground Forums
 
 | Name                            | Purpose              | Link                                                                             |
