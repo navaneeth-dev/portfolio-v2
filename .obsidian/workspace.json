@@ -62,7 +62,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -109,7 +110,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 298.49999618530273
+    "width": 264.5004348754883
   },
   "right": {
     "id": "0b046d4188473830",
@@ -193,20 +194,21 @@
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "templater-obsidian:Templater": false,
       "obsidian-excalidraw-plugin:Create new drawing": false,
-      "templater-obsidian:Templater": false
+      "obsidian-excalidraw-plugin:New drawing": false
     }
   },
   "active": "97339cde3a1493f1",
   "lastOpenFiles": [
+    "src/content/blog/nvim-switch-to-vscode.md",
+    "src/content/blog/cloudsek-ctf-2023.md",
     "src/content/blog/foss-india.md",
     "src/pages/blog/[...slug].astro~",
-    "src/content/blog/cloudsek-ctf-2023.md",
     "public/Untitled.md",
     "public/cloudsek-ctf-2023-cyberchef-found.png",
     "public/cloudsek-ctf-2023-sha-web.png",
     "public/cloudsek-ctf-2023-bases.png",
-    "src/content/blog/nvim-switch-to-vscode.md",
     "pnpm-lock.yaml.1206621029",
     "_tmp_16648_194a73f65d6b7b52b19c0b0e0f1ed52c",
     "BLOG-TEMPLATE.md",
