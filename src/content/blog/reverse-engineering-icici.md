@@ -1,10 +1,11 @@
 ---
 
-title: Bypassing Protectt.AI in ICICI bank app
+title: Creating Custom UPI VPA by bypassing Protectt.AI in ICICI bank app
 tags: [android]
 pubDate: "Apr 27 2025"
-image: /sveltekit.png
+image: /icici.png
 description: Coming soon
+author: Navaneeth
 ---
 
 ## Coming Soon

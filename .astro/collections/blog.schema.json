@@ -26,12 +26,17 @@
         "isDraft": {
           "type": "boolean",
           "default": false
+        },
+        "author": {
+          "type": "string"
         }
       },
       "required": [
         "title",
+        "description",
         "pubDate",
-        "tags"
+        "tags",
+        "author"
       ],
       "additionalProperties": false
     }
