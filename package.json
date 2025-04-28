@@ -1,5 +1,5 @@
 {
-  "name": "@example/blog",
+  "name": "portfolio-v2",
   "type": "module",
   "version": "0.0.1",
   "private": true,
@@ -11,15 +11,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.0.3",
-    "@astrojs/react": "^4.1.2",
-    "@astrojs/rss": "^4.0.10",
-    "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/tailwind": "^5.1.4",
-    "@astrojs/vercel": "^8.0.1",
+    "@astrojs/mdx": "^4.2.5",
+    "@astrojs/react": "^4.2.5",
+    "@astrojs/rss": "^4.0.11",
+    "@astrojs/sitemap": "^3.3.1",
+    "@astrojs/tailwind": "^6.0.2",
+    "@astrojs/vercel": "^8.1.4",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
-    "astro": "^5.1.1",
+    "astro": "^5.7.6",
     "hastscript": "^7.2.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -28,7 +28,7 @@
     "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
-    "@astrojs/markdown-remark": "^6.0.1",
+    "@astrojs/markdown-remark": "^6.3.1",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "^0.5.8",
     "rehype-autolink-headings": "^6.1.1",

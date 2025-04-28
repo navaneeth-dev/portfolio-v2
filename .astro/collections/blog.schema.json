@@ -26,14 +26,10 @@
         "isDraft": {
           "type": "boolean",
           "default": false
-        },
-        "$schema": {
-          "type": "string"
         }
       },
       "required": [
         "title",
-        "description",
         "pubDate",
         "tags"
       ],
