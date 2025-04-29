@@ -1,6 +1,6 @@
 {
   "useMarkdownLinks": true,
-  "attachmentFolderPath": "public",
+  "attachmentFolderPath": "src/images",
   "newFileLocation": "folder",
   "newFileFolderPath": "src/pages/blog",
   "readableLineLength": false,
@@ -8,7 +8,7 @@
   "showInlineTitle": false,
   "livePreview": false,
   "vimMode": true,
-  "newLinkFormat": "absolute",
+  "newLinkFormat": "relative",
   "userIgnoreFilters": [
     "node_modules/",
     "src/components/",

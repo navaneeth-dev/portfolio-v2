@@ -4,28 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "bb1b4c3a66df0483",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "97339cde3a1493f1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "src/content/blog/reverse-engineering-icici.md",
-                "mode": "source",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "reverse-engineering-icici"
-            },
-            "group": "c66c1e2cf8a47225"
-          }
-        ]
-      },
-      {
-        "id": "b100cd3ae6c4d35e",
+        "id": "5289bf057e62089e",
         "type": "tabs",
         "children": [
           {
@@ -41,7 +20,28 @@
               "icon": "lucide-file",
               "title": "reverse-engineering-icici"
             },
-            "group": "c66c1e2cf8a47225"
+            "group": "47b10c49ffa9e0ec"
+          }
+        ]
+      },
+      {
+        "id": "8454caac72f9c840",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8fa5f72c2bebfffa",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "src/content/blog/reverse-engineering-icici.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "reverse-engineering-icici"
+            },
+            "group": "47b10c49ffa9e0ec"
           }
         ]
       }
@@ -110,7 +110,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 264.5004348754883
+    "width": 400.5004348754883,
+    "collapsed": true
   },
   "right": {
     "id": "0b046d4188473830",
@@ -198,24 +199,32 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "97339cde3a1493f1",
+  "active": "53569b20a82133ee",
   "lastOpenFiles": [
+    "src/images/reverse-engineering-icici-protectt-ai.png",
+    "src/images/reverse-engineering-icici-root-detection.png",
+    "src/images/reverse-engineering-icici-mainThread.png",
+    "src/images/reverse-engineering-icici-native-entry-point.png",
+    "src/images/reverse-engineering-icici-split-apk-dir.png",
+    "src/images/reverse-engineering-icici-extract-native-false.png",
+    "src/images/reverse-engineering-icici-native.png",
+    "src/images/clipboard_2025-04-29_12-12.png",
+    "src/content/blog/reverse-engineering-icici.md",
+    "src/images/reverse-engineering-icici-proc-term.png",
+    "src/pages/blog/Untitled.md",
+    "src/images/reverse-engineering-icici-load-library.png",
+    "src/images/reverse-engineering-icici-cordova.png",
+    "src/images",
     "package.json.3365600509",
     "pnpm-lock.yaml.3350080149",
     "_tmp_13178_e809b6e62677bfc20fc2a2b7612ef7eb",
     "pnpm-lock.yaml.833272912",
     "_tmp_12656_3ea18fab88fed7a58f224fd38b4753c4",
-    "public/icici.png",
-    "public/Twitter post - 1.png",
-    "public/favicon.svg",
     "package.json.3600147976",
     "pnpm-lock.yaml.3715820771",
     "_tmp_5432_7ce1f6af385f19cda94203b5a205dbf2",
     "package.json.361325656",
-    "pnpm-lock.yaml.1703836185",
-    "node_modules/@tailwindcss",
     "src/content/blog/cyber-security-blogs-you-should-follow.md",
-    "src/content/blog/reverse-engineering-icici.md",
     "src/content/blog/android-resources.md",
     "src/content/blog/audio-array-microphone-arm-review.md",
     "src/content/blog/bug-bounty-resources.md",
@@ -228,18 +237,11 @@
     "src/content/blog/nvim-switch-to-vscode.md",
     "src/content/blog/foss-india.md",
     "public/Untitled.md",
-    "public/cloudsek-ctf-2023-cyberchef-found.png",
-    "public/cloudsek-ctf-2023-sha-web.png",
-    "public/cloudsek-ctf-2023-bases.png",
     "BLOG-TEMPLATE.md",
-    "public/nvim-switch-to-vscode.png",
     "src/pages/blog/vim-cheatsheet.md",
     "src/pages/blog/nvim-switch-to-vscode.md",
     "src/pages/blog/sveltekit-from-a-nextjs-perspective.md",
-    "public/vim-cheatsheet-poster.png",
     "src/pages/blog/srm-ktr-ctf-2023.md",
-    "public/ktr2.jpeg",
-    "public/_7a6a68c6-61d5-4b67-b4ce-903e434ad2d2.jpeg",
     "src/pages/blog/srm-vadapalani-ctf-2023.md",
     "src/pages/blog/external-recon.md"
   ]
