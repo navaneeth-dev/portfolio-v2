@@ -21,6 +21,18 @@
               "title": "reverse-engineering-icici"
             },
             "group": "47b10c49ffa9e0ec"
+          },
+          {
+            "id": "8fe30181b581707b",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "src/images/reverse-engineering-icici-onresume-checks.png"
+              },
+              "icon": "lucide-image",
+              "title": "reverse-engineering-icici-onresume-checks"
+            }
           }
         ]
       },
@@ -201,19 +213,19 @@
   },
   "active": "53569b20a82133ee",
   "lastOpenFiles": [
-    "src/images/reverse-engineering-icici-protectt-ai.png",
-    "src/images/reverse-engineering-icici-root-detection.png",
-    "src/images/reverse-engineering-icici-mainThread.png",
-    "src/images/reverse-engineering-icici-native-entry-point.png",
-    "src/images/reverse-engineering-icici-split-apk-dir.png",
-    "src/images/reverse-engineering-icici-extract-native-false.png",
-    "src/images/reverse-engineering-icici-native.png",
-    "src/images/clipboard_2025-04-29_12-12.png",
+    "src/images/customid.png",
+    "src/images/Untitled.png",
+    "src/images/reverse-engineering-icici-truirt.png",
+    "src/images/reverse-engineering-icici-dsf.png",
+    "src/images/reverse-engineering-icici-sdfgdf.png",
+    "src/images/reverse-engineering-icici-zap.png",
+    "src/images/reverse-engineering-icici-onresume-checks.png",
     "src/content/blog/reverse-engineering-icici.md",
-    "src/images/reverse-engineering-icici-proc-term.png",
+    "src/images/reverse-engineering-icici-oncreate.png",
+    "src/images/reverse-engineering-icici-sdf.png",
+    "src/images/reverse-engineering-icici-dsgf.png",
+    "src/images/reverse-engineering-icici-native-logging.png",
     "src/pages/blog/Untitled.md",
-    "src/images/reverse-engineering-icici-load-library.png",
-    "src/images/reverse-engineering-icici-cordova.png",
     "src/images",
     "package.json.3365600509",
     "pnpm-lock.yaml.3350080149",

@@ -595,13 +595,15 @@ The way I did that is by hooking  `pthread_create` and after registering the sta
 
 ## Bypassing root detection
 
-With this I was able to bypass the Anti-Frida detection but now I was getting root detected. So I tried searching for the string "Your Device is rooted. For security reasons..." in the APK but no results were found.
+With this I was able to bypass the Anti-Frida detection but now I was getting root detected. 
 
 ![Root Detection](../../images/reverse-engineering-icici-root-detection.png)
 
-With no luck I tried searching for "Close App" no luck.
+So I tried searching for the string "Your Device is rooted. For security reasons..." in the APK but no results were found. I searched in `/data/data` and `/data/user` still no results.
 
-I decided to change my approach and search for Android APIs that exit the app, [StackOverflow](https://stackoverflow.com/questions/17719634/how-to-exit-an-android-app-programmatically) has a good list.
+With no luck I tried searching for "Close App" again no luck. I tried with case insensitive and partial strings like "Your Device" etc... Still no luck.
+
+I decided to change my approach and search for Android APIs that exit the app, [Stackoverflow](https://stackoverflow.com/questions/17719634/how-to-exit-an-android-app-programmatically) has a good list.
 
 
 - finishAffinity
@@ -609,20 +611,294 @@ I decided to change my approach and search for Android APIs that exit the app, [
 - getActivity().finish();
 - System.exit(0)
 
-I tried searching for these with JADX code search.
+I tried searching for these with JADX code search and found a few interesting functions. It's likely only the main one's are relevant. And we focus our search inside the ai package.
 
+![System.exit functions](../../images/reverse-engineering-icici-system-exit.png)
+
+After seeing a few of these functions there is a common function `companion.d()`. It's called by everything that closes the apps.
+
+![Common code](../../images/reverse-engineering-icici-common.png)
+
+I hook this so I can see what exactly is calling it up the stack. So I can hook the parent function and bypass the root detection.
+
+```js
+let a = Java.use("ai.protectt.app.security.main.g$a");
+a["d"].implementation = function () {
+	console.log(`a.d is called`);
+	let result = this["d"]();
+	console.log(`a.d result=${result}`);
+	console.log(Java.use("android.util.Log").getStackTraceString(Java.use("java.lang.Exception").$new()))
+	return result;
+};
+```
+
+Once we click "Close App" the last stack trace should give us the correct function. 
+
+```bash
+a.d is called
+a.d result=[object Object]
+java.lang.Exception
+        at ai.protectt.app.security.main.g$a.d(Native Method)
+        at ai.protectt.app.security.main.scan.ScanAlerts.x(Unknown Source:49)
+        at ai.protectt.app.security.main.scan.ScanAlerts.V(Unknown Source:11)
+        at ai.protectt.app.security.main.scan.ScanAlerts.d0(Unknown Source:3)
+        at ai.protectt.app.security.main.scan.ScanAlerts.f(Unknown Source:0)
+        at ai.protectt.app.security.main.scan.t.onClick(Unknown Source:4)
+        at android.view.View.performClick(View.java:8028)
+        at android.view.View.performClickInternal(View.java:8005)
+        at android.view.View.-$$Nest$mperformClickInternal(Unknown Source:0)
+        at android.view.View$PerformClick.run(View.java:31233)
+        at android.os.Handler.handleCallback(Handler.java:959)
+        at android.os.Handler.dispatchMessage(Handler.java:100)
+        at android.os.Looper.loopOnce(Looper.java:258)
+        at android.os.Looper.loop(Looper.java:356)
+        at android.app.ActivityThread.main(ActivityThread.java:8837)
+        at java.lang.reflect.Method.invoke(Native Method)
+        at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:598)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:896)
+```
+
+![](../../images/reverse-engineering-icici-t-click.png)
+
+```js
+ScanAlerts.U is called: btnBlock=androidx.appcompat.widget.AppCompatButton{488a6a0 VFED..C.. ......I. 0,0-0,0 #7f0a03a7 app:id/btn_sdk_btn_block}, mBuilder=android.app.AlertDialog@b3e259, btnIgnore=androidx.appcompat.widget.AppCompatButton{564ae1e VFED..C.. ......I. 0,0-0,0 #7f0a03a8 app:id/btn_sdk_btn_ignore}, response=ai.protectt.app.security.shouldnotobfuscated.dto.i@21f76ff, checkBoxForceAccept=androidx.appcompat.widget.AppCompatCheckBox{5e18ccc GFED..C.. ......I. 0,0-0,0 #7f0a0885 app:id/force_accept}
+java.lang.Exception
+        at ai.protectt.app.security.main.scan.ScanAlerts.U(Native Method)
+        at ai.protectt.app.security.main.scan.ScanAlerts.C(Unknown Source:1084)
+        at ai.protectt.app.security.main.scan.ScanAlerts.a0(Unknown Source:289)
+        at ai.protectt.app.security.main.g.C1(Unknown Source:10)
+        at ai.protectt.app.security.main.g.o(Unknown Source:0)
+        at ai.protectt.app.security.main.c.run(Unknown Source:2)
+        at android.os.Handler.handleCallback(Handler.java:959)
+        at android.os.Handler.dispatchMessage(Handler.java:100)
+        at android.os.Looper.loopOnce(Looper.java:258)
+        at android.os.Looper.loop(Looper.java:356)
+        at android.app.ActivityThread.main(ActivityThread.java:8837)
+        at java.lang.reflect.Method.invoke(Native Method)
+        at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:598)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:896)
+```
+
+```
+ScanAlerts.U is called: btnBlock=androidx.appcompat.widget.AppCompatButton{6e89fa8 VFED..C.. ......I. 0,0-0,0 #7f0a03a7 app:id/btn_sdk_btn_block}, mBuilder=android.app.AlertDialog@5a
+15ac1, btnIgnore=androidx.appcompat.widget.AppCompatButton{1a0a266 VFED..C.. ......I. 0,0-0,0 #7f0a03a8 app:id/btn_sdk_btn_ignore}, response=Java.Field{                              
+        holder: ai.protectt.app.security.shouldnotobfuscated.dto.i@3c469a7,                
+        fieldType: 2,                                                                                                                                                                 
+        fieldReturnType: Ljava/lang/String;,                                                                                                                                          
+        value: Your Device is rooted. For security reasons we have stopped the Mobile Banking Services on rooted devices.,                                                            
+}, checkBoxForceAccept=androidx.appcompat.widget.AppCompatCheckBox{fc0e54 GFED..C.. ......I. 0,0-0,0 #7f0a0885 app:id/force_accept}                                                   
+[+] Spoofing adb_enabled to 0 (OFF)                                                                                                                                                   
+java.lang.Exception                                                                                                                                                                   
+        at ai.protectt.app.security.main.scan.ScanAlerts.U(Native Method)                                                                                                             
+        at ai.protectt.app.security.main.scan.ScanAlerts.C(Unknown Source:1084)                                                                                                       
+        at ai.protectt.app.security.main.scan.ScanAlerts.a0(Unknown Source:289)                                                                                                       
+        at ai.protectt.app.security.main.g.C1(Unknown Source:10)                                                                                                                      
+        at ai.protectt.app.security.main.g.o(Unknown Source:0)                                                                                                                        
+        at ai.protectt.app.security.main.c.run(Unknown Source:2)                                                                                                                      
+        at android.os.Handler.handleCallback(Handler.java:959
+```
+
+```
+g.l is called: response=Java.Field{
+        holder: ai.protectt.app.security.shouldnotobfuscated.dto.i@d258ed8,
+        fieldType: 2,
+        fieldReturnType: Ljava/lang/String;,
+        value: Your Device is rooted. For security reasons we have stopped the Mobile Banking Services on rooted devices.,
+}
+java.lang.Exception
+        at ai.protectt.app.security.main.g.l(Native Method)
+        at ai.protectt.app.security.recyclerviewhelper.c0$a.invokeSuspend(Unknown Source:198)
+        at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(Unknown Source:10)
+        at kotlinx.coroutines.z0.run(Unknown Source:128)
+        at kotlinx.coroutines.scheduling.a.b0(Unknown Source:0)
+        at kotlinx.coroutines.scheduling.a$c.d(Unknown Source:14)
+        at kotlinx.coroutines.scheduling.a$c.p(Unknown Source:28)
+        at kotlinx.coroutines.scheduling.a$c.run(Unknown Source:0)
+```
+
+```
+c0.c is called: rule=ai.protectt.app.security.shouldnotobfuscated.dto.Rule@3f200d2, resultInfo=A:-Kitsuneeeee(com.jrlm.iuiv.uck.yz)|-|[kotlin:-[sys.oem_unlock_allowed]: [1], NDK:-FAL
+SE, BootStatus:-java.security.ProviderException: Failed to generate key pair., ExtraInfo:-[0|1|orange|0|unlocked], v27.2-kitsune-4:MAGISKSU                                           
+, MountInfo:-true, LspossedProp:-[-1|-1|-1]]                                                                                                                                          
+java.lang.Exception                                                                                                                                                                   
+        at ai.protectt.app.security.recyclerviewhelper.c0.c(Native Method)                                                                                                            
+        at ai.protectt.app.security.common.helper.o.k(Unknown Source:342)                                                                                                             
+        at ai.protectt.app.security.main.scan.ScanCore.N1(Unknown Source:8)                                                                                                           
+        at ai.protectt.app.security.main.scan.ScanCore.E(Unknown Source:0)                                                                                                            
+        at ai.protectt.app.security.main.scan.ScanCore$d.g(Unknown Source:2)               
+        at ai.protectt.app.security.main.scan.ScanCore$d.f(Unknown Source:0)               
+        at ai.protectt.app.security.main.scan.l0.run(Unknown Source:2)                  
+        at ai.protectt.app.security.main.scan.ScanCore.N(Unknown Source:63)              
+        at ai.protectt.app.security.main.scan.ScanCore.o(Unknown Source:0)                                                                                                            
+        at ai.protectt.app.security.main.scan.ScanCore$d.invokeSuspend(Unknown Source:22)                                                                                             
+        at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(Unknown Source:10)                                                                                          
+        at kotlinx.coroutines.z0.run(Unknown Source:128)                                   
+        at kotlinx.coroutines.scheduling.a.b0(Unknown Source:0)                            
+        at kotlinx.coroutines.scheduling.a$c.d(Unknown Source:14)
+        at kotlinx.coroutines.scheduling.a$c.p(Unknown Source:28)
+        at kotlinx.coroutines.scheduling.a$c.run(Unknown Source:0
+```
+
+![](../../images/reverse-engineering-icici-b1.png)
+
+![](../../images/reverse-engineering-icici-b1-parent.png)
+
+```
+g.l is called: response=ai.protectt.app.security.shouldnotobfuscated.dto.i@cc1f040
+java.lang.Exception
+        at ai.protectt.app.security.main.g.l(Native Method)                                                                                                                           
+        at ai.protectt.app.security.main.scan.ScanUtils$h.invokeSuspend(Unknown Source:205)                             
+        at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(Unknown Source:10)
+        at kotlinx.coroutines.z0.run(Unknown Source:128)
+        at kotlinx.coroutines.scheduling.a.b0(Unknown Source:0)
+        at kotlinx.coroutines.scheduling.a$c.d(Unknown Source:14)                                                                                                                     
+        at kotlinx.coroutines.scheduling.a$c.p(Unknown Source:28)                                                                                                                     
+        at kotlinx.coroutines.scheduling.a$c.run(Unknown Source:0)
+```
+
+```
+ScanUtils.c0 is called: rule=ai.protectt.app.security.shouldnotobfuscated.dto.Rule@ac62fc3, resultInfo=C=xx,OU=ZAP Root CA,O=ZAP Root CA,L=356ba25517bf83,CN=Zed Attack Proxy Root CA|-|OpenSSLRSAPublicKey{modulus=bcabd86e93d707bcd83823185f49f0d4302a83c6e0c9c0224e06d0c32c285263d1d7fdc43741c62b4254b2240919b31280dbf9305b74aafe3ebab0e8565aa4ea08b917686232bd304207af26bb9c7707ef66d48d322c03f115d50888023cc40d30c1f828510dd299559391bef865685f88e81f9944e39959e104cb568bd721512eb49fd27a31ba483f425f6947336c9a4d174b9522fd3af0e877dde7cbf2e0139d2aa599160a0638f4765a06dd6f4b0d67a72c61a514bf378f9bf00a2d8f525a5abdd61a1a2a85db72de14e7a21097fd5f1b17b81606795893923b62bccfa0623f6b9fccf759873b0425acba6f8808412c8946983a69b3c32b911fc012ea325d,publicExponent=10001}
+java.lang.Exception
+        at ai.protectt.app.security.main.scan.ScanUtils.c0(Native Method)
+        at ai.protectt.app.security.main.scan.n$b.invokeSuspend(Unknown Source:240)
+        at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(Unknown Source:10)
+        at kotlinx.coroutines.z0.run(Unknown Source:128)
+        at kotlinx.coroutines.scheduling.a.b0(Unknown Source:0)
+        at kotlinx.coroutines.scheduling.a$c.d(Unknown Source:14)
+        at kotlinx.coroutines.scheduling.a$c.p(Unknown Source:28)
+        at kotlinx.coroutines.scheduling.a$c.run(Unknown Source:0)
+```
+
+### IMOBILE.onCreate
+
+`com.csam.icici.bank.imobile.IMOBILE.onCreate` calls `getLoggingStatus`. Protectt.AI is known to misdirect reverse researchers using fake naming, calling the actual function in an error exception, using decoy functions, among other techniques.
+
+![](../../images/reverse-engineering-icici-oncreate.png)
+
+`getLoggingStatus` is a native function, we have to check all native libraries for this JNI function.
+
+![](../../images/reverse-engineering-icici-get-logging-status.png)
+
+The function was located in `libnative-lib.so`, IDA shows it calls the function `com.csam.icici.bank.imobile.IMOBILE.logStatus()`.
+
+![](../../images/reverse-engineering-icici-native-logging.png)
+
+Here we finally see `logStatus` calls `log` and in turn calls some security checks.
+
+![](../../images/reverse-engineering-icici-dsgf.png)
+
+### IMOBILE.onResume
+
+We just need to hook `wVar.m(this, this);` and `ai.protectt.app.security.common.helper.h0.f1361a.z(this, this)`.
+
+![](../../images/reverse-engineering-icici-onresume-checks.png)
+
+### Root bypass script
+
+Finally putting all the bypasses together we get:
+
+```js
+// Native library calls from IMOBILE.onCreate
+let IMOBILE = Java.use("com.csam.icici.bank.imobile.IMOBILE");
+IMOBILE["logStatus"].implementation = function () {
+	console.log(`IMOBILE.logStatus is called`);
+};
+
+// ActivityLifecycleCallbacks
+let LoggerController = Java.use("ai.protectt.app.security.main.LoggerController");
+LoggerController["i"].implementation = function (context, activity) {
+	console.log(`LoggerController.i is called: context=${context}, activity=${activity}`);
+};
+
+// IMOBILE.onResume Check1
+let h0 = Java.use("ai.protectt.app.security.common.helper.h0");
+h0["z"].implementation = function (context, activity) {
+console.log(`h0.z is called: context=${context}, activity=${activity}`);
+};
+
+// IMOBILE.onResume Check2
+let w = Java.use("ai.protectt.app.security.common.helper.w");
+w["m"].implementation = function (context, activity) {
+	console.log(`w.m is called: context=${context}, activity=${activity}`);
+};
+```
 
 ## Finally getting a custom VPA
 
+After launching my script with [https://codeshare.frida.re/@akabe1/frida-multiple-unpinning/](https://codeshare.frida.re/@akabe1/frida-multiple-unpinning/) I was able to view the HTTPS traffic. But unfortunately it was encrypted so we can't just modify the request.
 
+![](../../images/reverse-engineering-icici-zap.png)
+
+Lets search for the string "encResponse" so we can print the strings as it's being encrypted and decrypted. There were only 2 relevant results and one function is a wrapper for the below function so lets hook it.
+
+![](../../images/reverse-engineering-icici-sdfgdf.png)
+
+![](../../images/reverse-engineering-icici-dsf.png)
+
+![](../../images/reverse-engineering-icici-truirt.png)
+
+This above screenshot is only for decryption, so the code I used to hook all encryption and decryption functions is:
+
+```js
+let a = Java.use("com.Discover.Security.a");
+a["a"].implementation = function (textToDecrypt) {
+	let result = this["a"](textToDecrypt);
+	console.log(`a.a result=${result}`);
+	return result;
+};
+a["b"].implementation = function (textToEncrypt) {
+	console.log(`a.b is called: textToEncrypt=${textToEncrypt}`);
+	let result = this["b"](textToEncrypt);
+	console.log(`a.b result=${result}`);
+	return result;
+};
+
+let b = Java.use("com.Discover.Security.b");
+b["a"].implementation = function (key, encryptedValue) {
+	let result = this["a"](key, encryptedValue);
+	console.log("Response", JSON.stringify(JSON.parse(result), null, 4));
+	return result;
+};
+b["b"].implementation = function (key, value) {
+	console.log(`com.Discover.Security.b.b secureString ${key}`);
+
+	const json = JSON.parse(value, null, 4);
+	console.log(JSON.stringify(json, null, 4));
+
+	let result = this["b"](key, value);
+	return result;
+};
+```
+
+Now that we can see the traffic, I wanted to check the JSON sent just before clicking create UPI ID. There is a VPA attribute which we can modify to our desired one. There are many ways to do this but I just hard coded the VPA in my Frida script. Unfortunately no screenshot for this. All you need to do to get a custom UPI ID is modify the above code to this:
+
+```js
+b["b"].implementation = function (key, value) {
+	console.log(`com.Discover.Security.b.b secureString ${key}`);
+
+	const json = JSON.parse(value, null, 4);
+	if (json.VPA === "upi_id_from_the_list") {
+		json.VPA = "YOUR_DESIRED_ID@icici";
+		console.log("CHANGED VPA");
+		value = JSON.stringify(json);
+	}
+
+	console.log(JSON.stringify(json, null, 4));
+
+	let result = this["b"](key, value);
+	return result;
+};
+```
+
+And voila!
+
+![](../../images/customid.png)
+
+## Conclusion
+
+I know there are better ways to hook the native lib and protectt.ai
 
 ## Coming Soon
-
-Bypassing anti frida
-- Anti Frida techniques
-- Finding module in memory: split apk problem, finding split apk and extracting
-- Native lib
-- Frida hooking native library
 
 Bypassing Root detection dialog
 - Frida hooking java root detection
