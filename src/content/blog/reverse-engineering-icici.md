@@ -1,9 +1,9 @@
 ---
 title: Creating Custom UPI VPA by bypassing Protectt.AI in ICICI's banking app
-tags: [android]
+tags: [android, frida, "reverse engineering"]
 pubDate: "Apr 27 2025"
 image: /icici.png
-description: Coming soon
+description: A deep dive into the process of generating custom UPI VPAs within ICICI's iMobile Pay by bypassing Protectt.AI. Explore techniques for overcoming anti-reversing and Anti-Frida protections, including native library analysis.
 author: Navaneeth
 ---
 
@@ -12,6 +12,7 @@ author: Navaneeth
 ## Takeaway
 
 - Get a custom UPI VPA / UPI ID like `anything@icici`.
+- Learn how to bypass and reverse engineer advanced anti reversing techniques.
 - Learn how to bypass Bypass Protectt.AI.
 - Learn how to bypass Anti-Frida measures.
 - Learn how to reverse engineering Android native libraries.
@@ -30,7 +31,7 @@ So what is UPI ID? It is an alias for your bank account. In the case of ICICI ba
 
 This is the official mobile banking app for ICICI bank in India. While exploring the app I saw it has the ability to create new UPI IDs but you can only choose from the list.
 
-![alt](../../images/icici1.png)
+![iMobile App Screen](../../images/icici1.png)
 
 ## Initial analysis
 
@@ -99,11 +100,11 @@ The library responsible for closing the Frida connection is `libprotectt-native-
 
 Other native libraries important in ICICI bank app:
 
-| Name                          | Description                        |
-| ----------------------------- | ---------------------------------- |
-| libprotectt-native-lib.so     | Main module                        |
-| libapp-protectt-native-lib.so | Rest of libprotectt, not important |
-| libnative-lib.so              | Gets API URL, not important        |
+| Name                          | Description                        | Hash                                                             |
+| ----------------------------- | ---------------------------------- | ---------------------------------------------------------------- |
+| libprotectt-native-lib.so     | Main module                        | 124d6b42808c022d675c8eb5e928f2c810e5f5fe73b92fb019c4097f66cdc87d |
+| libapp-protectt-native-lib.so | Rest of libprotectt, not important | 5ecdc71188e9fa6bc47fa23cd83bcbce95c2805fcc7754b25a275aa291893709 | 
+| libnative-lib.so              | Gets API URL, not important        | 84445f13e7a1e39ba70f7ac3faaf5ac75354f0743a81f91b4bb586608c44a487 |
 
 ## Extracting native libraries
 
@@ -126,8 +127,6 @@ package:/data/app/~~UOYiAXaSPBW0Ae8atXOrqg==/com.csam.icici.bank.imobile-SYp1oon
 Now we can just adb pull and the unzipped directory should have the libraries uncompressed.
 
 ![Split APK Directory](../../images/reverse-engineering-icici-split-apk-dir.png)
-
-
 
 ## Reverse engineering Android native libraries
 
@@ -179,233 +178,29 @@ exitClause:
     v54 = 0;
     while ( 1 )
     {
-      v4 = v3->d_name;
-      v6 = v3->d_name;
-      v7 = ".";
 	  ...omitted
-      while ( 1 )
-      {
-        v8 = (unsigned __int8)*v6;
-        if ( v8 != (unsigned __int8)*v7 )
-          break;
-        ++v7;
-        ++v6;
-        if ( !v8 )
-          goto LABEL_8;
-      }
-      v9 = v3->d_name;
-      v10 = "..";
-      while ( 1 )
-      {
-        v11 = (unsigned __int8)*v9;
-        if ( v11 != (unsigned __int8)*v10 )
-          break;
-        ++v10;
-        ++v9;
-        if ( !v11 )
-          goto LABEL_8;
-      }
-      procSelfTaskStatusFmtStr = rotMinus2("/rtqe/ugnh/vcum/%u/uvcvwu==");
+      procSelfTaskStatusFmtStr = rotMinus2("/rtqe/ugnh/vcum/%u/uvcvwu=="); // /proc/self/task/%s/status
       formatStr((__int64)taskSelfFmtBuf, 256LL, 256LL, procSelfTaskStatusFmtStr, v4);
       v13 = linux_eabi_syscall(__NR_openat, -100, (const char *)taskSelfFmtBuf, 0x80000);
       if ( v13 )
       {
         v14 = buffer;
 		...omitted
-        *(_OWORD *)buffer = 0u;
-        v57 = 0u;
-        do
-        {
-          *v14 = 0;
-          v15 = v14 + 1;
-          if ( v15 >= (_BYTE *)taskSelfFmtBuf )
-            break;
-          *v15 = 0;
-          v16 = v15 + 1;
-          if ( v16 >= (_BYTE *)taskSelfFmtBuf )
-            break;
-          *v16 = 0;
-          v17 = v16 + 1;
-          if ( v17 >= (_BYTE *)taskSelfFmtBuf )
-            break;
-          *v17 = 0;
-          v14 = v17 + 1;
-        }
-        while ( v14 < (char *)taskSelfFmtBuf );
-        for ( i = 0LL; i != 255; ++i )
-        {
-          if ( read(v13, buf, 1u) != 1LL )
-            break;
-          if ( buf[0] == 10 )
-            break;
-          buffer[i] = buf[0];
-        }
         gumJsLoop = rotMinus2("iwo-lu-nqqr=="); // gum-js-loop
         gmain = rotMinus2("iockp==");           // gmain
         v21 = gumJsLoop + 1;
         if ( !*gumJsLoop )
           goto gumExitClause;
-        if ( *v21 )
-        {
-          v22 = 0LL;
-          do
-          {
-            v23 = (unsigned __int8)gumJsLoop[v22 + 2];
-            v24 = ++v22;
-          }
-          while ( v23 );
-        }
-        else
-        {
-          v24 = 0LL;
-        }
-        readBuf = buffer;
-        while ( 1 )
-        {
-          readBufCpy = readBuf;
-          currentCharRefBuf = (unsigned __int8)*readBuf++;
-          currentCharRefBufCpy = currentCharRefBuf;
-          if ( !currentCharRefBuf )
-            break;
-          if ( currentCharRefBufCpy == (unsigned __int8)*gumJsLoop )
-          {
-            if ( !v24 )
-              goto gumExitClause;
-            v29 = 0LL;
-            while ( readBufCpy[v29 + 1] == v21[v29] )
-            {
-              if ( readBufCpy[v29 + 1] )
-              {
-                if ( v24 != ++v29 )
-                  continue;
-              }
-              goto gumExitClause;
-            }
-          }
-        }
-        gmainPtr = gmain + 1;
-        if ( !*gmain )
-        {
 gumExitClause:
           FK[0] = "GA";
           __android_log_print(4, "AppProtectt", "G-M..1");
           v53 = "gum";
           goto exitClause;
         }
-        if ( *gmainPtr )
-        {
-          i_1 = 0LL;
-          do
-          {
-            gmainChar = (unsigned __int8)gmain[i_1 + 2];
-            v33 = ++i_1;
-          }
-          while ( gmainChar );
-        }
-        else
-        {
-          v33 = 0LL;
-        }
-        v34 = buffer;
-        while ( 1 )
-        {
-          v35 = v34;
-          v37 = (unsigned __int8)*v34++;
-          v36 = v37;
-          if ( !v37 )
-            break;
-          if ( v36 == (unsigned __int8)*gmain )
-          {
-            if ( !v33 )
-              goto gumExitClause;
-            v38 = 0LL;
-            while ( v35[v38 + 1] == gmainPtr[v38] )
-            {
-              if ( v35[v38 + 1] )
-              {
-                if ( v33 != ++v38 )
-                  continue;
-              }
-              goto gumExitClause;
-            }
-          }
-        }
+		...
         close(v13);
       }
-      if ( (v54 & 1) == 0 )
-      {
-        pid = getpid();
-        formatStr((__int64)buffer, 32LL, 32LL, "%d", pid);
-        if ( buffer[0] )
-        {
-          if ( buffer[1] )
-          {
-            v40 = 0LL;
-            do
-            {
-              v41 = (unsigned __int8)buffer[v40 + 2];
-              v42 = ++v40;
-            }
-            while ( v41 );
-          }
-          else
-          {
-            v42 = 0LL;
-          }
-          while ( 1 )
-          {
-            v43 = v4;
-            v45 = (unsigned __int8)*v4++;
-            v44 = v45;
-            if ( !v45 )
-              break;
-            if ( v44 == (unsigned __int8)buffer[0] )
-            {
-              if ( !v42 )
-              {
-LABEL_4:
-                v4 = v43;
-                goto LABEL_5;
-              }
-              v46 = &buffer[1];
-              v47 = v4;
-              v48 = v42;
-              while ( 1 )
-              {
-                v49 = (unsigned __int8)*v46++;
-                if ( (unsigned __int8)*v47 != v49 )
-                  break;
-                if ( *v47 )
-                {
-                  --v48;
-                  ++v47;
-                  if ( v48 )
-                    continue;
-                }
-                goto LABEL_4;
-              }
-            }
-          }
-          v4 = 0LL;
-        }
-LABEL_5:
-        v5 = v54;
-        if ( v4 )
-          v5 = 1;
-        v54 = v5;
-      }
-LABEL_8:
-      v3 = readdir(v2);
-      if ( !v3 )
-        goto LABEL_79;
-    }
-  }
-  LOBYTE(v54) = 0;
-LABEL_79:
-  success = closedir(v2);
-  if ( (v54 & 1) == 0 )
-  {
-LABEL_80:
+	...
     if ( info1[0] == "not found" )
       info1[0] = "LEO";
   }
@@ -422,14 +217,14 @@ __int64 sub_599EC()
 {
   ...omitted for brevity
   v52 = *(_QWORD *)(_ReadStatusReg(ARM64_SYSREG(3, 3, 13, 0, 2)) + 40);
-  v0 = rotMinus2("/rtqe/ugnh/hf==");
+  v0 = rotMinus2("/rtqe/ugnh/hf=="); // /proc/self/fd
   v1 = opendir(v0);
   v2 = v1;
   if ( !v1 )
   {
     if ( check_open()
-      || (v27 = rotMinus2("qrgpfkt=="), checkForFunctionHook(v27))
-      || (v28 = rotMinus2("uvtuvt=="), checkForFunctionHook(v28)) )
+      || (v27 = rotMinus2("qrgpfkt=="), checkForFunctionHook(v27)) // opendir
+      || (v28 = rotMinus2("uvtuvt=="), checkForFunctionHook(v28)) ) // strstr
     {
       __android_log_print(4, "AppProtectt", "L-J..1.1");
       v30 = "et";
@@ -450,87 +245,26 @@ exitClause:
 	  ...
       *(_OWORD *)file = 0u;
       v36 = 0u;
-      v6 = rotMinus2("/rtqe/ugnh/hf/%u==");
+      v6 = rotMinus2("/rtqe/ugnh/hf/%u=="); // /proc/self/fd/%s
       formatStr((__int64)file, 256LL, 256LL, v6, v4->d_name);
       lstat(file, (struct stat *)v31);
       if ( (v32 & 0xF000) == 40960 )
       {
         v7 = linux_eabi_syscall(__NR_readlinkat, -100, file, (char *)v51, 0x100u);
-        linjector = rotMinus2("nkplgevqt==");
+        linjector = rotMinus2("nkplgevqt=="); // linjector
         if ( (v5 & 1) == 0 )
         {
           pid = getpid();
           formatStr((__int64)&buf, 32LL, 32LL, "%s%s%s%d%s", "pr", "oc", "/", pid, "/fd");
-          if ( buf )
-          {
-			  ...omitted
-          }
-          else
-          {
-            v13 = v51;
-          }
-LABEL_22:
-          if ( v13 )
-            v5 = 1;
-        }
-        mwNulltermmaybe = linjector + 1;
-        if ( !*linjector )
-        {
+...
 exitClauseParent:
           FK[0] = "LFA";
           __android_log_print(4, "AppProtectt", "L-J..1");
           v30 = "lin";
           goto exitClause;
         }
-        if ( *mwNulltermmaybe )
-        {
-          v19 = 0LL;
-          do
-          {
-            v20 = (unsigned __int8)linjector[v19 + 2];
-            v21 = ++v19;
-          }
-          while ( v20 );
-        }
-        else
-        {
-          v21 = 0LL;
-        }
-        v22 = v51;
-        while ( 1 )
-        {
-          v23 = v22;
-          v25 = *(unsigned __int8 *)v22;
-          v22 = (__int128 *)((char *)v22 + 1);
-          v24 = v25;
-          if ( !v25 )
-            break;
-          if ( v24 == (unsigned __int8)*linjector )
-          {
-            if ( !v21 )
-              goto exitClauseParent;
-            v26 = 0LL;
-            while ( *((unsigned __int8 *)v23 + v26 + 1) == (unsigned __int8)mwNulltermmaybe[v26] )
-            {
-              if ( *((_BYTE *)v23 + v26 + 1) )
-              {
-                if ( v21 != ++v26 )
-                  continue;
-              }
-              goto exitClauseParent;
-            }
-          }
-        }
-      }
       v4 = readdir(v2);
-      if ( !v4 )
-        goto LABEL_45;
-    }
-  }
-  v5 = 0;
-LABEL_45:
-  if ( (v5 & 1) == 0 )
-  {
+...
 successClause:
     if ( globalStatus == "not found" )
       globalStatus = "LEO";
@@ -615,11 +349,11 @@ I tried searching for these with JADX code search and found a few interesting fu
 
 ![System.exit functions](../../images/reverse-engineering-icici-system-exit.png)
 
-After seeing a few of these functions there is a common function `companion.d()`. It's called by everything that closes the apps.
+After seeing a few of these functions there is a common function `companion.d()`. It's called by everything that closes the apps. So instead of hooking all the above functions, we can just hook one and get the stacktrace.
 
 ![Common code](../../images/reverse-engineering-icici-common.png)
 
-I hook this so I can see what exactly is calling it up the stack. So I can hook the parent function and bypass the root detection.
+I hook this so I can see what exactly is calling it up the stack. So I can hook the parent function and bypass the root detection. This was by far the hardest part because there is at least 25 functions that need to be traced up the stack using Frida + JADX. I found several ways to bypass Protectt.AI but I will be showing part of the process as the actual process is TOO long and I am not able to retrace what I did lol.
 
 ```js
 let a = Java.use("ai.protectt.app.security.main.g$a");
@@ -660,25 +394,6 @@ java.lang.Exception
 
 ![](../../images/reverse-engineering-icici-t-click.png)
 
-```js
-ScanAlerts.U is called: btnBlock=androidx.appcompat.widget.AppCompatButton{488a6a0 VFED..C.. ......I. 0,0-0,0 #7f0a03a7 app:id/btn_sdk_btn_block}, mBuilder=android.app.AlertDialog@b3e259, btnIgnore=androidx.appcompat.widget.AppCompatButton{564ae1e VFED..C.. ......I. 0,0-0,0 #7f0a03a8 app:id/btn_sdk_btn_ignore}, response=ai.protectt.app.security.shouldnotobfuscated.dto.i@21f76ff, checkBoxForceAccept=androidx.appcompat.widget.AppCompatCheckBox{5e18ccc GFED..C.. ......I. 0,0-0,0 #7f0a0885 app:id/force_accept}
-java.lang.Exception
-        at ai.protectt.app.security.main.scan.ScanAlerts.U(Native Method)
-        at ai.protectt.app.security.main.scan.ScanAlerts.C(Unknown Source:1084)
-        at ai.protectt.app.security.main.scan.ScanAlerts.a0(Unknown Source:289)
-        at ai.protectt.app.security.main.g.C1(Unknown Source:10)
-        at ai.protectt.app.security.main.g.o(Unknown Source:0)
-        at ai.protectt.app.security.main.c.run(Unknown Source:2)
-        at android.os.Handler.handleCallback(Handler.java:959)
-        at android.os.Handler.dispatchMessage(Handler.java:100)
-        at android.os.Looper.loopOnce(Looper.java:258)
-        at android.os.Looper.loop(Looper.java:356)
-        at android.app.ActivityThread.main(ActivityThread.java:8837)
-        at java.lang.reflect.Method.invoke(Native Method)
-        at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:598)
-        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:896)
-```
-
 ```
 ScanAlerts.U is called: btnBlock=androidx.appcompat.widget.AppCompatButton{6e89fa8 VFED..C.. ......I. 0,0-0,0 #7f0a03a7 app:id/btn_sdk_btn_block}, mBuilder=android.app.AlertDialog@5a
 15ac1, btnIgnore=androidx.appcompat.widget.AppCompatButton{1a0a266 VFED..C.. ......I. 0,0-0,0 #7f0a03a8 app:id/btn_sdk_btn_ignore}, response=Java.Field{                              
@@ -694,84 +409,19 @@ java.lang.Exception
         at ai.protectt.app.security.main.scan.ScanAlerts.a0(Unknown Source:289)                                                                                                       
         at ai.protectt.app.security.main.g.C1(Unknown Source:10)                                                                                                                      
         at ai.protectt.app.security.main.g.o(Unknown Source:0)                                                                                                                        
-        at ai.protectt.app.security.main.c.run(Unknown Source:2)                                                                                                                      
+        at ai.protectt.app.security.main.c.run(Unknown Source:2)
         at android.os.Handler.handleCallback(Handler.java:959
-```
-
-```
-g.l is called: response=Java.Field{
-        holder: ai.protectt.app.security.shouldnotobfuscated.dto.i@d258ed8,
-        fieldType: 2,
-        fieldReturnType: Ljava/lang/String;,
-        value: Your Device is rooted. For security reasons we have stopped the Mobile Banking Services on rooted devices.,
-}
-java.lang.Exception
-        at ai.protectt.app.security.main.g.l(Native Method)
-        at ai.protectt.app.security.recyclerviewhelper.c0$a.invokeSuspend(Unknown Source:198)
-        at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(Unknown Source:10)
-        at kotlinx.coroutines.z0.run(Unknown Source:128)
-        at kotlinx.coroutines.scheduling.a.b0(Unknown Source:0)
-        at kotlinx.coroutines.scheduling.a$c.d(Unknown Source:14)
-        at kotlinx.coroutines.scheduling.a$c.p(Unknown Source:28)
-        at kotlinx.coroutines.scheduling.a$c.run(Unknown Source:0)
-```
-
-```
-c0.c is called: rule=ai.protectt.app.security.shouldnotobfuscated.dto.Rule@3f200d2, resultInfo=A:-Kitsuneeeee(com.jrlm.iuiv.uck.yz)|-|[kotlin:-[sys.oem_unlock_allowed]: [1], NDK:-FAL
-SE, BootStatus:-java.security.ProviderException: Failed to generate key pair., ExtraInfo:-[0|1|orange|0|unlocked], v27.2-kitsune-4:MAGISKSU                                           
-, MountInfo:-true, LspossedProp:-[-1|-1|-1]]                                                                                                                                          
-java.lang.Exception                                                                                                                                                                   
-        at ai.protectt.app.security.recyclerviewhelper.c0.c(Native Method)                                                                                                            
-        at ai.protectt.app.security.common.helper.o.k(Unknown Source:342)                                                                                                             
-        at ai.protectt.app.security.main.scan.ScanCore.N1(Unknown Source:8)                                                                                                           
-        at ai.protectt.app.security.main.scan.ScanCore.E(Unknown Source:0)                                                                                                            
-        at ai.protectt.app.security.main.scan.ScanCore$d.g(Unknown Source:2)               
-        at ai.protectt.app.security.main.scan.ScanCore$d.f(Unknown Source:0)               
-        at ai.protectt.app.security.main.scan.l0.run(Unknown Source:2)                  
-        at ai.protectt.app.security.main.scan.ScanCore.N(Unknown Source:63)              
-        at ai.protectt.app.security.main.scan.ScanCore.o(Unknown Source:0)                                                                                                            
-        at ai.protectt.app.security.main.scan.ScanCore$d.invokeSuspend(Unknown Source:22)                                                                                             
-        at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(Unknown Source:10)                                                                                          
-        at kotlinx.coroutines.z0.run(Unknown Source:128)                                   
-        at kotlinx.coroutines.scheduling.a.b0(Unknown Source:0)                            
-        at kotlinx.coroutines.scheduling.a$c.d(Unknown Source:14)
-        at kotlinx.coroutines.scheduling.a$c.p(Unknown Source:28)
-        at kotlinx.coroutines.scheduling.a$c.run(Unknown Source:0
 ```
 
 ![](../../images/reverse-engineering-icici-b1.png)
 
+Keep repeating this process and trying things, you should trace it to a call in `IMOBILE` or `IMobileApplication`. I will now move onto the findings.
+
 ![](../../images/reverse-engineering-icici-b1-parent.png)
-
-```
-g.l is called: response=ai.protectt.app.security.shouldnotobfuscated.dto.i@cc1f040
-java.lang.Exception
-        at ai.protectt.app.security.main.g.l(Native Method)                                                                                                                           
-        at ai.protectt.app.security.main.scan.ScanUtils$h.invokeSuspend(Unknown Source:205)                             
-        at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(Unknown Source:10)
-        at kotlinx.coroutines.z0.run(Unknown Source:128)
-        at kotlinx.coroutines.scheduling.a.b0(Unknown Source:0)
-        at kotlinx.coroutines.scheduling.a$c.d(Unknown Source:14)                                                                                                                     
-        at kotlinx.coroutines.scheduling.a$c.p(Unknown Source:28)                                                                                                                     
-        at kotlinx.coroutines.scheduling.a$c.run(Unknown Source:0)
-```
-
-```
-ScanUtils.c0 is called: rule=ai.protectt.app.security.shouldnotobfuscated.dto.Rule@ac62fc3, resultInfo=C=xx,OU=ZAP Root CA,O=ZAP Root CA,L=356ba25517bf83,CN=Zed Attack Proxy Root CA|-|OpenSSLRSAPublicKey{modulus=bcabd86e93d707bcd83823185f49f0d4302a83c6e0c9c0224e06d0c32c285263d1d7fdc43741c62b4254b2240919b31280dbf9305b74aafe3ebab0e8565aa4ea08b917686232bd304207af26bb9c7707ef66d48d322c03f115d50888023cc40d30c1f828510dd299559391bef865685f88e81f9944e39959e104cb568bd721512eb49fd27a31ba483f425f6947336c9a4d174b9522fd3af0e877dde7cbf2e0139d2aa599160a0638f4765a06dd6f4b0d67a72c61a514bf378f9bf00a2d8f525a5abdd61a1a2a85db72de14e7a21097fd5f1b17b81606795893923b62bccfa0623f6b9fccf759873b0425acba6f8808412c8946983a69b3c32b911fc012ea325d,publicExponent=10001}
-java.lang.Exception
-        at ai.protectt.app.security.main.scan.ScanUtils.c0(Native Method)
-        at ai.protectt.app.security.main.scan.n$b.invokeSuspend(Unknown Source:240)
-        at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(Unknown Source:10)
-        at kotlinx.coroutines.z0.run(Unknown Source:128)
-        at kotlinx.coroutines.scheduling.a.b0(Unknown Source:0)
-        at kotlinx.coroutines.scheduling.a$c.d(Unknown Source:14)
-        at kotlinx.coroutines.scheduling.a$c.p(Unknown Source:28)
-        at kotlinx.coroutines.scheduling.a$c.run(Unknown Source:0)
-```
 
 ### IMOBILE.onCreate
 
-`com.csam.icici.bank.imobile.IMOBILE.onCreate` calls `getLoggingStatus`. Protectt.AI is known to misdirect reverse researchers using fake naming, calling the actual function in an error exception, using decoy functions, among other techniques.
+`com.csam.icici.bank.imobile.IMOBILE.onCreate` calls `getLoggingStatus`. This function has nothing to do with logging but does security checks, Protectt.AI is known to misdirect reverse researchers using fake naming, calling the actual function in an error exception, using decoy functions, among other techniques.
 
 ![](../../images/reverse-engineering-icici-oncreate.png)
 
@@ -795,7 +445,7 @@ We just need to hook `wVar.m(this, this);` and `ai.protectt.app.security.common.
 
 ### Root bypass script
 
-Finally putting all the bypasses together we get:
+These are all the security checks called from the MainActivity, we want to block everything from the root so it doesn't run in the background or start some `Timer`. Finally putting all the bypasses together we get:
 
 ```js
 // Native library calls from IMOBILE.onCreate
@@ -829,11 +479,11 @@ After launching my script with [https://codeshare.frida.re/@akabe1/frida-multipl
 
 ![](../../images/reverse-engineering-icici-zap.png)
 
-Lets search for the string "encResponse" so we can print the strings as it's being encrypted and decrypted. There were only 2 relevant results and one function is a wrapper for the below function so lets hook it.
-
-![](../../images/reverse-engineering-icici-sdfgdf.png)
+Lets search for the string "encResponse" so we can print the strings as it's being encrypted and decrypted. There were only 2 relevant results and one function is a wrapper for the below function so lets hook it. This condition calls `w0` if the JSON has `encResponse`.
 
 ![](../../images/reverse-engineering-icici-dsf.png)
+
+w0 calls `com.Discover.Security.a` etc. These are the functions we want to hook. We need to hook all the functions in these classes because which function is chosen is random.
 
 ![](../../images/reverse-engineering-icici-truirt.png)
 
@@ -870,7 +520,7 @@ b["b"].implementation = function (key, value) {
 };
 ```
 
-Now that we can see the traffic, I wanted to check the JSON sent just before clicking create UPI ID. There is a VPA attribute which we can modify to our desired one. There are many ways to do this but I just hard coded the VPA in my Frida script. Unfortunately no screenshot for this. All you need to do to get a custom UPI ID is modify the above code to this:
+Now that we can see the traffic, I wanted to check the JSON sent just before clicking create UPI ID. There is a VPA attribute which we can modify to our desired one. There are many ways to do this but I just hard coded the VPA in my Frida script. Unfortunately no screenshot for this. During my testing a UPI ID of at least 5 characters was required. All you need to do to get a custom UPI ID is modify the above code to this:
 
 ```js
 b["b"].implementation = function (key, value) {
@@ -893,17 +543,3 @@ b["b"].implementation = function (key, value) {
 And voila!
 
 ![](../../images/customid.png)
-
-## Conclusion
-
-I know there are better ways to hook the native lib and protectt.ai
-
-## Coming Soon
-
-Bypassing Root detection dialog
-- Frida hooking java root detection
-- Frida hook dev tools
-
-Getting custom VPA:
-- Hook encrypted communication, show AES hash and checksum
-- UPI ID: 4 character minimum
