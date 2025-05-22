@@ -9,7 +9,7 @@ module.exports = {
       colors: {
         primary: "#EA2027",
       },
-      fontFamily: { sans: "'Poppins', sans-serif" },
+      fontFamily: { sans: "'Inter Variable', sans-serif" },
       animation: {
         "bounce-slow": "bounce-slow 2.5s infinite",
         scroll: "scroll 10s linear infinite",

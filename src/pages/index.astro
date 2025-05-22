@@ -15,6 +15,7 @@ import ArrowUp from "../components/ArrowUp.astro";
 import "swiper/css";
 import "swiper/css/navigation";
 import { getCollection } from "astro:content";
+import '@fontsource-variable/inter';
 
 const latestPosts = (await getCollection("blog"))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
