@@ -1,10 +1,10 @@
 ---
-
-title: 
-tags: []
+title: Free Production Grade Kubernetes Cluster For Life
+tags: [devops, kubernetes]
 pubDate: "May 6 2025"
 image: /sveltekit.png
-description: 
+description: Hello
+author: Navaneeth
 ---
 
 ##

@@ -198,10 +198,15 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "53569b20a82133ee",
+  "active": "8da4eb233a7f5718",
   "lastOpenFiles": [
     "src/content/blog/reverse-engineering-icici.md",
     "src/content/blog/free-production-kubernetes-cluster.md",
+    "package.json.3856080918",
+    "pnpm-lock.yaml.2067865429",
+    "_tmp_16059_18a504966539a3d03c54adf7359b5717",
+    "_tmp_15758_f27368c3ab478311dc31337c1eaa3fdf",
+    "src/pages/rss.xml.js~",
     "src/images/reverse-engineering-icici-onresume-checks.png",
     "src/images/customid.png",
     "src/images/Untitled.png",
@@ -218,11 +223,6 @@
     "pnpm-lock.yaml.3350080149",
     "_tmp_13178_e809b6e62677bfc20fc2a2b7612ef7eb",
     "pnpm-lock.yaml.833272912",
-    "_tmp_12656_3ea18fab88fed7a58f224fd38b4753c4",
-    "package.json.3600147976",
-    "pnpm-lock.yaml.3715820771",
-    "_tmp_5432_7ce1f6af385f19cda94203b5a205dbf2",
-    "package.json.361325656",
     "src/content/blog/cyber-security-blogs-you-should-follow.md",
     "src/content/blog/android-resources.md",
     "src/content/blog/audio-array-microphone-arm-review.md",
