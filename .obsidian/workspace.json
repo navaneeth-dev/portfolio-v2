@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/blog/reverse-engineering-icici.md",
+                "file": "src/content/blog/free-production-kubernetes-cluster.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "reverse-engineering-icici"
+              "title": "free-production-kubernetes-cluster"
             },
             "group": "47b10c49ffa9e0ec"
           }
@@ -34,12 +34,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/blog/reverse-engineering-icici.md",
+                "file": "src/content/blog/free-production-kubernetes-cluster.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "reverse-engineering-icici"
+              "title": "free-production-kubernetes-cluster"
             },
             "group": "47b10c49ffa9e0ec"
           }
@@ -110,8 +110,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 400.5004348754883,
-    "collapsed": true
+    "width": 400.5004348754883
   },
   "right": {
     "id": "0b046d4188473830",
@@ -201,8 +200,9 @@
   },
   "active": "53569b20a82133ee",
   "lastOpenFiles": [
-    "src/images/reverse-engineering-icici-onresume-checks.png",
     "src/content/blog/reverse-engineering-icici.md",
+    "src/content/blog/free-production-kubernetes-cluster.md",
+    "src/images/reverse-engineering-icici-onresume-checks.png",
     "src/images/customid.png",
     "src/images/Untitled.png",
     "src/images/reverse-engineering-icici-truirt.png",
