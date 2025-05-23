@@ -1,0 +1,62 @@
+---
+import {Image} from 'astro:assets';
+import type {CollectionEntry} from 'astro:content';
+import ArrowUp from "../components/ArrowUp.astro";
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const {post} = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/images/*.{jpeg,jpg,png,webp}');
+const imagePath = post.data.image;
+if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/images/*.{jpeg,jpg,png,webp}"`);
+---
+
+<div class="bg-gray-50 rounded-lg flex flex-col gap-3 h-full mb-3">
+  <div class="w-full">
+    <Image
+      src={images[post.data.image]()}
+      alt={post.data.title}
+      class="rounded-lg"
+    />
+  </div>
+  <div class="px-4 py-2 flex flex-col gap-1 items-start">
+    <time
+      datetime={post.data.pubDate.toString()}
+      class="text-sm text-gray-700 block"
+    >
+      {new Date(post.data.pubDate).toLocaleDateString("en-us", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      })}
+    </time>
+    <a
+      href={"/blog/" + post.slug}
+      class="text-xl font-bold mb-2 text-primary hover:underline"
+    >
+      {post.data.title}
+    </a>
+    <div class="flex gap-2">
+      {post.data.tags &&
+        post.data.tags.map((tag: string) => (
+          <a
+            class="border border-neutral-700 uppercase text-sm text-neutral-700 hover:bg-neutral-100 px-2"
+            href={"/tag/" + tag}
+          >
+            {tag}
+          </a>
+        ))}
+    </div>
+    <p class="text-neutral-700">{post.data.description}</p>
+    <a
+      href={"/blog/" + post.slug}
+      class="bg-black text-white border rounded inline-flex items-center justify-center px-4 py-2 hover:bg-neutral-600"
+    >
+      Read More
+      <ArrowUp/>
+    </a>
+  </div>
+</div>
