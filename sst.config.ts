@@ -10,10 +10,13 @@ export default $config({
     };
   },
   async run() {
+    const domain = {
+      name: "rizexor.com",
+      dns: sst.cloudflare.dns()
+    };
+
     new sst.aws.Astro("MyWeb", {
-      domain: {
-        name: "rizexor.com", dns: sst.cloudflare.dns({zone: "c5f1a318759646d6efea6245b42e0f44"}),
-      },
+      domain,
     });
   },
 });
