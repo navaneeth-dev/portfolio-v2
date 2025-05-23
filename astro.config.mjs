@@ -1,9 +1,9 @@
-import { defineConfig } from "astro/config";
+import {defineConfig} from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import { rehypeHeadingIds } from "@astrojs/markdown-remark";
+import {rehypeHeadingIds} from "@astrojs/markdown-remark";
 import autolinkHeadings from "rehype-autolink-headings";
-import { h, s } from "hastscript";
+import {h, s} from "hastscript";
 
 // https://astro.build/config
 import tailwind from "@astrojs/tailwind";
@@ -12,7 +12,8 @@ import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 
 // The following configuration for rehype-autolink-headings was taken from https://github.com/withastro/docs/blob/main/astro.config.ts
-import vercel from "@astrojs/vercel";
+import aws from "astro-sst";
+
 const AnchorLinkIcon = h(
   "svg",
   {
@@ -77,7 +78,5 @@ export default defineConfig({
   },
   integrations: [mdx(), sitemap(), tailwind(), react()],
   output: "static",
-  adapter: vercel({
-    analytics: true,
-  }),
+  adapter: aws(),
 });
