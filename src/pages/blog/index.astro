@@ -53,11 +53,11 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/images/*.{jpeg
                 >
                   {post.data.title}
                 </a>
-                <div class="flex gap-2 flex-wrap">
-                  {post.data.tags &&
+                <div>
+                  {
                     post.data.tags.map((tag: string) => (
                       <a
-                        class="flex items-center gap-1 border border-neutral-700 uppercase text-sm text-neutral-700 hover:bg-neutral-200 px-2"
+                        class="mr-2 inline-flex items-center gap-1 border border-neutral-700 uppercase text-sm text-neutral-700 hover:bg-neutral-200 px-2"
                         href={"/tag/" + tag}
                       >
                         <Tags/>

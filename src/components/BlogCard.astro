@@ -41,17 +41,16 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
     >
       {post.data.title}
     </a>
-    <div class="flex gap-2">
-      {post.data.tags &&
-        post.data.tags.map((tag: string) => (
-          <a
-            class="gap-1 border border-neutral-700 uppercase text-sm text-neutral-700 hover:bg-neutral-100 px-2 flex items-center justify-center text-center"
-            href={"/tag/" + tag}
-          >
-            <Tags/>
-            {tag}
-          </a>
-        ))}
+    <div>
+      {post.data.tags.map((tag: string) => (
+        <a
+          class="mr-2 inline-flex gap-1 border border-neutral-700 uppercase text-sm text-neutral-700 hover:bg-neutral-100 px-2 items-center justify-center text-center"
+          href={"/tag/" + tag}
+        >
+          <Tags/>
+          {tag}
+        </a>
+      ))}
     </div>
     <p>{post.data.description}</p>
     <a

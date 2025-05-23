@@ -200,6 +200,7 @@
   },
   "active": "53569b20a82133ee",
   "lastOpenFiles": [
+    "src/components/BlogCard.astro~",
     "sst.config.ts~",
     "dist/sitemap-0.xml",
     "dist/sitemap-index.xml",
@@ -220,7 +221,6 @@
     "dist/tag/frida/index.html",
     "dist/tag/frida",
     "dist/tag/android/index.html",
-    "dist/tag/android",
     "aws/README.md",
     "src/content/blog/reverse-engineering-icici.md",
     "src/content/blog/free-production-kubernetes-cluster.md",
