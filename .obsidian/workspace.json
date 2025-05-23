@@ -200,7 +200,9 @@
   },
   "active": "53569b20a82133ee",
   "lastOpenFiles": [
+    "src/pages/blog/[...slug].astro~",
     "src/components/BlogCard.astro~",
+    "src/pages/blog/index.astro~",
     "src/pages/index.astro~",
     "src/content/blog/reverse-engineering-icici.md",
     "src/content/blog/free-production-kubernetes-cluster.md",
@@ -212,7 +214,6 @@
     "src/layouts/BaseLayout.astro~",
     "package.json.3833183932",
     "pnpm-lock.yaml.1970944678",
-    "node_modules/@fontsource-variable",
     "src/images/reverse-engineering-icici-onresume-checks.png",
     "src/images/customid.png",
     "src/images/Untitled.png",

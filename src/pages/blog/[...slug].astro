@@ -2,9 +2,9 @@
 import BaseHead from "../../components/BaseHead.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
-import { Image } from "astro:assets";
-import { CollectionEntry, getCollection, getEntry } from "astro:content";
-import { Calendar, Pencil } from 'lucide-react';
+import {Image} from "astro:assets";
+import {CollectionEntry, getCollection, getEntry} from "astro:content";
+import {Calendar, Pencil} from 'lucide-react';
 import dayjs from "dayjs";
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 
@@ -14,8 +14,8 @@ export async function getStaticPaths() {
   const posts = await getCollection("blog");
 
   return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
+    params: {slug: post.slug},
+    props: {post},
   }));
 }
 
@@ -26,61 +26,62 @@ type Props = {
 const {
   post,
   post: {
-    data: { title, description, pubDate, image, isDraft, author },
+    data: {title, description, pubDate, image, isDraft, author},
   },
 } = Astro.props;
-const { Content } = await post.render();
+const {Content} = await post.render();
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/images/*.{jpeg,jpg,png,webp}');
+const imagePath = post.data.image;
+if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/images/*.{jpeg,jpg,png,webp}"`);
 ---
 
 <html lang="en">
-  <head>
-    <BaseHead title={title} description={description} image={image} />
-  </head>
+<head>
+  <BaseHead title={title} description={description} image={image}/>
+</head>
 
-  <body>
-    <Header />
-    <main class="pb-12">
-      <section class="flex flex-col items-center p-6 mx-auto">
-        {
-          image && (
-            <div class="wrapper w-full md:w-[480px] md:h-[282px] flex justify-center">
-              <Image
-                src={image}
-                alt={title}
-                class="mb-4 object-cover rounded-lg"
-                height={256}
-                width={480}
-                format="webp"
-              />
-            </div>
-          )
-        }
-        <h1 class="text-2xl lg:text-4xl font-bold text-center text-primary">
-          {title}
-        </h1>
-        <div class="flex items-center mt-4">
-          <div class="flex items-center gap-x-1">
-            <Pencil />
-            <span class="text-neutral-700">{author}</span>
-          </div>
-          <span class="mx-2">•</span>
-          <div class="flex items-center gap-x-1">
-            <Calendar />
-            <time class="text-center text-neutral-700">
-              {dayjs(pubDate).format("Do/MMM/YYYY")}
-            </time>
-          </div>
+<body>
+<Header/>
+<main class="pb-12">
+  <section class="flex flex-col items-center p-6 mx-auto">
+    {
+      image && (
+        <div class="wrapper w-full md:w-[480px] md:h-[282px] flex justify-center">
+          <Image
+            src={images[imagePath]()}
+            alt={title}
+            class="mb-4 object-cover rounded-lg"
+            format="webp"
+          />
         </div>
-      </section>
-      <div class="container mx-auto">
-        <article
-          class="px-12 max-w-7xl mx-auto prose lg:prose-lg xl:prose-xl prose-img:max-h-[900px] prose-img:object-contain mb-6 prose-table:block prose-table:overflow-auto prose-code:before:content-none prose-code:after:content-none"
-        >
-          <hr />
-          <Content />
-        </article>
+      )
+    }
+    <h1 class="text-2xl lg:text-4xl font-bold text-center text-primary">
+      {title}
+    </h1>
+    <div class="flex items-center mt-4">
+      <div class="flex items-center gap-x-1">
+        <Pencil/>
+        <span class="text-neutral-700">{author}</span>
       </div>
-    </main>
-    <Footer />
-  </body>
+      <span class="mx-2">•</span>
+      <div class="flex items-center gap-x-1">
+        <Calendar/>
+        <time class="text-center text-neutral-700">
+          {dayjs(pubDate).format("Do/MMM/YYYY")}
+        </time>
+      </div>
+    </div>
+  </section>
+  <div class="container mx-auto">
+    <article
+      class="px-12 max-w-7xl mx-auto prose lg:prose-lg xl:prose-xl prose-img:max-h-[900px] prose-img:object-contain mb-6 prose-table:block prose-table:overflow-auto prose-code:before:content-none prose-code:after:content-none"
+    >
+      <hr/>
+      <Content/>
+    </article>
+  </div>
+</main>
+<Footer/>
+</body>
 </html>

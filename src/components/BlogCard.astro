@@ -2,6 +2,7 @@
 import {Image} from 'astro:assets';
 import type {CollectionEntry} from 'astro:content';
 import ArrowUp from "../components/ArrowUp.astro";
+import {Calendar, Tags} from "lucide-react";
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -14,7 +15,7 @@ const imagePath = post.data.image;
 if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/images/*.{jpeg,jpg,png,webp}"`);
 ---
 
-<div class="bg-gray-50 rounded-lg flex flex-col gap-3 h-full mb-3">
+<div class="bg-black/5 rounded-lg flex flex-col gap-3 h-full mb-3">
   <div class="w-full">
     <Image
       src={images[post.data.image]()}
@@ -25,8 +26,9 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
   <div class="px-4 py-2 flex flex-col gap-1 items-start">
     <time
       datetime={post.data.pubDate.toString()}
-      class="text-sm text-gray-700 block"
+      class="text-sm text-gray-700 block flex gap-1 items-center"
     >
+      <Calendar/>
       {new Date(post.data.pubDate).toLocaleDateString("en-us", {
         year: "numeric",
         month: "short",
@@ -43,9 +45,10 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
       {post.data.tags &&
         post.data.tags.map((tag: string) => (
           <a
-            class="border border-neutral-700 uppercase text-sm text-neutral-700 hover:bg-neutral-100 px-2 flex items-center justify-center text-center"
+            class="gap-1 border border-neutral-700 uppercase text-sm text-neutral-700 hover:bg-neutral-100 px-2 flex items-center justify-center text-center"
             href={"/tag/" + tag}
           >
+            <Tags/>
             {tag}
           </a>
         ))}
