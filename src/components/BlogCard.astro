@@ -11,14 +11,14 @@ interface Props {
 const {post} = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/images/*.{jpeg,jpg,png,webp}');
-const imagePath = post.data.image;
+const imagePath = '/src/images' + post.data.image;
 if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/images/*.{jpeg,jpg,png,webp}"`);
 ---
 
 <div class="bg-black/5 rounded-lg flex flex-col gap-3 h-full mb-3">
   <div class="w-full">
     <Image
-      src={images[post.data.image]()}
+      src={images[imagePath]()}
       alt={post.data.title}
       class="rounded-lg"
     />

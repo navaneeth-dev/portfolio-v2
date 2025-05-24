@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/blog/free-production-kubernetes-cluster.md",
+                "file": "src/content/blog/reverse-engineering-icici.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "free-production-kubernetes-cluster"
+              "title": "reverse-engineering-icici"
             },
             "group": "47b10c49ffa9e0ec"
           }
@@ -34,12 +34,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/blog/free-production-kubernetes-cluster.md",
+                "file": "src/content/blog/reverse-engineering-icici.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "free-production-kubernetes-cluster"
+              "title": "reverse-engineering-icici"
             },
             "group": "47b10c49ffa9e0ec"
           }
@@ -200,7 +200,12 @@
   },
   "active": "53569b20a82133ee",
   "lastOpenFiles": [
+    "src/pages/blog/index.astro~",
     "src/components/BlogCard.astro~",
+    "src/pages/blog/[...slug].astro~",
+    "src/components/BaseHead.astro~",
+    "public/icici.png",
+    "src/content/blog/free-production-kubernetes-cluster.md",
     "sst.config.ts~",
     "dist/sitemap-0.xml",
     "dist/sitemap-index.xml",
@@ -214,16 +219,11 @@
     "dist/_astro/reverse-engineering-icici-onresume-checks.CSJdwIcr_ZXBxeX.webp",
     "dist/_astro/reverse-engineering-icici-native-logging.CPuzCD_J_1g6GgN.webp",
     "dist/_astro/reverse-engineering-icici-dsgf.BMGmeLNE_Z7pogC.webp",
-    "dist/_astro/reverse-engineering-icici-get-logging-status.CrSdbAtI_ZsAdEL.webp",
     "dist/index.html",
     "dist/tag/reverse engineering/index.html",
     "dist/tag/reverse engineering",
-    "dist/tag/frida/index.html",
-    "dist/tag/frida",
-    "dist/tag/android/index.html",
     "aws/README.md",
     "src/content/blog/reverse-engineering-icici.md",
-    "src/content/blog/free-production-kubernetes-cluster.md",
     "src/pages/blog/Untitled.md",
     "src/content/blog/cyber-security-blogs-you-should-follow.md",
     "src/content/blog/android-resources.md",

@@ -30,7 +30,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/images/*.{jpeg
             <div class="rounded-lg flex flex-col lg:flex-row">
               <div class="w-full lg:max-h-[250px]">
                 <Image
-                  src={images[post.data.image]()}
+                  src={images['/src/images' + post.data.image]()}
                   alt={post.data.title}
                   class="h-full w-full object-cover rounded-lg"
                 />

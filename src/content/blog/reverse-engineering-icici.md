@@ -2,12 +2,12 @@
 title: Creating Custom UPI VPA by bypassing Protectt.AI in ICICI's banking app
 tags: [android, frida, "reverse engineering"]
 pubDate: "Apr 27 2025"
-image: /src/images/icici.png
+image: /icici.png
 description: A deep dive into the process of generating custom UPI VPAs within ICICI's iMobile Pay by bypassing Protectt.AI. Explore techniques for overcoming anti-reversing and Anti-Frida protections, including native library analysis.
 author: Navaneeth
 ---
 
-**Discussion links:** [Reddit]() | [Hacker News]()
+**Discussion links:** [Reddit](https://www.reddit.com/r/Magisk/comments/1ku188n/article_creating_custom_upi_vpa_by_bypassing/) | [Reddit]()
 
 ## Takeaway
 

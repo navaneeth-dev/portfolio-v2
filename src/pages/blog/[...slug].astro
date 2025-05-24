@@ -31,7 +31,7 @@ const {
 } = Astro.props;
 const {Content} = await post.render();
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/images/*.{jpeg,jpg,png,webp}');
-const imagePath = post.data.image;
+const imagePath = '/src/images' + post.data.image;
 if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/images/*.{jpeg,jpg,png,webp}"`);
 ---
 
