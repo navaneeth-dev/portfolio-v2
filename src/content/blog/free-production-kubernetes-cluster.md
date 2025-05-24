@@ -2,7 +2,7 @@
 title: Free Production Grade Kubernetes Cluster For Life
 tags: [devops, kubernetes]
 pubDate: "May 6 2025"
-image: /src/images/icici.png
+image: /icici.png
 description: Hello
 author: Navaneeth
 isDraft: true
