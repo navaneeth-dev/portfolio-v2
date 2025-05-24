@@ -7,7 +7,7 @@ description: A deep dive into the process of generating custom UPI VPAs within I
 author: Navaneeth
 ---
 
-**Discussion links:** [Reddit - Magisk](https://www.reddit.com/r/Magisk/comments/1ku188n/article_creating_custom_upi_vpa_by_bypassing/) | [Reddit - netsec]()
+**Discussion links:** [r/Magisk](https://www.reddit.com/r/Magisk/comments/1ku2rre/article_creating_custom_upi_vpa_by_bypassing/) | [r/netsec](https://www.reddit.com/r/netsec/comments/1ku2sst/creating_custom_upi_vpa_by_bypassing_protecttai/)
 
 ## Takeaway
 
