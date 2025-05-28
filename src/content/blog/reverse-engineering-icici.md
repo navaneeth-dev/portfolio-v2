@@ -5,6 +5,7 @@ pubDate: "Apr 27 2025"
 image: /icici.png
 description: A deep dive into the process of generating custom UPI VPAs within ICICI's iMobile Pay by bypassing Protectt.AI. Explore techniques for overcoming anti-reversing and Anti-Frida protections, including native library analysis.
 author: Navaneeth
+isDraft: true
 ---
 
 **Discussion links:** [r/Magisk](https://www.reddit.com/r/Magisk/comments/1ku2rre/article_creating_custom_upi_vpa_by_bypassing/) | [r/netsec](https://www.reddit.com/r/netsec/comments/1ku2sst/creating_custom_upi_vpa_by_bypassing_protecttai/)
