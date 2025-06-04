@@ -16,17 +16,23 @@ export default $config({
     };
 
     const email = new sst.aws.Email("MyEmail", {
-      sender: "blog@rizexor.com",
+      sender: "no-reply@rizexor.com",
+      // dns: sst.cloudflare.dns()
     });
 
     const api = new sst.aws.Function("MyApi", {
       handler: "sender.handler",
       link: [email],
-      url: true,
+      url: {
+        cors: {
+          allowMethods: ["POST"]
+        }
+      },
     });
 
     new sst.aws.Astro("MyWeb", {
       domain,
+      link: [api]
     });
   },
 });

@@ -71,6 +71,9 @@ importers:
       tailwindcss:
         specifier: ^3.0.24
         version: 3.2.4(postcss@8.5.3)
+      zod:
+        specifier: ^3.25.51
+        version: 3.25.51
     devDependencies:
       '@astrojs/markdown-remark':
         specifier: ^6.3.1
@@ -81,12 +84,12 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.8
         version: 0.5.8(tailwindcss@3.2.4(postcss@8.5.3))
+      '@types/aws-lambda':
+        specifier: ^8.10.149
+        version: 8.10.149
       rehype-autolink-headings:
         specifier: ^6.1.1
         version: 6.1.1
-      zod:
-        specifier: ^3.23.8
-        version: 3.23.8
 
 packages:
 
@@ -1010,6 +1013,9 @@ packages:
 
   '@types/acorn@4.0.6':
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
+
+  '@types/aws-lambda@8.10.149':
+    resolution: {integrity: sha512-NXSZIhfJjnXqJgtS7IwutqIF/SOy1Wz5Px4gUY1RWITp3AYTyuJS4xaXr/bIJY1v15XMzrJ5soGnPM+7uigZjA==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -3311,14 +3317,11 @@ packages:
       typescript: ^4.9.4 || ^5.0.2
       zod: ^3
 
-  zod@3.23.8:
-    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
-
   zod@3.24.2:
     resolution: {integrity: sha512-lY7CDW43ECgW9u1TcT3IoXHflywfVqDYze4waEz812jR/bZ8FHDsl7pFQoSZTz5N+2NqRXs8GBwnAwo3ZNxqhQ==}
 
-  zod@3.24.3:
-    resolution: {integrity: sha512-HhY1oqzWCQWuUqvBFnsyrtZRhyPeR7SUGv+C4+MsisMuVfSPx8HpwWqH8tRahSlt6M3PiFAcoeFhZAqIXTxoSg==}
+  zod@3.25.51:
+    resolution: {integrity: sha512-TQSnBldh+XSGL+opiSIq0575wvDPqu09AqWe1F7JhUMKY+M91/aGlK4MhpVNO7MgYfHcVCB1ffwAUTJzllKJqg==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -3415,7 +3418,7 @@ snapshots:
     dependencies:
       sitemap: 8.0.0
       stream-replace-string: 2.0.0
-      zod: 3.24.3
+      zod: 3.25.51
 
   '@astrojs/tailwind@6.0.2(astro@5.7.14(rollup@4.40.1)(typescript@4.8.4)(yaml@2.6.1))(tailwindcss@3.2.4(postcss@8.5.3))':
     dependencies:
@@ -4217,8 +4220,8 @@ snapshots:
       express-rate-limit: 7.5.0(express@5.1.0)
       pkce-challenge: 4.1.0
       raw-body: 3.0.0
-      zod: 3.24.3
-      zod-to-json-schema: 3.24.5(zod@3.24.3)
+      zod: 3.25.51
+      zod-to-json-schema: 3.24.5(zod@3.25.51)
     transitivePeerDependencies:
       - supports-color
 
@@ -4639,6 +4642,8 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.7
 
+  '@types/aws-lambda@8.10.149': {}
+
   '@types/babel__core@7.20.5':
     dependencies:
       '@babel/parser': 7.26.2
@@ -4897,9 +4902,9 @@ snapshots:
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.2
-      zod: 3.24.3
-      zod-to-json-schema: 3.24.5(zod@3.24.3)
-      zod-to-ts: 1.2.0(typescript@4.8.4)(zod@3.24.3)
+      zod: 3.25.51
+      zod-to-json-schema: 3.24.5(zod@3.25.51)
+      zod-to-ts: 1.2.0(typescript@4.8.4)(zod@3.25.51)
     optionalDependencies:
       sharp: 0.33.5
     transitivePeerDependencies:
@@ -7458,19 +7463,17 @@ snapshots:
     dependencies:
       zod: 3.24.2
 
-  zod-to-json-schema@3.24.5(zod@3.24.3):
+  zod-to-json-schema@3.24.5(zod@3.25.51):
     dependencies:
-      zod: 3.24.3
+      zod: 3.25.51
 
-  zod-to-ts@1.2.0(typescript@4.8.4)(zod@3.24.3):
+  zod-to-ts@1.2.0(typescript@4.8.4)(zod@3.25.51):
     dependencies:
       typescript: 4.8.4
-      zod: 3.24.3
-
-  zod@3.23.8: {}
+      zod: 3.25.51
 
   zod@3.24.2: {}
 
-  zod@3.24.3: {}
+  zod@3.25.51: {}
 
   zwitch@2.0.4: {}

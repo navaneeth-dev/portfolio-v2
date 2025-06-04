@@ -3,7 +3,7 @@ import type {HTMLAttributes} from "astro/types";
 
 type Props = HTMLAttributes<"label">;
 
-const {name, ...attrs} = Astro.props;
+const {...attrs} = Astro.props;
 ---
 
 <label class="block" {...attrs}>

@@ -8,4 +8,4 @@ interface Props extends HTMLAttributes<"input"> {
 const {name, ...attrs} = Astro.props;
 ---
 
-<input class="rounded-lg px-4 py-2 w-full" {...attrs} name={name} id={name}>
+<input class="rounded-lg px-4 py-2 w-full" {...attrs} name={name} id={name} required>
