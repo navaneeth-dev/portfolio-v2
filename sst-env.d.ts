@@ -5,6 +5,16 @@
 
 declare module "sst" {
   export interface Resource {
+    "MyApi": {
+      "name": string
+      "type": "sst.aws.Function"
+      "url": string
+    }
+    "MyEmail": {
+      "configSet": string
+      "sender": string
+      "type": "sst.aws.Email"
+    }
     "MyWeb": {
       "type": "sst.aws.Astro"
       "url": string

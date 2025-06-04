@@ -1,0 +1,32 @@
+---
+import Input from "./Input.astro";
+import Label from "./Label.astro";
+---
+
+<form class="bg-black/5 rounded-lg space-y-2 p-6 max-w-4xl" method="post" action="">
+  <div class="flex gap-2">
+    <div class="flex-1">
+      <Label for="firstname">First Name:</Label>
+      <Input name="firstname" placeholder="Kevin"/>
+    </div>
+    <div class="flex-1">
+      <Label for="lastname">Last Name:</Label>
+      <Input name="lastname" placeholder="Cruise"/>
+    </div>
+  </div>
+  <div>
+    <Label for="email">Email:</Label>
+    <Input type="email" name="email" placeholder="kevincruise@gmail.com"/>
+  </div>
+  <div>
+    <Label for="message">Message:</Label>
+    <textarea class="rounded-lg px-4 py-2 w-full" rows="5" name="message" id="message"
+              placeholder="Your message..."></textarea>
+  </div>
+
+  <input
+    type="submit"
+    value="Let's Talk"
+    class="w-full hover:cursor-pointer bg-primary text-white px-4 py-2 border border-black self-center md:self-start rounded hover:shadow-[5px_5px_0_rgba(0,0,0,1)] transition-shadow"
+  >
+</form>
