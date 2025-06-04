@@ -54,7 +54,7 @@ export const handler: LambdaFunctionURLHandler = async (event: LambdaFunctionURL
     return {
       statusCode: 301,
       headers: {
-        Location: "https://rizexor.com/contact"
+        Location: "https://rizexor.com/success"
       }
     };
   } catch (error) {
