@@ -26,9 +26,13 @@ import {Resource} from "sst";
               placeholder="Your message..."></textarea>
   </div>
 
+  <div class="h-captcha" data-sitekey="969835cc-724c-40d2-9fe8-1f884130c4ca"></div>
+
   <input
     type="submit"
     value="Let's Talk"
     class="w-full hover:cursor-pointer bg-primary text-white px-4 py-2 border border-black self-center md:self-start rounded hover:shadow-[5px_5px_0_rgba(0,0,0,1)] transition-shadow"
   >
 </form>
+
+<script is:inline src="https://js.hcaptcha.com/1/api.js" async defer></script>

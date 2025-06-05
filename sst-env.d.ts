@@ -15,6 +15,10 @@ declare module "sst" {
       "sender": string
       "type": "sst.aws.Email"
     }
+    "MySecret": {
+      "type": "sst.sst.Secret"
+      "value": string
+    }
     "MyWeb": {
       "type": "sst.aws.Astro"
       "url": string

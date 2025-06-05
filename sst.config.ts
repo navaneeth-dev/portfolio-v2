@@ -15,6 +15,8 @@ export default $config({
       dns: sst.cloudflare.dns()
     };
 
+    const secret = new sst.Secret("MySecret");
+
     const sender = "rizexor.com";
     const email = $app.stage === "production" ? sst.aws.Email.get("MyEmail", sender) :
       new sst.aws.Email("MyEmail", {
@@ -25,7 +27,7 @@ export default $config({
 
     const api = new sst.aws.Function("MyApi", {
       handler: "sender.handler",
-      link: [email],
+      link: [email, secret],
       url: {
         cors: {
           allowMethods: ["POST"]
