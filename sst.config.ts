@@ -15,10 +15,12 @@ export default $config({
       dns: sst.cloudflare.dns()
     };
 
-    const email = new sst.aws.Email("MyEmail", {
-      sender: "rizexor.com",
-      dns: sst.cloudflare.dns()
-    });
+    const sender = "rizexor.com";
+    const email = $app.stage === "production" ? sst.aws.Email.get("MyEmail", sender) :
+      new sst.aws.Email("MyEmail", {
+        sender,
+        dns: sst.cloudflare.dns()
+      });
 
     const api = new sst.aws.Function("MyApi", {
       handler: "sender.handler",
