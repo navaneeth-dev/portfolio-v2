@@ -16,8 +16,8 @@ export default $config({
     };
 
     const email = new sst.aws.Email("MyEmail", {
-      sender: "no-reply@rizexor.com",
-      // dns: sst.cloudflare.dns()
+      sender: "rizexor.com",
+      dns: sst.cloudflare.dns()
     });
 
     const api = new sst.aws.Function("MyApi", {
