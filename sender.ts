@@ -35,15 +35,16 @@ export const handler: LambdaFunctionURLHandler = async (event: LambdaFunctionURL
         const hcaptchaResponse = await fetch("https://api.hcaptcha.com/siteverify", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/x-www-form-urlencoded",
             },
-            body: JSON.stringify({
+            body: new URLSearchParams({
                 secret: Resource.MySecret.value,
                 response: contactEvent["h-captcha-response"],
                 remoteip: event.requestContext.http.sourceIp,
             })
         });
         const hcaptchaJSON = await hcaptchaResponse.json();
+        console.log(hcaptchaJSON)
         if (hcaptchaJSON['success'] !== true)
             return {
                 statusCode: 400,
