@@ -44,7 +44,6 @@ export const handler: LambdaFunctionURLHandler = async (event: LambdaFunctionURL
             })
         });
         const hcaptchaJSON = await hcaptchaResponse.json();
-        console.log(hcaptchaJSON)
         if (hcaptchaJSON['success'] !== true)
             return {
                 statusCode: 400,
