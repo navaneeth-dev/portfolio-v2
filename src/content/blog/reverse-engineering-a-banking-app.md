@@ -1,9 +1,9 @@
 ---
-title: Creating Custom UPI VPA by bypassing Protectt.AI in ICICI's banking app
+title: Creating a custom UPI VPA by bypassing advanced anti-reversing techniques in a banking app
 tags: [android, frida, "reverse engineering"]
 pubDate: "Apr 27 2025"
 image: /icici.png
-description: A deep dive into the process of generating custom UPI VPAs within ICICI's iMobile Pay by bypassing Protectt.AI. Explore techniques for overcoming anti-reversing and Anti-Frida protections, including native library analysis.
+description: A deep dive into the process of generating custom UPI VPAs within a mobile banking app by bypassing security protections. Explore techniques for overcoming anti-reversing and Anti-Frida measures, including native library analysis.
 author: Navaneeth
 isDraft: true
 ---
@@ -12,13 +12,12 @@ isDraft: true
 
 ## Takeaway
 
-- Get a custom UPI VPA / UPI ID like `anything@icici`.
+- Get a custom UPI VPA / UPI ID like `anything@bankxyz`.
 - Learn how to bypass and reverse engineer advanced anti reversing techniques.
-- Learn how to bypass Bypass Protectt.AI.
 - Learn how to bypass Anti-Frida measures.
 - Learn how to reverse engineering Android native libraries.
 
-My goal in starting this project was to create custom payment IDs where it would otherwise not have been possible. Advantages of having a short UPI ID include ease of remembering, an inside joke for friend groups and simpler to communicate. So what is UPI ID and ICICI's iMobile Pay?
+My goal in starting this project was to create custom payment IDs where it would otherwise not have been possible. Advantages of having a short UPI ID include ease of remembering, an inside joke for friend groups and simpler to communicate. So what is a UPI ID?
 
 ## UPI
 
@@ -26,13 +25,7 @@ Unified Payments Interface is an Indian instant payment system as well as **prot
 
 UPI allows every bank (ICICI, Federal Bank) and third-party apps (GPay, PhonePe) to interact with each other.
 
-So what is UPI ID? It is an alias for your bank account. In the case of ICICI bank app, we can have one UPI ID link to another bank for example: ICICI UPI ID for Federal Bank. A person can have several UPI IDs, for example one UPI ID for each app.
-
-## iMobile Pay
-
-This is the official mobile banking app for ICICI bank in India. While exploring the app I saw it has the ability to create new UPI IDs but you can only choose from the list.
-
-![iMobile App Screen](../../images/icici1.png)
+So what is UPI ID? It is an alias for your bank account. In the case of HDFC bank app, we can have one UPI ID link to another bank for example: HDFC UPI ID for Federal Bank. A person can have several UPI IDs, for example one UPI ID for each app.
 
 ## Initial analysis
 
@@ -77,7 +70,7 @@ Java.perform(function() {
         send("Loading dynamic library => " + library);
         try {
             const loaded = Runtime.getRuntime().loadLibrary0(VMStack.getCallingClassLoader(), library);
-            if(library === 'protectt-native-lib') {
+            if(library === 'libprotecttor-native-lib') {
 				// hook native lib functions
             }
             return loaded;
@@ -91,21 +84,17 @@ Java.perform(function() {
 
 Now that we have the ability to hook functions right after the native library is loaded. We can start reverse engineering the native library.
 
-## Protectt.AI
+## Protector Company
 
-The library responsible for closing the Frida connection is `libprotectt-native-lib.so`, so what is this native library? It is a RunTime Application Self-Protection solution developed by [Protectt.AI](https://www.protectt.ai/).
+The library responsible for closing the Frida connection is `libprotecttor-native-lib.so`, so what is this native library? It is a RunTime Application Self-Protection solution developed by ~~[Censored](https://google.com)~~.
 
-> Protectt ai Pvt Ltd is a Mobile Threat Defense (MTD) cyber-security organization building the next generation Mobile App, Device & Transaction security solution driven by Deep Tech.
+Other native libraries important in XYZ bank app:
 
-![Protectt.AI](../../images/reverse-engineering-icici-protectt-ai.png)
-
-Other native libraries important in ICICI bank app:
-
-| Name                          | Description                        | Hash                                                             |
-| ----------------------------- | ---------------------------------- | ---------------------------------------------------------------- |
-| libprotectt-native-lib.so     | Main module                        | 124d6b42808c022d675c8eb5e928f2c810e5f5fe73b92fb019c4097f66cdc87d |
-| libapp-protectt-native-lib.so | Rest of libprotectt, not important | 5ecdc71188e9fa6bc47fa23cd83bcbce95c2805fcc7754b25a275aa291893709 | 
-| libnative-lib.so              | Gets API URL, not important        | 84445f13e7a1e39ba70f7ac3faaf5ac75354f0743a81f91b4bb586608c44a487 |
+| Name                            | Description                        | Hash                                                             |
+| ------------------------------- | ---------------------------------- | ---------------------------------------------------------------- |
+| libprotecttor-native-lib.so     | Main module                        | 124d6b42808c022d675c8eb5e928f2c810e5f5fe73b92fb019c4097f66cdc87d |
+| libapp-protecttor-native-lib.so | Rest of libprotectt, not important | 5ecdc71188e9fa6bc47fa23cd83bcbce95c2805fcc7754b25a275aa291893709 |
+| libnative-lib.so                | Gets API URL, not important        | 84445f13e7a1e39ba70f7ac3faaf5ac75354f0743a81f91b4bb586608c44a487 |
 
 ## Extracting native libraries
 
@@ -119,10 +108,10 @@ To reverse engineer the native library I first have to get the .so files. First 
 How to get split APK?
 
 ```bash
-$ adb shell pm path com.csam.icici.bank.imobile
-package:/data/app/~~UOYiAXaSPBW0Ae8atXOrqg==/com.csam.icici.bank.imobile-SYp1oonK6muaef0keHyLGw==/base.apk
-package:/data/app/~~UOYiAXaSPBW0Ae8atXOrqg==/com.csam.icici.bank.imobile-SYp1oonK6muaef0keHyLGw==/split_config.arm64_v8a.apk <-- EXTRACT THIS
-package:/data/app/~~UOYiAXaSPBW0Ae8atXOrqg==/com.csam.icici.bank.imobile-SYp1oonK6muaef0keHyLGw==/split_config.xxhdpi.apk
+$ adb shell pm path com.csam.xyzbank.bank.imobile
+package:/data/app/~~UOYiAXaSPBW0Ae8atXOrqg==/com.csam.xyzbank.bank.imobile-SYp1oonK6muaef0keHyLGw==/base.apk
+package:/data/app/~~UOYiAXaSPBW0Ae8atXOrqg==/com.csam.xyzbank.bank.imobile-SYp1oonK6muaef0keHyLGw==/split_config.arm64_v8a.apk <-- EXTRACT THIS
+package:/data/app/~~UOYiAXaSPBW0Ae8atXOrqg==/com.csam.xyzbank.bank.imobile-SYp1oonK6muaef0keHyLGw==/split_config.xxhdpi.apk
 ```
 
 Now we can just adb pull and the unzipped directory should have the libraries uncompressed.
@@ -131,7 +120,7 @@ Now we can just adb pull and the unzipped directory should have the libraries un
 
 ## Reverse engineering Android native libraries
 
-After loading `libprotectt-native-lib.so` binary in IDA, (which I knew from my loadLibrary hook) I jumped into the entry point and found a thread being created with a startRoutine. It always verifies the checksum of the native library.
+After loading `libprotecttor-native-lib.so` binary in IDA, (which I knew from my loadLibrary hook) I jumped into the entry point and found a thread being created with a startRoutine. It always verifies the checksum of the native library.
 
 ![Native entry point](../../images/reverse-engineering-icici-native-entry-point.png)
 
@@ -422,7 +411,7 @@ Keep repeating this process and trying things, you should trace it to a call in 
 
 ### IMOBILE.onCreate
 
-`com.csam.icici.bank.imobile.IMOBILE.onCreate` calls `getLoggingStatus`. This function has nothing to do with logging but does security checks, Protectt.AI is known to misdirect reverse researchers using fake naming, calling the actual function in an error exception, using decoy functions, among other techniques.
+`com.csam.xyzbank.bank.imobile.IMOBILE.onCreate` calls `getLoggingStatus`. This function has nothing to do with logging but does security checks, Protectt.AI is known to misdirect reverse researchers using fake naming, calling the actual function in an error exception, using decoy functions, among other techniques.
 
 ![](../../images/reverse-engineering-icici-oncreate.png)
 
@@ -430,7 +419,7 @@ Keep repeating this process and trying things, you should trace it to a call in 
 
 ![](../../images/reverse-engineering-icici-get-logging-status.png)
 
-The function was located in `libnative-lib.so`, IDA shows it calls the function `com.csam.icici.bank.imobile.IMOBILE.logStatus()`.
+The function was located in `libnative-lib.so`, IDA shows it calls the function `com.csam.xyzbank.bank.imobile.IMOBILE.logStatus()`.
 
 ![](../../images/reverse-engineering-icici-native-logging.png)
 
@@ -450,7 +439,7 @@ These are all the security checks called from the MainActivity, we want to block
 
 ```js
 // Native library calls from IMOBILE.onCreate
-let IMOBILE = Java.use("com.csam.icici.bank.imobile.IMOBILE");
+let IMOBILE = Java.use("com.csam.xyzbank.bank.imobile.IMOBILE");
 IMOBILE["logStatus"].implementation = function () {
 	console.log(`IMOBILE.logStatus is called`);
 };
@@ -529,7 +518,7 @@ b["b"].implementation = function (key, value) {
 
 	const json = JSON.parse(value, null, 4);
 	if (json.VPA === "upi_id_from_the_list") {
-		json.VPA = "YOUR_DESIRED_ID@icici";
+		json.VPA = "YOUR_DESIRED_ID@bankxyz";
 		console.log("CHANGED VPA");
 		value = JSON.stringify(json);
 	}
