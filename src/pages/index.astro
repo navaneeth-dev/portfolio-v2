@@ -14,7 +14,6 @@ import {Image} from "astro:assets";
 // import "swiper/css";
 // import "swiper/css/navigation";
 import {getCollection} from "astro:content";
-import '@fontsource-variable/inter';
 import BlogCard from "../components/BlogCard.astro";
 
 const latestPosts = (await getCollection("blog", ({data}) => !data.isDraft))

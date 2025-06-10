@@ -43,7 +43,7 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
 <body>
 <Header/>
 <main class="pb-12">
-  <section class="flex flex-col items-center p-6 mx-auto">
+  <section class="container mx-auto flex flex-col items-center p-6 max-w-7xl">
     {
       image && (
         <div class="wrapper w-full md:w-[480px] md:h-[282px] flex justify-center">
@@ -75,7 +75,7 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
   </section>
   <div class="container mx-auto">
     <article
-      class="px-12 max-w-7xl mx-auto prose lg:prose-lg xl:prose-xl prose-img:max-h-[900px] prose-img:object-contain mb-6 prose-table:block prose-table:overflow-auto prose-code:before:content-none prose-code:after:content-none"
+      class="px-6 max-w-7xl mx-auto prose lg:prose-lg xl:prose-xl prose-img:max-h-[900px] prose-img:object-contain mb-6 prose-table:block prose-table:overflow-auto prose-code:before:content-none prose-code:after:content-none"
     >
       <hr/>
       <Content/>

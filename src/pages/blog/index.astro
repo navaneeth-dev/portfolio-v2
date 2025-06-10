@@ -6,7 +6,6 @@ import {SITE_TITLE, SITE_DESCRIPTION} from "../../config";
 import {Image} from "astro:assets";
 import {getCollection} from "astro:content";
 import {Calendar, Tags} from "lucide-react";
-import '@fontsource-variable/inter';
 
 const posts = (await getCollection("blog", ({data}) => !data.isDraft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
