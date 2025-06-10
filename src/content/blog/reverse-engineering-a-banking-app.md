@@ -343,10 +343,10 @@ After seeing a few of these functions there is a common function `companion.d()`
 
 ![Common code](../../images/reverse-engineering-icici-common.png)
 
-I hook this so I can see what exactly is calling it up the stack. So I can hook the parent function and bypass the root detection. This was by far the hardest part because there is at least 25 functions that need to be traced up the stack using Frida + JADX. I found several ways to bypass Protectt.AI but I will be showing part of the process as the actual process is TOO long and I am not able to retrace what I did lol.
+I hook this so I can see what exactly is calling it up the stack. So I can hook the parent function and bypass the root detection. This was by far the hardest part because there is at least 25 functions that need to be traced up the stack using Frida + JADX. I found several ways to bypass ~~Censored~~ but I will be showing part of the process as the actual process is TOO long and I am not able to retrace what I did lol.
 
 ```js
-let a = Java.use("ai.protectt.app.security.main.g$a");
+let a = Java.use("protecttor.app.security.main.g$a");
 a["d"].implementation = function () {
 	console.log(`a.d is called`);
 	let result = this["d"]();
@@ -362,12 +362,12 @@ Once we click "Close App" the last stack trace should give us the correct functi
 a.d is called
 a.d result=[object Object]
 java.lang.Exception
-        at ai.protectt.app.security.main.g$a.d(Native Method)
-        at ai.protectt.app.security.main.scan.ScanAlerts.x(Unknown Source:49)
-        at ai.protectt.app.security.main.scan.ScanAlerts.V(Unknown Source:11)
-        at ai.protectt.app.security.main.scan.ScanAlerts.d0(Unknown Source:3)
-        at ai.protectt.app.security.main.scan.ScanAlerts.f(Unknown Source:0)
-        at ai.protectt.app.security.main.scan.t.onClick(Unknown Source:4)
+        at protecttor.app.security.main.g$a.d(Native Method)
+        at protecttor.app.security.main.scan.ScanAlerts.x(Unknown Source:49)
+        at protecttor.app.security.main.scan.ScanAlerts.V(Unknown Source:11)
+        at protecttor.app.security.main.scan.ScanAlerts.d0(Unknown Source:3)
+        at protecttor.app.security.main.scan.ScanAlerts.f(Unknown Source:0)
+        at protecttor.app.security.main.scan.t.onClick(Unknown Source:4)
         at android.view.View.performClick(View.java:8028)
         at android.view.View.performClickInternal(View.java:8005)
         at android.view.View.-$$Nest$mperformClickInternal(Unknown Source:0)
@@ -387,19 +387,19 @@ java.lang.Exception
 ```
 ScanAlerts.U is called: btnBlock=androidx.appcompat.widget.AppCompatButton{6e89fa8 VFED..C.. ......I. 0,0-0,0 #7f0a03a7 app:id/btn_sdk_btn_block}, mBuilder=android.app.AlertDialog@5a
 15ac1, btnIgnore=androidx.appcompat.widget.AppCompatButton{1a0a266 VFED..C.. ......I. 0,0-0,0 #7f0a03a8 app:id/btn_sdk_btn_ignore}, response=Java.Field{                              
-        holder: ai.protectt.app.security.shouldnotobfuscated.dto.i@3c469a7,                
+        holder: protecttor.app.security.shouldnotobfuscated.dto.i@3c469a7,                
         fieldType: 2,                                                                                                                                                                 
         fieldReturnType: Ljava/lang/String;,                                                                                                                                          
         value: Your Device is rooted. For security reasons we have stopped the Mobile Banking Services on rooted devices.,                                                            
 }, checkBoxForceAccept=androidx.appcompat.widget.AppCompatCheckBox{fc0e54 GFED..C.. ......I. 0,0-0,0 #7f0a0885 app:id/force_accept}                                                   
 [+] Spoofing adb_enabled to 0 (OFF)                                                                                                                                                   
 java.lang.Exception                                                                                                                                                                   
-        at ai.protectt.app.security.main.scan.ScanAlerts.U(Native Method)                                                                                                             
-        at ai.protectt.app.security.main.scan.ScanAlerts.C(Unknown Source:1084)                                                                                                       
-        at ai.protectt.app.security.main.scan.ScanAlerts.a0(Unknown Source:289)                                                                                                       
-        at ai.protectt.app.security.main.g.C1(Unknown Source:10)                                                                                                                      
-        at ai.protectt.app.security.main.g.o(Unknown Source:0)                                                                                                                        
-        at ai.protectt.app.security.main.c.run(Unknown Source:2)
+        at protecttor.app.security.main.scan.ScanAlerts.U(Native Method)                                                                                                             
+        at protecttor.app.security.main.scan.ScanAlerts.C(Unknown Source:1084)                                                                                                       
+        at protecttor.app.security.main.scan.ScanAlerts.a0(Unknown Source:289)                                                                                                       
+        at protecttor.app.security.main.g.C1(Unknown Source:10)                                                                                                                      
+        at protecttor.app.security.main.g.o(Unknown Source:0)                                                                                                                        
+        at protecttor.app.security.main.c.run(Unknown Source:2)
         at android.os.Handler.handleCallback(Handler.java:959
 ```
 
@@ -411,7 +411,7 @@ Keep repeating this process and trying things, you should trace it to a call in 
 
 ### IMOBILE.onCreate
 
-`com.csam.xyzbank.bank.imobile.IMOBILE.onCreate` calls `getLoggingStatus`. This function has nothing to do with logging but does security checks, Protectt.AI is known to misdirect reverse researchers using fake naming, calling the actual function in an error exception, using decoy functions, among other techniques.
+`com.csam.xyzbank.bank.imobile.IMOBILE.onCreate` calls `getLoggingStatus`. This function has nothing to do with logging but does security checks, ~~Censored~~ is known to misdirect reverse researchers using fake naming, calling the actual function in an error exception, using decoy functions, among other techniques.
 
 ![](../../images/reverse-engineering-icici-oncreate.png)
 
@@ -429,7 +429,7 @@ Here we finally see `logStatus` calls `log` and in turn calls some security chec
 
 ### IMOBILE.onResume
 
-We just need to hook `wVar.m(this, this);` and `ai.protectt.app.security.common.helper.h0.f1361a.z(this, this)`.
+We just need to hook `wVar.m(this, this);` and `protecttor.app.security.common.helper.h0.f1361a.z(this, this)`.
 
 ![](../../images/reverse-engineering-icici-onresume-checks.png)
 
@@ -445,19 +445,19 @@ IMOBILE["logStatus"].implementation = function () {
 };
 
 // ActivityLifecycleCallbacks
-let LoggerController = Java.use("ai.protectt.app.security.main.LoggerController");
+let LoggerController = Java.use("protecttor.app.security.main.LoggerController");
 LoggerController["i"].implementation = function (context, activity) {
 	console.log(`LoggerController.i is called: context=${context}, activity=${activity}`);
 };
 
 // IMOBILE.onResume Check1
-let h0 = Java.use("ai.protectt.app.security.common.helper.h0");
+let h0 = Java.use("protecttor.app.security.common.helper.h0");
 h0["z"].implementation = function (context, activity) {
 console.log(`h0.z is called: context=${context}, activity=${activity}`);
 };
 
 // IMOBILE.onResume Check2
-let w = Java.use("ai.protectt.app.security.common.helper.w");
+let w = Java.use("protecttor.app.security.common.helper.w");
 w["m"].implementation = function (context, activity) {
 	console.log(`w.m is called: context=${context}, activity=${activity}`);
 };
