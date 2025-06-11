@@ -1,14 +1,17 @@
 ---
 title: Free Production Grade Kubernetes Cluster For Life
-tags: [devops, kubernetes]
-pubDate: "May 6 2025"
-image: /icici.png
-description: Hello
+tags:
+  - devops
+  - kubernetes
+pubDate: May 6 2025
+image: /kubernetes-cluster.jpg
+description: HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello
 author: Navaneeth
-isDraft: true
+isDraft: false
 ---
 
-##
+## Why Oracle Cloud?
+
 
 
 - cant use oracle load balancer layer 7 ->  base price

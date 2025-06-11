@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/blog/reverse-engineering-icici.md",
+                "file": "src/content/blog/free-production-kubernetes-cluster.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "reverse-engineering-icici"
+              "title": "free-production-kubernetes-cluster"
             },
             "group": "47b10c49ffa9e0ec"
           }
@@ -34,12 +34,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/blog/reverse-engineering-icici.md",
+                "file": "src/content/blog/free-production-kubernetes-cluster.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "reverse-engineering-icici"
+              "title": "free-production-kubernetes-cluster"
             },
             "group": "47b10c49ffa9e0ec"
           }
@@ -110,7 +110,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 400.5004348754883
+    "width": 400.5004348754883,
+    "collapsed": true
   },
   "right": {
     "id": "0b046d4188473830",
@@ -198,11 +199,15 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "8da4eb233a7f5718",
+  "active": "53569b20a82133ee",
   "lastOpenFiles": [
+    "src/components/Header.astro~",
+    "src/pages/blog/index.astro~",
+    "public/kubernetes-cluster.jpg",
+    "src/images/kubernetes-cluster.jpg",
+    "src/images/Twitter post - 1.jpg",
     "src/content/blog/free-production-kubernetes-cluster.md",
     "src/content/blog/reverse-engineering-icici.md",
-    "src/pages/blog/index.astro~",
     "src/components/BlogCard.astro~",
     "src/pages/blog/[...slug].astro~",
     "src/components/BaseHead.astro~",
@@ -217,9 +222,6 @@
     "dist/_astro/reverse-engineering-icici-truirt._nEX7Rqs_ZDJ7Mh.webp",
     "dist/_astro/reverse-engineering-icici-dsf.BNM4rcjp_Z1IcknA.webp",
     "dist/_astro/reverse-engineering-icici-zap.qDrPLYIf_Z1i8xI7.webp",
-    "dist/_astro/reverse-engineering-icici-onresume-checks.CSJdwIcr_ZXBxeX.webp",
-    "dist/_astro/reverse-engineering-icici-native-logging.CPuzCD_J_1g6GgN.webp",
-    "dist/_astro/reverse-engineering-icici-dsgf.BMGmeLNE_Z7pogC.webp",
     "dist/index.html",
     "dist/tag/reverse engineering/index.html",
     "aws/README.md",
