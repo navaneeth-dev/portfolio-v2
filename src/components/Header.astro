@@ -1,4 +1,5 @@
 ---
+import {Menu} from "lucide-react";
 import HeaderLink from "./HeaderLink.astro";
 ---
 
@@ -6,23 +7,29 @@ import HeaderLink from "./HeaderLink.astro";
   <nav class="container px-12 mx-auto flex justify-between h-full">
     <HeaderLink href="/" class="block py-4">Home</HeaderLink>
     <details class="h-full flex items-center">
-      <summary class="list-none md:hidden">Menu</summary>
+      <summary class="list-none md:hidden cursor-pointer flex gap-x-1">
+        <Menu/>
+        Menu
+      </summary>
       <nav
         class="top-14 left-0 z-40 absolute bg-black w-full text-center flex flex-col items-center border-b border-primary list-none"
       >
         <li class="w-full">
           <HeaderLink class="py-2 text-white block" href="/achievements"
-            >Achievements</HeaderLink
+          >Achievements
+          </HeaderLink
           >
         </li>
         <li class="w-full">
           <HeaderLink class="py-2 text-white block" href="/blog"
-            >Blog</HeaderLink
+          >Blog
+          </HeaderLink
           >
         </li>
         <li class="w-full">
           <HeaderLink class="py-2 text-white block" href="/contact"
-            >Contact</HeaderLink
+          >Contact
+          </HeaderLink
           >
         </li>
       </nav>
@@ -31,17 +38,20 @@ import HeaderLink from "./HeaderLink.astro";
       <li>
         <HeaderLink
           class="text-black h-full py-4 px-2 block"
-          href="/achievements">Achievements</HeaderLink
+          href="/achievements">Achievements
+        </HeaderLink
         >
       </li>
       <li class="w-full">
         <HeaderLink class="text-black h-full py-4 px-2 block" href="/blog"
-          >Blog</HeaderLink
+        >Blog
+        </HeaderLink
         >
       </li>
       <li class="w-full">
         <HeaderLink class="text-black h-full py-4 pl-2 block" href="/contact"
-          >Contact</HeaderLink
+        >Contact
+        </HeaderLink
         >
       </li>
     </nav>
