@@ -22,52 +22,50 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/images/*.{jpeg
 <main class="pt-6 pb-12">
   <div class="mb-6 container mx-auto px-12">
     <h1 class="text-3xl font-bold text-primary">Posts</h1>
-    <ul class="grid grid-flow-row auto-rows-[1fr] grid-row gap-6 mt-6">
+    <ul class="space-y-6 mt-6">
       {
         posts.map((post) => (
-          <li class="rounded-lg bg-black/5">
-            <div class="rounded-lg flex flex-col lg:flex-row">
-              <div class="w-full lg:max-h-[250px]">
-                <Image
-                  src={images['/src/images' + post.data.image]()}
-                  alt={post.data.title}
-                  class="h-full w-full object-cover rounded-lg"
-                />
+          <li class="rounded-lg bg-black/5 flex flex-col lg:flex-row lg:flex-[0_0_400px]">
+            <div class="w-full lg:max-h-[250px] lg:w-[400px] lg:h-[225px]">
+              <Image
+                src={images['/src/images' + post.data.image]()}
+                alt={post.data.title}
+                class="h-full w-full object-cover rounded-lg"
+              />
+            </div>
+            <div class="p-4 flex-1 flex flex-col lg:max-h-[225px]">
+              <time
+                datetime={post.data.pubDate.toString()}
+                class="text-sm text-gray-700 flex items-center gap-1"
+              >
+                <Calendar/>
+                {new Date(post.data.pubDate).toLocaleDateString("en-us", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
+              </time>
+              <a
+                href={"/blog/" + post.slug}
+                class="block text-xl font-bold mb-2 text-primary hover:underline"
+              >
+                {post.data.title}
+              </a>
+              <div>
+                {
+                  post.data.tags.map((tag: string) => (
+                    <a
+                      class="mr-2 inline-flex items-center gap-1 border border-neutral-700 uppercase text-sm text-neutral-700 hover:bg-neutral-200 px-2"
+                      href={"/tag/" + tag}
+                    >
+                      <Tags/>
+                      {tag}
+                    </a>
+                  ))}
               </div>
-              <div class="p-4 flex-4">
-                <time
-                  datetime={post.data.pubDate.toString()}
-                  class="text-sm text-gray-700 flex items-center gap-1"
-                >
-                  <Calendar/>
-                  {new Date(post.data.pubDate).toLocaleDateString("en-us", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  })}
-                </time>
-                <a
-                  href={"/blog/" + post.slug}
-                  class="block text-xl font-bold mb-2 text-primary hover:underline"
-                >
-                  {post.data.title}
-                </a>
-                <div>
-                  {
-                    post.data.tags.map((tag: string) => (
-                      <a
-                        class="mr-2 inline-flex items-center gap-1 border border-neutral-700 uppercase text-sm text-neutral-700 hover:bg-neutral-200 px-2"
-                        href={"/tag/" + tag}
-                      >
-                        <Tags/>
-                        {tag}
-                      </a>
-                    ))}
-                </div>
-                <p class="mt-2 text-neutral-700 w-full overflow-elipsis">
-                  {post.data.description}
-                </p>
-              </div>
+              <p class="mt-2 text-neutral-700 flex-1 overflow-hidden text-ellipsis">
+                {post.data.description}
+              </p>
             </div>
           </li>
         ))
