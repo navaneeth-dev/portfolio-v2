@@ -1,1 +1,19 @@
-{}
+{
+  "useMarkdownLinks": true,
+  "attachmentFolderPath": "src/images",
+  "newFileLocation": "folder",
+  "newFileFolderPath": "src/pages/blog",
+  "readableLineLength": false,
+  "showFrontmatter": true,
+  "showInlineTitle": false,
+  "livePreview": false,
+  "vimMode": true,
+  "newLinkFormat": "relative",
+  "userIgnoreFilters": [
+    "node_modules/",
+    "src/components/",
+    "src/layouts/",
+    "src/styles/"
+  ],
+  "alwaysUpdateLinks": true
+}
