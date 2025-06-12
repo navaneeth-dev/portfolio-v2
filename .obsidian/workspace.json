@@ -201,8 +201,8 @@
   },
   "active": "53569b20a82133ee",
   "lastOpenFiles": [
-    "src/components/Header.astro~",
     "src/pages/blog/index.astro~",
+    "src/components/Header.astro~",
     "public/kubernetes-cluster.jpg",
     "src/images/kubernetes-cluster.jpg",
     "src/images/Twitter post - 1.jpg",
