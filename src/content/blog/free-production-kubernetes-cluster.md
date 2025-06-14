@@ -16,62 +16,176 @@ isDraft: false
 
 ## Takeaway
 
-- Learn to run a highly available Kubernetes cluster for free.
-- Learn about Oracle Cloud Infrastructure and its Free Tier.
-- Learn about Infrastructure as Code tools like Terraform and Pulumi.
-- Learn to configure Oracle Bastion with Terraform to securely access a private Kubernetes Cluster.
-- Learn to setup Talos Linux with Longhorn.
+* Learn to run a highly available Kubernetes cluster for free.
+* Learn about Oracle Cloud Infrastructure and its Free Tier.
+* Learn about Infrastructure as Code tools like Terraform and Pulumi.
+* Learn to configure Oracle Bastion with Terraform for secure access to a private Kubernetes Cluster.
+* Learn to set up Talos Linux with Longhorn.
+
+In this article, I will show you how to create a free, production-ready, highly available, private Kubernetes cluster in one command using Infrastructure as Code tools.
 
 ## Why I choose Oracle Cloud?
 
-- Best Free Tier among any cloud provider which I will explain below.
-- Good for running production-grade services for low costs.
-- Transferable skills to other hyperscalers like AWS, GCP, etc.
-- Get to work with a Hyperscale Cloud for free.
+* **Best Free Tier Among Cloud Providers:** I will explain why Oracle Cloud Infrastructure (OCI) offers a highly competitive and generous Free Tier compared to other cloud providers.
+* **Cost-Effective Production Services:** Learn how OCI can be a viable option for running production-grade services at low costs, even beyond the Free Tier.
+* **Transferable Cloud Skills:** Discover how gaining experience with OCI provides valuable and transferable skills applicable to other hyperscale cloud providers like AWS, Google Cloud Platform (GCP), and Azure.
+* **Free Access to a Hyperscale Cloud:** Understand how to leverage OCI's Free Tier to gain hands-on experience with a powerful, enterprise-grade cloud environment without incurring significant costs.
 
 ## What is a hyperscaler?
 
-In my opinion Hyperscalers are Cloud providers with more than 20+ services which include strong authentication and API access and good support for Terraform.
+In my opinion, **hyperscalers** are cloud providers offering more than 20 services, featuring robust authentication, comprehensive API access, and strong support for Infrastructure as Code tools like Terraform.
 
-Hyperscalers should ideally have various compute and storage options like Serverless, VMs, Containers, S3, Different Storage types like SSD, NVME, HDD, etc.
+Ideally, hyperscalers should provide a diverse range of compute and storage options. This includes offerings like serverless functions, virtual machines (VMs), and containers, alongside various storage types such as S3-compatible object storage and different disk options like SSD, NVMe, and HDD.
 
-Hyperscalers usually also have long term commitment discounts.
+Additionally, hyperscalers typically offer long-term commitment discounts, making them more cost-effective for sustained usage.
 
-Examples: AWS, Google Cloud, Azure, OVH Cloud, Oracle, etc.
+Examples of hyperscalers include AWS, Google Cloud, Azure, OVH Cloud, and Oracle.
 
 ## Oracle Free Tier Explained
 
-Oracle Cloud has one of the best free tiers of any cloud provider. There are two free tier types:
+Oracle Cloud Infrastructure (OCI) stands out with one of the most generous free tiers among all cloud providers. It offers two distinct types of free tiers:
 
-- Always Free (free for life)
-- Free Tier (12 months)
+* **Always Free:** These resources are free for the entire lifetime of your OCI account.
+* **Free Tier:** These resources are free for a period of 12 months.
 
-The important resources to us is the Always Free Compute Resource which includes 3,000 OCPU hours and 18,000 GB hours per month (RAM) for ARM VMs and 2 AMD based compute VMs of `VM.Standard.E2.1.Micro` shape.
+For our purposes, the **Always Free Compute Resources** are particularly important. This includes a 3,000 OCPU hours and 18,000 GB hours of RAM per month for ARM virtual machines (VMs), along with two AMD-based compute VMs of the `VM.Standard.E2.1.Micro` shape.
 
-> Choose your regions carefully in Oracle you **CANNOT** add or change it later.
-> Also choose your home region carefully that is where you can create Always Free resources.
+> **Important Considerations for Region Selection:**
+>
+> When setting up your Oracle Cloud account, choose your regions carefully, as **you cannot add or change them later.** Additionally, your **home region** is where you can provision Always Free resources, so select it wisely.
 
-You can split it up however you like, in this setup I am using 2 VMs with 6GB RAM, 1 VCPU and 1 VM with 6GB RAM and 2VCPU.
+You have the flexibility to allocate these resources as you see fit. For instance, in this setup, we're utilizing two VMs with 6GB RAM and 1 VCPU each, and one VM with 6GB RAM and 2VCPUs.
 
-So according to Oracle Price Calculator which caps the maximum number of hours per month to 720.  
-4 x 720 = **2880 OCPU hours**.  
-8 x 3 x 720 = **17280 GB hours**.
+Based on the Oracle Price Calculator, which caps the maximum number of hours per month at 720, this configuration translates to:
+
+- 4 VCPUs x 720 hours/month = **2880 OCPU hours**
+- 24 GB RAM x 720 hours/month = **17280 GB hours**
 
 ## Why not OCI Kubernetes Engine (OKE)?
 
-This is a good question whenever we use a cloud provider we should always try to stick to their managed services, but I found upgrading with Talos Linux better because you can upgrade the existing node easily without deleting an existing node.
+While using a cloud provider's managed services is often recommended, I opted for **Talos Linux** over Oracle Kubernetes Engine (OKE) managed nodes for a few key reasons:
 
-OKE managed nodes was using Oracle Linux which was eating up more RAM.
-
-Can't customize node specs using OKE -> less flexiable.
+* **Seamless Upgrades:** Talos Linux allows for **in-place upgrades** of existing nodes, which means you can update your cluster without deleting and recreating nodes. This simplifies maintenance and reduces downtime.
+* **Optimized Resource Usage:** OKE's managed nodes run Oracle Linux, which consumed **more RAM** than necessary. Talos Linux, being a minimal OS, is much more resource-efficient, freeing up valuable memory for your applications.
+* **Greater Customization:** OKE's managed nodes offer **less flexibility** in terms of node specifications. With Talos Linux, you have more control to customize your node's resources to perfectly match your workload requirements. Like have a single node with more VCPU and keep the rest same.
 
 ## Why Talos Linux?
 
-- Truly immutable, hardened by default (i.e no ssh).
-- Built for Kubernetes, no need to manage OS dependencies.
+- Truly immutable, hardened by default (i.e, no SSH).
+- Built for Kubernetes; no need to manage OS dependencies.
 - Supports most cloud providers and bare metal workloads.
 - Easy Kubernetes upgrades.
-- Infrastructure as Code.
+- Built-In Infrastructure as Code support with Terraform.
+
+## Prerequisites
+
+- Download a Talos Linux image from https://factory.talos.dev/ and upload it to Oracle Cloud Custom Images.
+- Oracle Cloud API Key for Terraform authentication.
+
+## Architecture diagram
+
+![](../../images/diagram-export-6-12-2025-12_40_28-PM.png)
+
+All Load Balancers are Layer 4 because Layer 7 Load Balancers are significantly more expensive. Layer 4 Load Balancers, in contrast, are free. Only ports 80 and 443 are publicly exposed to the internet. The source code can be found on my GitHub, linked below.
+
+## Setting up Terraform
+
+Terraform is an Infrastructure as Code tool to provision resources that uses the language agnostic HashiCorp Configuration Language. We will use it along with Oracle and Talos Linux official Terraform provider.
+
+Here we have setup API key authentication with Oracle and setup Talos Linux's provider.
+
+```hcl
+terraform {
+  backend "oci" {
+    bucket            = "terraform-state"
+    namespace         = "bm0qttjfmooj"
+  }
+  required_providers {
+    talos = {
+      source  = "siderolabs/talos"
+      version = "0.8.1"
+    }
+    oci = {
+      source  = "oracle/oci"
+      version = "7.4.0"
+    }
+  }
+}
+provider "talos" {
+}
+// Oracle
+variable "user_ocid" {
+}
+variable "fingerprint" {
+}
+variable "tenancy_ocid" {
+}
+variable "region" {
+  default = "ap-mumbai-1"
+}
+variable "private_key_path" {
+  default = ""
+}
+variable "compartment_ocid" {
+}
+provider "oci" {
+  region           = var.region
+  tenancy_ocid     = var.tenancy_ocid
+  user_ocid        = var.user_ocid
+  fingerprint      = var.fingerprint
+  private_key_path = var.private_key_path
+}
+```
+
+### Setting up VMs
+
+We are going to create 3 VMs using Terraform with a Talos Linux image that we uploaded to OCI.
+
+```hcl
+resource "oci_core_instance" "controlplane" {
+  count = var.control_plane_count
+
+  availability_domain = data.oci_identity_availability_domain.ad.name
+  compartment_id      = var.compartment_ocid
+  display_name        = "bom-talos-${count.index + 1}"
+  shape               = var.instance_shape
+  fault_domain        = "FAULT-DOMAIN-${count.index + 1}"
+
+  shape_config {
+    ocpus         = count.index + 1 == var.control_plane_count ? 2 : var.instance_ocpus
+    memory_in_gbs = var.instance_shape_config_memory_in_gbs
+  }
+
+  create_vnic_details {
+    subnet_id        = oci_core_subnet.nodes.id
+    display_name     = "primaryvnic"
+    assign_public_ip = false
+    hostname_label   = "bom-talos-${count.index + 1}"
+    private_ip       = "10.0.10.${count.index + 2}"
+  }
+
+  source_details {
+    source_type = "image"
+    source_id   = var.talos_image_ocid
+  }
+
+  metadata = {
+    user_data = base64encode(data.talos_machine_configuration.this.machine_configuration)
+  }
+}
+```
+
+### Talos Linux Terraform
+
+Let's take a look at the Talos Linux configuration; there are two important parts we've set.
+
+First, we've configured the `certSANs` for both the cluster and the machines to include `127.0.0.1`. This allows us to authenticate with the Kubernetes API when we port forward it, as the server only verifies if the connecting IP's subject matches and doesn't pose any security risk.
+
+Secondly, we've set numerous fields to support Longhorn, which were copied directly from its documentation.
+
+Additionally, we've configured the NTP server to Oracle's highly available NTP server, `169.254.169.254`.
+
+We are also installing the metrics server as part of this setup.
 
 ```hcl
 data "talos_machine_configuration" "this" {
@@ -122,19 +236,81 @@ data "talos_machine_configuration" "this" {
 }
 ```
 
-## Architecture Diagram
+### Automating SSH Port Forwarding with OCI Bastion
 
-![](../../images/diagram-export-6-12-2025-12_40_28-PM.png)
+Now comes the important part: to automate port forwarding, I utilized the SSH multiplexing feature. This allowed me to create SSH port forwarding sessions in the background without the command being in the foreground indefinitely and exit them cleanly if needed without shell scripting.
 
-All Load Balancers are Layer 4 because Layer 7 Load Balancers cost a lot. Only 443 and 80 ports are exposed publicly to the internet. The source code can be found on my GitHub linked below.
+The `command` is simply quitting any existing session and then creating a new one. This handles cases where a session might exist but the connection is not properly established.
 
-## Longhorn
+I used `timestamp()` to **ALWAYS** run the port forwarding command to handle cases where the infrastructure is up to date but we need to rerun the port forwarding command. This is the reason we are using `null_resource` so it can re-run independently.
 
+As an example to port forward the Talos API server:
 
+```hcl
+resource "null_resource" "talos" {
+  depends_on = [oci_bastion_session.talos_session]
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+  provisioner "local-exec" {
+    command = "ssh -S bastion_session_talos -O exit ${local.talos_bastion_user}; ssh -M -S bastion_session_talos -fNL 50000:10.0.60.200:50000 ${local.talos_bastion_user}"
+  }
+}
+```
+
+Now that our production-ready highly available private Kubernetes cluster is ready we can start installing some stuff.
+
+## Bootstrapping ArgoCD
+
+I used Pulumi to bootstrap ArgoCD because I wanted to convert my existing Terraform code to Pulumi in the future so I can programmatic port forward using a library from a real programming language instead of relying on shell commands.
+
+First we just install ArgoCD then we apply our ArgoCD app of apps root application.
+
+```ts
+import * as k8s from "@pulumi/kubernetes";
+
+const argoCD = new k8s.kustomize.v2.Directory("argoCDKustomize", {
+  directory: "./bootstrap",
+});
+const argoCDRootApp = new k8s.yaml.v2.ConfigFile(
+  "argocd-root-app",
+  {
+    file: "../../root-argocd-app.yaml",
+  },
+  { dependsOn: [argoCD] }
+);
+```
+
+Bootstrap directory just has a kustomization file with a manifest pointing to ArgoCD installation.
+
+```yaml
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: argocd
+resources:
+- ./ns.yaml
+- https://raw.githubusercontent.com/argoproj/argo-cd/v3.0.2/manifests/install.yaml
+```
+
+```yaml
+# ns.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argocd
+```
+
+## ArgoCD
+
+My ArgoCD structure uses app of apps pattern and a 3 level structure suggested by [Codefresh.io](https://codefresh.io/blog/how-to-structure-your-argo-cd-repositories-using-application-sets/).
+
+## Resource Usage
 
 ## Upgrading Kubernetes
 
-upgrades
+TODO
 
 ## References
 

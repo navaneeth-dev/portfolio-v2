@@ -14,12 +14,34 @@
               "type": "markdown",
               "state": {
                 "file": "src/content/blog/free-production-kubernetes-cluster.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "free-production-kubernetes-cluster"
+            },
+            "group": "0bdf451cb0ed5aa4"
+          }
+        ]
+      },
+      {
+        "id": "48e33330a6be84e5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d569ae5a862a0329",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "src/content/blog/free-production-kubernetes-cluster.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
               "title": "free-production-kubernetes-cluster"
-            }
+            },
+            "group": "0bdf451cb0ed5aa4"
           }
         ]
       }
@@ -88,7 +110,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 400.5004348754883
+    "width": 400.5004348754883,
+    "collapsed": true
   },
   "right": {
     "id": "0b046d4188473830",
@@ -178,9 +201,10 @@
   },
   "active": "8fa5f72c2bebfffa",
   "lastOpenFiles": [
-    "BLOG-TEMPLATE.md",
-    "src/content/blog/why-ansible-sucks.md",
     "src/content/blog/free-production-kubernetes-cluster.md",
+    "astro.config.mjs~",
+    "src/content/blog/why-ansible-sucks.md",
+    "BLOG-TEMPLATE.md",
     "src/images/diagram-export-6-12-2025-12_40_28-PM.png",
     "src/content/blog/reverse-engineering-a-banking-app.md",
     "src/content/blog/free-production-kubernetes-cluster.mdx",
@@ -197,7 +221,6 @@
     "sst.config.ts~",
     "dist/sitemap-0.xml",
     "dist/sitemap-index.xml",
-    "dist/sst.buildMeta.json",
     "dist/_astro/Lock-dynamic-premium.DOmSbhJs_Z1tiaHx.webp",
     "dist/_astro/reverse-engineering-icici-b1-parent.DGUF1sMV_Z1g5dEN.webp",
     "dist/_astro/customid.D1fs8X1D_Zz9tey.webp",
@@ -222,7 +245,6 @@
     "src/pages/blog/nvim-switch-to-vscode.md",
     "src/pages/blog/sveltekit-from-a-nextjs-perspective.md",
     "src/pages/blog/srm-ktr-ctf-2023.md",
-    "src/pages/blog/srm-vadapalani-ctf-2023.md",
-    "src/pages/blog/external-recon.md"
+    "src/pages/blog/srm-vadapalani-ctf-2023.md"
   ]
 }
