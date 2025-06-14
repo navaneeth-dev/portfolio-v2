@@ -25,7 +25,7 @@ isDraft: false
 
 In this article, I will show you how to create a free, production-ready, highly available, private Kubernetes cluster in one command using Infrastructure as Code tools.
 
-## Why I choose Oracle Cloud?
+## Why I chose Oracle Cloud?
 
 * **Best Free Tier Among Cloud Providers:** I will explain why Oracle Cloud Infrastructure (OCI) offers a highly competitive and generous Free Tier compared to other cloud providers.
 * **Cost-Effective Production Services:** Learn how OCI can be a viable option for running production-grade services at low costs, even beyond the Free Tier.
@@ -97,10 +97,6 @@ Here we have setup API key authentication with Oracle Cloud and setup Talos Linu
 
 ```hcl
 terraform {
-  backend "oci" {
-    bucket            = "terraform-state"
-    namespace         = "bm0qttjfmooj"
-  }
   required_providers {
     talos = {
       source  = "siderolabs/talos"
@@ -114,21 +110,7 @@ terraform {
 }
 provider "talos" {
 }
-// Oracle
-variable "user_ocid" {
-}
-variable "fingerprint" {
-}
-variable "tenancy_ocid" {
-}
-variable "region" {
-  default = "ap-mumbai-1"
-}
-variable "private_key_path" {
-  default = ""
-}
-variable "compartment_ocid" {
-}
+// omitted variables
 provider "oci" {
   region           = var.region
   tenancy_ocid     = var.tenancy_ocid
@@ -140,7 +122,7 @@ provider "oci" {
 
 ### Setting up VMs
 
-We are going to create 3 VMs for a highly available setup using Terraform with a Talos Linux image that we uploaded to OCI.
+We are going to create 3 VMs for a highly available setup using Terraform with a Talos Linux image that we uploaded to OCI. We pass the Talos Linux machine config via user_data.
 
 ```hcl
 resource "oci_core_instance" "controlplane" {
@@ -178,7 +160,15 @@ resource "oci_core_instance" "controlplane" {
 
 ### Talos Linux Terraform
 
-Let's take a look at the Talos Linux configuration; there are two important parts we've set.
+Let's take a look at the Talos Linux configuration, there are a few important resources.
+
+- `talos_machine_secrets`: Used for generating Kubernetes authentication secrets like private keys, etc.
+- `talos_machine_configuration`: Used to generate Talos Machine config to be used while installing.
+- `talos_machine_bootstrap`: Used to bootstrap etcd. Run this **ONLY ONCE** for any node in this cluster.
+- `talos_client_configuration`: Stores client config in Terraform state.
+- `talos_cluster_kubeconfig`: Stores kubeconfig in Terraform state.
+
+There are two important parts we've set for the machine configuration.
 
 First, we've configured the `certSANs` for both the cluster and the machines to include `127.0.0.1`. This allows us to authenticate with the Kubernetes API when we port forward it, as the server only verifies if the connecting IP's subject matches and doesn't pose any security risk.
 
