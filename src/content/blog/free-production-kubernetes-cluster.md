@@ -7,7 +7,7 @@ tags:
   - cloud
 pubDate: May 6 2025
 image: /kubernetes-cluster.jpg
-description: Run and setup a production-ready Kubernetes cluster for free using Infrastructure as Code. This guide shows you how to leverage Oracle Cloud's Free Tier for a secure, easily updatable K8s setup.
+description: Run and setup a production-ready Kubernetes cluster for free using Infrastructure as Code. This guide shows you how to leverage Oracle Cloud's Free Tier for a secure, easily updatable K8s setup. Learn to automate everything with one command.
 author: Navaneeth
 isDraft: false
 ---
@@ -21,6 +21,7 @@ isDraft: false
 * Learn about Infrastructure as Code tools like Terraform and Pulumi.
 * Learn to configure Oracle Bastion with Terraform for secure access to a private Kubernetes Cluster.
 * Learn to set up Talos Linux with Longhorn.
+* Learn to automate everything in one command using [taskfile](https://taskfile.dev).
 
 In this article, I will show you how to create a free, production-ready, highly available, private Kubernetes cluster in one command using Infrastructure as Code tools.
 
@@ -80,19 +81,19 @@ While using a cloud provider's managed services is often recommended, I opted fo
 ## Prerequisites
 
 - Download a Talos Linux image from https://factory.talos.dev/ and upload it to Oracle Cloud Custom Images.
-- Oracle Cloud API Key for Terraform authentication.
+- Oracle Cloud API Key authentication setup for Terraform. Public & private key should be downloaded on your machine.
 
 ## Architecture diagram
 
-![](../../images/diagram-export-6-12-2025-12_40_28-PM.png)
+![](../../images/OCI%20Architecture%20Diagram%20Toolkit%20v24.2-Page-5.drawio.png)
 
-All Load Balancers are Layer 4 because Layer 7 Load Balancers are significantly more expensive. Layer 4 Load Balancers, in contrast, are free. Only ports 80 and 443 are publicly exposed to the internet. The source code can be found on my GitHub, linked below.
+All Load Balancers are Layer 4 because Layer 7 Load Balancers are significantly more expensive. Layer 4 Load Balancers, in contrast, are free. Only ports 80 and 443 are publicly exposed to the internet. The source code can be found on my GitHub, linked in the references.
 
 ## Setting up Terraform
 
-Terraform is an Infrastructure as Code tool to provision resources that uses the language agnostic HashiCorp Configuration Language. We will use it along with Oracle and Talos Linux official Terraform provider.
+Terraform is an Infrastructure as Code tool to provision resources that uses the language agnostic HashiCorp Configuration Language. We will use it along with Oracle's and Talos Linux's official Terraform provider.
 
-Here we have setup API key authentication with Oracle and setup Talos Linux's provider.
+Here we have setup API key authentication with Oracle Cloud and setup Talos Linux's provider.
 
 ```hcl
 terraform {
@@ -139,7 +140,7 @@ provider "oci" {
 
 ### Setting up VMs
 
-We are going to create 3 VMs using Terraform with a Talos Linux image that we uploaded to OCI.
+We are going to create 3 VMs for a highly available setup using Terraform with a Talos Linux image that we uploaded to OCI.
 
 ```hcl
 resource "oci_core_instance" "controlplane" {
@@ -236,6 +237,79 @@ data "talos_machine_configuration" "this" {
 }
 ```
 
+### Load Balancers
+
+We need to create 2 private Load Balancers: Talos, Kubernetes API and one publicly exposed Load Balancer for our Ingress. As I said before we are going to create Layer 4 Load Balancers so we need to have a certificate and open ports on every node.
+
+I am using the `NodePort` of Traefik to forward traffic from the Layer 4 Load Balancer. Here is an example for our private Load Balancer for Talos:
+
+```hcl
+resource "oci_network_load_balancer_network_load_balancer" "talos" {
+  compartment_id = var.compartment_ocid
+  display_name   = "talos"
+  subnet_id      = oci_core_subnet.loadbalancers.id
+  is_private     = true # Make the load balancer private
+
+  assigned_private_ipv4 = "10.0.60.200"
+}
+```
+
+Our public Load Balancer for Internet Traffic with IPv6:
+
+```hcl
+resource "oci_network_load_balancer_network_load_balancer" "traefik_nlb" {
+  compartment_id = var.compartment_ocid
+  display_name   = "traefik_ingress_nlb"
+  subnet_id      = oci_core_subnet.public_lbs.id
+  is_private     = false # Make the load balancer private
+  nlb_ip_version = "IPV4_AND_IPV6"
+
+  assigned_ipv6 = cidrhost(oci_core_subnet.public_lbs.ipv6cidr_block, 200)
+}
+```
+
+Our setup is now highly available so even if one node fails there is no downtime.
+
+### Security
+
+Security is very simple, we only expose the ports we need. All egress traffic is allowed and all traffic inside our private nodes subnet is allowed. Here is an example:
+
+```hcl
+resource "oci_core_security_list" "loadbalancers_sec_list" {
+  compartment_id = var.compartment_ocid
+  vcn_id         = oci_core_virtual_network.talos_vcn.id
+  display_name   = "Private Load Balancer security list"
+
+  # IPv4: Allow all egress traffic
+  egress_security_rules {
+    protocol    = "all"
+    destination = "0.0.0.0/0"
+  }
+
+  # IPv4: Allow Talos from Bastion
+  ingress_security_rules {
+    protocol = "6"
+    source   = "10.0.30.0/24"
+
+    tcp_options {
+      max = "50000"
+      min = "50000"
+    }
+  }
+
+  # IPv4: Allow K8S from Bastion
+  ingress_security_rules {
+    protocol = "6"
+    source   = "10.0.30.0/24"
+
+    tcp_options {
+      max = "6443"
+      min = "6443"
+    }
+  }
+}
+```
+
 ### Automating SSH Port Forwarding with OCI Bastion
 
 Now comes the important part: to automate port forwarding, I utilized the SSH multiplexing feature. This allowed me to create SSH port forwarding sessions in the background without the command being in the foreground indefinitely and exit them cleanly if needed without shell scripting.
@@ -302,16 +376,59 @@ metadata:
   name: argocd
 ```
 
-## ArgoCD
+## Automating everything with one command
 
-My ArgoCD structure uses app of apps pattern and a 3 level structure suggested by [Codefresh.io](https://codefresh.io/blog/how-to-structure-your-argo-cd-repositories-using-application-sets/).
+To have one command setup everything: Terraform -> Pulumi -> storing kubeconfig & talosconfig I am using [taskfile](https://taskfile.dev/).
+
+```yaml
+tasks:
+  default:
+    cmds:
+      - terraform apply -auto-approve
+      - task: configs
+    silent: true
+  configs:
+    cmds:
+      - terraform output -raw talosconfig > ./talosconfig
+      - terraform output -raw kubeconfig > ./kubeconfig
+      - mv ./kubeconfig ~/.kube/config
+```
 
 ## Resource Usage
 
-## Upgrading Kubernetes
+The cluster is just running Traefik, Sealed Secrets, Reflector, Longhorn, kube-prometheus-stack, External Secrets, Cloudnative PG, cert-manager and ArgoCD.
 
-TODO
+Additionally there is a single Laravel app deployed with staging and prod environments.
+
+I have attached the screenshots of Node Exporter of each node:
+
+![](../../images/free-production-kubernetes-cluster-usage-1.png)
+
+![](../../images/free-production-kubernetes-cluster-usage-2.png)
+
+![](../../images/free-production-kubernetes-cluster-usage-3.png)
+
+## Upgrading
+
+### Kubernetes & Talos
+
+Not yet tested. Will update the article once I test it.
+
+### Apps & Dependencies
+
+I use [Renovate](https://docs.renovatebot.com/) to keep my dependencies up to date. Nothing more to say, it works really well with Infrastructure as Code tools.
+
+![](../../images/free-production-kubernetes-cluster-renovate.png)
+
+## Future improvements
+
+- Migrate Terraform to Pulumi.
+- Remove dependency of uploading Talos Linux image.
+- Use a library to programmatically port forward using OCI Bastion. 
+- Fully automated ArgoCD with sync waves for COMPLETELY automated bootstrap and deployment.
+- Making ArgoCD environment adaptable for other people like easily change domain and it should work.
 
 ## References
 
-[github.com/navaneeth-dev/public-gitops/](https://github.com/navaneeth-dev/public-gitops/tree/main/infrastructure)
+- [https://github.com/navaneeth-dev/public-gitops/tree/main/infrastructure](https://github.com/navaneeth-dev/public-gitops/tree/main/infrastructure)
+- https://codefresh.io/blog/how-to-structure-your-argo-cd-repositories-using-application-sets/

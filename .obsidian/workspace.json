@@ -201,7 +201,13 @@
   },
   "active": "8fa5f72c2bebfffa",
   "lastOpenFiles": [
+    "src/images/OCI Architecture Diagram Toolkit v24.2-Page-5.drawio.png",
+    "src/images/free-production-kubernetes-cluster-usage-3.png",
+    "src/images/free-production-kubernetes-cluster-usage-2.png",
+    "src/images/free-production-kubernetes-cluster-usage-1.png",
+    "src/content/blog/best-dotfiles-setup.md",
     "src/content/blog/free-production-kubernetes-cluster.md",
+    "src/images/free-production-kubernetes-cluster-renovate.png",
     "astro.config.mjs~",
     "src/content/blog/why-ansible-sucks.md",
     "BLOG-TEMPLATE.md",
@@ -222,10 +228,6 @@
     "dist/sitemap-0.xml",
     "dist/sitemap-index.xml",
     "dist/_astro/Lock-dynamic-premium.DOmSbhJs_Z1tiaHx.webp",
-    "dist/_astro/reverse-engineering-icici-b1-parent.DGUF1sMV_Z1g5dEN.webp",
-    "dist/_astro/customid.D1fs8X1D_Zz9tey.webp",
-    "dist/_astro/reverse-engineering-icici-truirt._nEX7Rqs_ZDJ7Mh.webp",
-    "dist/_astro/reverse-engineering-icici-dsf.BNM4rcjp_Z1IcknA.webp",
     "aws/README.md",
     "src/pages/blog/Untitled.md",
     "src/content/blog/cyber-security-blogs-you-should-follow.md",
@@ -244,7 +246,6 @@
     "src/pages/blog/vim-cheatsheet.md",
     "src/pages/blog/nvim-switch-to-vscode.md",
     "src/pages/blog/sveltekit-from-a-nextjs-perspective.md",
-    "src/pages/blog/srm-ktr-ctf-2023.md",
-    "src/pages/blog/srm-vadapalani-ctf-2023.md"
+    "src/pages/blog/srm-ktr-ctf-2023.md"
   ]
 }
