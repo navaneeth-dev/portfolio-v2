@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/blog/free-production-kubernetes-cluster.md",
+                "file": "BLOG-TEMPLATE.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "free-production-kubernetes-cluster"
+              "title": "BLOG-TEMPLATE"
             },
             "group": "0bdf451cb0ed5aa4"
           }
@@ -34,12 +34,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/blog/free-production-kubernetes-cluster.md",
+                "file": "BLOG-TEMPLATE.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "free-production-kubernetes-cluster"
+              "title": "BLOG-TEMPLATE"
             },
             "group": "0bdf451cb0ed5aa4"
           }
@@ -110,8 +110,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 400.5004348754883,
-    "collapsed": true
+    "width": 400.5004348754883
   },
   "right": {
     "id": "0b046d4188473830",
@@ -199,17 +198,17 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "8fa5f72c2bebfffa",
+  "active": "8da4eb233a7f5718",
   "lastOpenFiles": [
+    "src/content/blog/best-dotfiles-setup.md",
+    "src/content/blog/why-ansible-sucks.md",
+    "src/content/blog/free-production-kubernetes-cluster.md",
     "src/images/OCI Architecture Diagram Toolkit v24.2-Page-5.drawio.png",
     "src/images/free-production-kubernetes-cluster-usage-3.png",
     "src/images/free-production-kubernetes-cluster-usage-2.png",
     "src/images/free-production-kubernetes-cluster-usage-1.png",
-    "src/content/blog/best-dotfiles-setup.md",
-    "src/content/blog/free-production-kubernetes-cluster.md",
     "src/images/free-production-kubernetes-cluster-renovate.png",
     "astro.config.mjs~",
-    "src/content/blog/why-ansible-sucks.md",
     "BLOG-TEMPLATE.md",
     "src/images/diagram-export-6-12-2025-12_40_28-PM.png",
     "src/content/blog/reverse-engineering-a-banking-app.md",
@@ -227,7 +226,6 @@
     "sst.config.ts~",
     "dist/sitemap-0.xml",
     "dist/sitemap-index.xml",
-    "dist/_astro/Lock-dynamic-premium.DOmSbhJs_Z1tiaHx.webp",
     "aws/README.md",
     "src/pages/blog/Untitled.md",
     "src/content/blog/cyber-security-blogs-you-should-follow.md",
