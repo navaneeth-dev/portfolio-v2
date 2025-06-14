@@ -4,27 +4,6 @@
     "type": "split",
     "children": [
       {
-        "id": "5289bf057e62089e",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "53569b20a82133ee",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "src/content/blog/free-production-kubernetes-cluster.md",
-                "mode": "source",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "free-production-kubernetes-cluster"
-            },
-            "group": "47b10c49ffa9e0ec"
-          }
-        ]
-      },
-      {
         "id": "8454caac72f9c840",
         "type": "tabs",
         "children": [
@@ -40,8 +19,7 @@
               },
               "icon": "lucide-file",
               "title": "free-production-kubernetes-cluster"
-            },
-            "group": "47b10c49ffa9e0ec"
+            }
           }
         ]
       }
@@ -110,8 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 400.5004348754883,
-    "collapsed": true
+    "width": 400.5004348754883
   },
   "right": {
     "id": "0b046d4188473830",
@@ -199,14 +176,19 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "53569b20a82133ee",
+  "active": "8fa5f72c2bebfffa",
   "lastOpenFiles": [
+    "BLOG-TEMPLATE.md",
+    "src/content/blog/why-ansible-sucks.md",
+    "src/content/blog/free-production-kubernetes-cluster.md",
+    "src/images/diagram-export-6-12-2025-12_40_28-PM.png",
+    "src/content/blog/reverse-engineering-a-banking-app.md",
+    "src/content/blog/free-production-kubernetes-cluster.mdx",
     "src/pages/blog/index.astro~",
     "src/components/Header.astro~",
     "public/kubernetes-cluster.jpg",
     "src/images/kubernetes-cluster.jpg",
     "src/images/Twitter post - 1.jpg",
-    "src/content/blog/free-production-kubernetes-cluster.md",
     "src/content/blog/reverse-engineering-icici.md",
     "src/components/BlogCard.astro~",
     "src/pages/blog/[...slug].astro~",
@@ -221,9 +203,6 @@
     "dist/_astro/customid.D1fs8X1D_Zz9tey.webp",
     "dist/_astro/reverse-engineering-icici-truirt._nEX7Rqs_ZDJ7Mh.webp",
     "dist/_astro/reverse-engineering-icici-dsf.BNM4rcjp_Z1IcknA.webp",
-    "dist/_astro/reverse-engineering-icici-zap.qDrPLYIf_Z1i8xI7.webp",
-    "dist/index.html",
-    "dist/tag/reverse engineering/index.html",
     "aws/README.md",
     "src/pages/blog/Untitled.md",
     "src/content/blog/cyber-security-blogs-you-should-follow.md",
@@ -239,7 +218,6 @@
     "src/content/blog/nvim-switch-to-vscode.md",
     "src/content/blog/foss-india.md",
     "public/Untitled.md",
-    "BLOG-TEMPLATE.md",
     "src/pages/blog/vim-cheatsheet.md",
     "src/pages/blog/nvim-switch-to-vscode.md",
     "src/pages/blog/sveltekit-from-a-nextjs-perspective.md",
