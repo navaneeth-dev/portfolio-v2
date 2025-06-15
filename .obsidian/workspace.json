@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "BLOG-TEMPLATE.md",
+                "file": "src/content/blog/free-production-kubernetes-cluster.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "BLOG-TEMPLATE"
+              "title": "free-production-kubernetes-cluster"
             },
             "group": "0bdf451cb0ed5aa4"
           }
@@ -34,12 +34,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "BLOG-TEMPLATE.md",
+                "file": "src/content/blog/free-production-kubernetes-cluster.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "BLOG-TEMPLATE"
+              "title": "free-production-kubernetes-cluster"
             },
             "group": "0bdf451cb0ed5aa4"
           }
@@ -200,6 +200,7 @@
   },
   "active": "8da4eb233a7f5718",
   "lastOpenFiles": [
+    "BLOG-TEMPLATE.md",
     "src/content/blog/best-dotfiles-setup.md",
     "src/content/blog/why-ansible-sucks.md",
     "src/content/blog/free-production-kubernetes-cluster.md",
@@ -209,7 +210,6 @@
     "src/images/free-production-kubernetes-cluster-usage-1.png",
     "src/images/free-production-kubernetes-cluster-renovate.png",
     "astro.config.mjs~",
-    "BLOG-TEMPLATE.md",
     "src/images/diagram-export-6-12-2025-12_40_28-PM.png",
     "src/content/blog/reverse-engineering-a-banking-app.md",
     "src/content/blog/free-production-kubernetes-cluster.mdx",

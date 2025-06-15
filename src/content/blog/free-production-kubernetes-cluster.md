@@ -12,7 +12,7 @@ author: Navaneeth
 isDraft: false
 ---
 
-**Discussion Links**: [r/devops]() | [r/kubernetes]()
+**Discussion Links**: [r/oraclecloud](https://www.reddit.com/r/oraclecloud/comments/1lbr5hm/ha_production_ready_kubernetes_cluster_for_free/) | [r/kubernetes](https://www.reddit.com/r/kubernetes/comments/1lbr8ma/ha_production_ready_kubernetes_cluster_for_free/)
 
 ## Takeaway
 
