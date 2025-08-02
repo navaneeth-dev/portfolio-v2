@@ -4,7 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Project from "../components/Project.astro";
 import {SITE_TITLE, SITE_DESCRIPTION} from "../config";
-import LockPic from "../../public/Lock-dynamic-premium.png";
+import HeroSection from "../components/HeroSection.tsx";
 // import DanteCert from "../../public/certs/dante.png";
 // import InCTFJCert from "../../public/certs/inctfj.jpg";
 // import PEHCert from "../../public/certs/peh.png";
@@ -29,48 +29,7 @@ const latestPosts = (await getCollection("blog", ({data}) => !data.isDraft))
 <body>
 <Header/>
 
-<!-- Hero -->
-<main class="relative overflow-hidden">
-  <div
-    class="container px-12 mx-auto flex flex-col-reverse md:flex-row justify-around items-center py-6 max-w-screen-xl"
-  >
-    <!-- Content -->
-    <div class="flex flex-1 flex-col gap-y-6 py-12">
-      <h1 class="text-center md:text-left text-2xl md:text-3xl">
-        Hi, my name is<br/><span class="font-bold">Navaneeth</span>
-      </h1>
-      <p class="text-center md:text-left">
-        I am a final year Computer Science undergrad student with more than 5 years of experience across Full Stack
-        development, Cyber Security and DevOps.
-      </p>
-      <a
-        href="/contact"
-        class="bg-primary text-white px-4 py-2 border border-black self-center md:self-start rounded hover:shadow-[5px_5px_0_rgba(0,0,0,1)] transition-shadow"
-      >Connect with me</a
-      >
-    </div>
-    <!-- Hero Image -->
-    <div class="flex-1 flex justify-center">
-      <Image
-        src={LockPic}
-        alt="Lock pic"
-        class="z-10 max-h-96 w-[500px] animate-bounce-slow"
-        format="webp"
-        quality={100}
-      />
-    </div>
-  </div>
-  <!-- Transformed rectangle -->
-  <div
-    class="hidden md:block overflow-hidden bg-primary w-[55vw] h-[55vw] absolute -right-2 top-1/2 rotate-45 -translate-y-1/2 translate-x-1/2"
-  >
-  </div>
-  <!-- Mobile rect -->
-  <div
-    class="bg-primary md:hidden absolute top-12 right-1/2 translate-x-1/2 translate-y-1/4 max-w-[9rem] max-h-[9rem] w-[38vw] h-[38vw] rotate-45"
-  >
-  </div>
-</main>
+<HeroSection client:load />
 
 <!-- Latest Blog Posts -->
 <section class="border-t border-black">

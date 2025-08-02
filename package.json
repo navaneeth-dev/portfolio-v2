@@ -26,6 +26,7 @@
     "dayjs": "^1.11.13",
     "hastscript": "^7.2.0",
     "lucide-react": "^0.503.0",
+    "motion": "^12.23.12",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "sharp": "^0.33.5",
