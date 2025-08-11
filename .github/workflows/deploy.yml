@@ -29,8 +29,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build
-        run: pnpm build
-
       - name: Deploy with SST
         run: CLOUDFLARE_API_TOKEN=${{ secrets.CLOUDFLARE_API_TOKEN }} pnpm sst deploy --stage ${{ github.ref_name }}
