@@ -5,10 +5,19 @@ on:
     branches:
       - production
 
+permissions:
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@main # Or a specific version
+        with:
+          role-to-assume: ghaction
+          aws-region: ap-south-1
+
       - uses: actions/checkout@v4
 
       - name: Install pnpm
