@@ -35,9 +35,9 @@ export default $config({
       },
     });
 
-    new sst.aws.Astro("MyWeb", {
-      domain,
-      link: [api]
-    });
+    // new sst.aws.Astro("MyWeb", {
+    //   domain,
+    //   link: [api]
+    // });
   },
 });
