@@ -15,7 +15,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@main # Or a specific version
         with:
-          role-to-assume: arn:aws:iam::108782081986:role/ghaction
+          role-to-assume: arn:aws:iam::108782081986:role/ghactionrole
           aws-region: ap-south-1
 
       - uses: actions/checkout@v4
