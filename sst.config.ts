@@ -18,7 +18,7 @@ export default $config({
     // hcaptcha
     const secret = new sst.Secret("MySecret");
 
-    const sender = "noreply.rizexor.com";
+    const sender = $app.stage === "production" ? "noreply.rizexor.com" : "sst-dev.rizexor.com";
     const email = new sst.aws.Email("MyEmail", {
         dmarc: "v=DMARC1; p=quarantine; adkim=s",
         sender,

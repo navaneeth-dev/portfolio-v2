@@ -4,9 +4,10 @@ import type {LambdaFunctionURLEvent, LambdaFunctionURLHandler} from "aws-lambda"
 import {z} from "zod/v4";
 
 const ContactEvent = z.object({
-    firstname: z.string(),
-    lastname: z.string(),
-    email: z.string(),
+    firstname: z.string().min(3).max(256),
+    lastname: z.string().min(3).max(256),
+    email: z.string().max(256),
+    subject: z.string().min(4).max(256),
     'h-captcha-response': z.string(),
     message: z.string().max(10000)
 });
@@ -27,6 +28,7 @@ export const handler: LambdaFunctionURLHandler = async (event: LambdaFunctionURL
             firstname: params.get("firstname") || "",
             lastname: params.get("lastname") || "",
             email: params.get("email") || "",
+            subject: params.get("subject") || "",
             'h-captcha-response': params.get("h-captcha-response") || "",
             message: params.get("message") || "",
         };
@@ -60,11 +62,11 @@ export const handler: LambdaFunctionURLHandler = async (event: LambdaFunctionURL
                 Content: {
                     Simple: {
                         Subject: {
-                            Data: `Contact Request ${contactEvent.firstname} ${contactEvent.lastname}`,
+                            Data: `${contactEvent.subject} - Navaneeth (rizexor.com)`,
                         },
                         Body: {
                             Text: {
-                                Data: contactEvent.message,
+                                Data: `Message From: ${contactEvent.firstname} ${contactEvent.lastname}\n ${contactEvent.message}`,
                             },
                         },
                     },
