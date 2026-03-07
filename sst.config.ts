@@ -6,7 +6,7 @@ export default $config({
       removal: input?.stage === "production" ? "retain" : "remove",
       protect: ["production"].includes(input?.stage),
       home: "aws",
-      providers: {aws: {region: "ap-south-1"}, cloudflare: "6.2.0"},
+      providers: {aws: {region: "ap-south-1"}, cloudflare: "6.13.0"},
     };
   },
   async run() {
@@ -15,9 +15,10 @@ export default $config({
       dns: sst.cloudflare.dns()
     };
 
+    // hcaptcha
     const secret = new sst.Secret("MySecret");
 
-    const sender = "rizexor.com";
+    const sender = "noreply.rizexor.com";
     const email = $app.stage === "production" ? sst.aws.Email.get("MyEmail", sender) :
       new sst.aws.Email("MyEmail", {
         dmarc: "v=DMARC1; p=quarantine; adkim=s",
@@ -35,9 +36,9 @@ export default $config({
       },
     });
 
-    // new sst.aws.Astro("MyWeb", {
-    //   domain,
-    //   link: [api]
-    // });
+    new sst.aws.Astro("MyWeb", {
+      domain,
+      link: [api]
+    });
   },
 });

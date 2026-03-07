@@ -56,6 +56,7 @@ export const handler: LambdaFunctionURLHandler = async (event: LambdaFunctionURL
                 Destination: {
                     ToAddresses: ["contact@" + Resource.MyEmail.sender],
                 },
+                ReplyToAddresses: [contactEvent.email],
                 Content: {
                     Simple: {
                         Subject: {
