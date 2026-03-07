@@ -52,15 +52,15 @@ export const handler: LambdaFunctionURLHandler = async (event: LambdaFunctionURL
 
         await client.send(
             new SendEmailCommand({
-                FromEmailAddress: "contact@" + Resource.MyEmail.sender,
+                FromEmailAddress: "notifications@" + Resource.MyEmail.sender,
                 Destination: {
-                    ToAddresses: ["contact@" + Resource.MyEmail.sender],
+                    ToAddresses: ["me@rizexor.com"],
                 },
                 ReplyToAddresses: [contactEvent.email],
                 Content: {
                     Simple: {
                         Subject: {
-                            Data: `Contact Request ${contactEvent.firstname} ${contactEvent.lastname} ${contactEvent.email}`,
+                            Data: `Contact Request ${contactEvent.firstname} ${contactEvent.lastname}`,
                         },
                         Body: {
                             Text: {
