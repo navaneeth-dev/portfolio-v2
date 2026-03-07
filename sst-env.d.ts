@@ -6,6 +6,24 @@
 
 declare module "sst" {
   export interface Resource {
+    "MyApi": {
+      "name": string
+      "type": "sst.aws.Function"
+      "url": string
+    }
+    "MyEmail": {
+      "configSet": string
+      "sender": string
+      "type": "sst.aws.Email"
+    }
+    "MySecret": {
+      "type": "sst.sst.Secret"
+      "value": string
+    }
+    "MyWeb": {
+      "type": "sst.aws.Astro"
+      "url": string
+    }
   }
 }
 /// <reference path="sst-env.d.ts" />
