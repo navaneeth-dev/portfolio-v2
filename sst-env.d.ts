@@ -5,14 +5,6 @@
 
 declare module "sst" {
   export interface Resource {
-    "MySecret": {
-      "type": "sst.sst.Secret"
-      "value": string
-    }
-    "MyWeb": {
-      "type": "sst.aws.Astro"
-      "url": string
-    }
   }
 }
 /// <reference path="sst-env.d.ts" />
