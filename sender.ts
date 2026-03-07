@@ -66,7 +66,7 @@ export const handler: LambdaFunctionURLHandler = async (event: LambdaFunctionURL
                         },
                         Body: {
                             Text: {
-                                Data: `Message From: ${contactEvent.firstname} ${contactEvent.lastname}<br/><br/> ${contactEvent.message}`,
+                                Data: `Message From: ${contactEvent.firstname} ${contactEvent.lastname}\n\n ${contactEvent.message}`,
                             },
                         },
                     },
