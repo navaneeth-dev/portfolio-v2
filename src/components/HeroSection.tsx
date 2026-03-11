@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import {motion} from "motion/react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -40,8 +40,7 @@ export default function HeroSection() {
             variants={itemVariants}
             className="text-center md:text-left"
           >
-            I am a final year Computer Science undergrad student with more than 5 years of experience across Full Stack
-            development, Cyber Security and DevOps.
+            Senior DevOps Engineer @ NeuSix
           </motion.p>
           <motion.a
             variants={itemVariants}
