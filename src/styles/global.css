@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-primary: #ea2027;
+  --font-sans: "Inter Variable", sans-serif;
+  --animate-bounce-slow: bounce-slow 2.5s infinite;
+  --animate-scroll: scroll 10s linear infinite;
+
+  @keyframes bounce-slow {
+    0%, 100% {
+      transform: translateY(5%);
+    }
+    50% {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scroll {
+    0% {
+      left: 0;
+    }
+    100% {
+      left: -100%;
+    }
+  }
+}

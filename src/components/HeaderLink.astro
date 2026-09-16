@@ -11,6 +11,8 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, "");
   <slot />
 </a>
 <style>
+  @reference "../styles/global.css";
+
   a {
     @apply rounded transition-colors;
   }

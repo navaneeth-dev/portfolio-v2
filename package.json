@@ -11,16 +11,16 @@
     "start": "astro dev"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.13",
-    "@astrojs/react": "^4.4.2",
-    "@astrojs/rss": "^4.0.15",
-    "@astrojs/sitemap": "^3.7.0",
-    "@astrojs/tailwind": "^6.0.2",
+    "@astrojs/mdx": "^8.0.1",
+    "@astrojs/react": "^6.0.5",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
     "@aws-sdk/client-sesv2": "^3.1004.0",
     "@fontsource-variable/inter": "^5.2.8",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "astro": "^5.18.0",
+    "astro": "^7.3.2",
     "astro-sst": "3.1.4",
     "dayjs": "^1.11.19",
     "hastscript": "^7.2.0",
@@ -30,14 +30,19 @@
     "react-dom": "^19.2.4",
     "sharp": "^0.33.5",
     "sst": "4.2.2",
-    "tailwindcss": "^3.4.19",
+    "tailwindcss": "^4.3.3",
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@astrojs/markdown-remark": "^6.3.10",
-    "@tailwindcss/line-clamp": "^0.4.4",
-    "@tailwindcss/typography": "^0.5.19",
+    "@astrojs/markdown-remark": "^7.3.1",
+    "@tailwindcss/typography": "^0.5.20",
     "@types/aws-lambda": "^8.10.161",
     "rehype-autolink-headings": "^6.1.1"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "10.15.0"
+    }
   }
 }

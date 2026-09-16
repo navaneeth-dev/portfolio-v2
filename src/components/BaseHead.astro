@@ -9,7 +9,8 @@ export interface Props {
 }
 
 import {ClientRouter} from "astro:transitions";
-import '@fontsource-variable/inter';
+import '@fontsource-variable/inter/index.css';
+import '../styles/global.css';
 
 const {title, description, image = "/open_graph_image.png"} = Astro.props;
 ---
