@@ -37,7 +37,10 @@ export default $config({
 
     new sst.aws.Astro("MyWeb", {
       domain,
-      link: [api]
+      link: [api],
+      dev: {
+        command: "pnpm run dev"
+      }
     });
   },
 });

@@ -40,7 +40,7 @@ export default function HeroSection() {
             variants={itemVariants}
             className="text-center md:text-left"
           >
-            Senior DevOps Engineer @ NeuSix
+            Senior Platform Engineer @ NeuSix
           </motion.p>
           <motion.a
             variants={itemVariants}
