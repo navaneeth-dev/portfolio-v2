@@ -4,7 +4,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../../config";
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
 import { Image } from "astro:assets";
-import { CollectionEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
   const allPostsSorted = (await getCollection("blog")).sort(
@@ -68,7 +69,7 @@ const { tag } = Astro.params;
                   </div>
                   <div class="p-2">
                     <time
-                      datetime={post.data.pubDate}
+                      datetime={post.data.pubDate.toISOString()}
                       class="text-sm text-gray-700"
                     >
                       {new Date(post.data.pubDate).toLocaleDateString("en-us", {
@@ -78,7 +79,7 @@ const { tag } = Astro.params;
                       })}
                     </time>
                     <h2 class="text-xl font-bold mb-2 text-primary">
-                      <a href={post.url} class="hover:underline">
+                      <a href={"/blog/" + post.id} class="hover:underline">
                         {post.data.title}
                       </a>
                     </h2>

@@ -36,7 +36,7 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
       })}
     </time>
     <a
-      href={"/blog/" + post.slug}
+      href={"/blog/" + post.id}
       class="text-xl font-bold mb-2 text-primary hover:underline"
     >
       {post.data.title}
@@ -54,8 +54,8 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
     </div>
     <p>{post.data.description}</p>
     <a
-      href={"/blog/" + post.slug}
-      class="bg-black text-white border rounded inline-flex items-center justify-center px-4 py-2 hover:shadow-[5px_5px_0_rgba(0,0,0,0.2)] transition-shadow"
+      href={"/blog/" + post.id}
+      class="bg-black text-white border border-gray-200 rounded inline-flex items-center justify-center px-4 py-2 hover:shadow-[5px_5px_0_rgba(0,0,0,0.2)] transition-shadow"
     >
       Read More
       <ArrowUp/>
