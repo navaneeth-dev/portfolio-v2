@@ -1,34 +1,35 @@
 ---
-import {Image} from 'astro:assets';
-import type {CollectionEntry} from 'astro:content';
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
 import ArrowUp from "../components/ArrowUp.astro";
-import {Calendar, Tags} from "lucide-react";
+import { Calendar, Tags } from "lucide-react";
 
 interface Props {
-  post: CollectionEntry<'blog'>;
+  post: CollectionEntry<"blog">;
 }
 
-const {post} = Astro.props;
+const { post } = Astro.props;
 
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/images/*.{jpeg,jpg,png,webp}');
-const imagePath = '/src/images' + post.data.image;
-if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/images/*.{jpeg,jpg,png,webp}"`);
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/images/*.{jpeg,jpg,png,webp}",
+);
+const imagePath = "/src/images" + post.data.image;
+if (!images[imagePath])
+  throw new Error(
+    `"${imagePath}" does not exist in glob: "src/images/*.{jpeg,jpg,png,webp}"`,
+  );
 ---
 
 <div class="bg-black/5 rounded-lg flex flex-col gap-3 h-full mb-3">
   <div class="w-full">
-    <Image
-      src={images[imagePath]()}
-      alt={post.data.title}
-      class="rounded-lg"
-    />
+    <Image src={images[imagePath]()} alt={post.data.title} class="rounded-lg" />
   </div>
   <div class="px-4 py-2 flex flex-col gap-1 items-start">
     <time
       datetime={post.data.pubDate.toString()}
       class="text-sm text-gray-700 block flex gap-1 items-center"
     >
-      <Calendar/>
+      <Calendar />
       {new Date(post.data.pubDate).toLocaleDateString("en-us", {
         year: "numeric",
         month: "short",
@@ -44,10 +45,10 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
     <div>
       {post.data.tags.map((tag: string) => (
         <a
-          class="mr-2 inline-flex gap-1 border border-neutral-700 uppercase text-sm text-neutral-700 hover:bg-neutral-100 px-2 items-center justify-center text-center"
+          class="mr-2 inline-flex gap-1 border border-neutral-700 uppercase text-sm text-neutral-700 hover:bg-neutral-200 px-2 items-center justify-center text-center"
           href={"/tag/" + tag}
         >
-          <Tags/>
+          <Tags />
           {tag}
         </a>
       ))}
@@ -58,7 +59,7 @@ if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: 
       class="bg-black text-white border border-gray-200 rounded inline-flex items-center justify-center px-4 py-2 hover:shadow-[5px_5px_0_rgba(0,0,0,0.2)] transition-shadow"
     >
       Read More
-      <ArrowUp/>
+      <ArrowUp />
     </a>
   </div>
 </div>
