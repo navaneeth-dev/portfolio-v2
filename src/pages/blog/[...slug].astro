@@ -51,7 +51,7 @@ if (!images[imagePath])
     <main class="pb-12">
       <section class="container mx-auto flex flex-col items-center p-6 max-w-7xl">
         {image && (
-          <div class="wrapper w-full md:w-[480px] md:h-[282px] flex justify-center">
+          <div class="wrapper w-full md:max-w-[1200px] aspect-video flex justify-center">
             <Image
               src={images[imagePath]()}
               alt={title}
@@ -72,7 +72,7 @@ if (!images[imagePath])
           <div class="flex items-center gap-x-1">
             <Calendar />
             <time class="text-center text-neutral-700">
-              {dayjs(pubDate).format("Do/MMM/YYYY")}
+              {dayjs(pubDate).format("Do MMMM YYYY")}
             </time>
           </div>
         </div>
