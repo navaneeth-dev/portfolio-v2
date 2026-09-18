@@ -52,7 +52,7 @@ export default defineConfig({
           {
             behavior: "append",
             properties: {
-              class: "autolink-header",
+              class: "ml-1",
               ariaHidden: true,
               tabIndex: -1,
             },
