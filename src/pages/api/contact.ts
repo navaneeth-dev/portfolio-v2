@@ -1,4 +1,6 @@
 import {SendEmailCommand, SESv2Client} from "@aws-sdk/client-sesv2";
+import {awsCredentialsProvider} from "@vercel/oidc-aws-credentials-provider";
+import {getSecret} from "astro:env/server";
 import type {APIRoute} from "astro";
 import {z} from "zod/v4";
 
@@ -13,13 +15,17 @@ const ContactEvent = z.object({
   message: z.string().max(10000),
 });
 
+const roleArn = getSecret("AWS_ROLE_ARN")?.trim();
 const client = new SESv2Client({
-  region: process.env.AWS_REGION ?? "ap-south-1",
+  region: getSecret("AWS_REGION") ?? "ap-south-1",
+  // Resolve the OIDC token when sending, while Vercel's request context is available.
+  ...(roleArn ? {credentials: awsCredentialsProvider({roleArn})} : {}),
 });
 
 export const POST: APIRoute = async ({request, clientAddress, redirect}) => {
   try {
-    if (!process.env.HCAPTCHA_SECRET) {
+    const hcaptchaSecret = getSecret("HCAPTCHA_SECRET");
+    if (!hcaptchaSecret) {
       throw new Error("HCAPTCHA_SECRET is not configured");
     }
 
@@ -39,7 +45,7 @@ export const POST: APIRoute = async ({request, clientAddress, redirect}) => {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       body: new URLSearchParams({
-        secret: process.env.HCAPTCHA_SECRET,
+        secret: hcaptchaSecret,
         response: contact["h-captcha-response"],
         remoteip: clientAddress,
       }),
