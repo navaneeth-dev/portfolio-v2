@@ -72,7 +72,7 @@ This is an important platform principle: the UI expresses intent, but the backen
 
 We verified the deployment matrix against live Kargo data. We did not execute a live promotion while validating this iteration.
 
-![Backstage Deploy Page](/public/backstage-neusix-1.png)
+![Backstage Deploy Page](../../images/backstage-neusix-1.png)
 
 ## Kubernetes visibility
 
