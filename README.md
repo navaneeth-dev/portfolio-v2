@@ -39,13 +39,15 @@ set. Configure the role to trust your Vercel project's OIDC identity and allow
 intended team, project, and environments, including `development` for local
 OIDC testing. Follow [Vercel's AWS OIDC setup](https://vercel.com/docs/oidc/aws).
 
-For local OIDC development, run `vercel env pull .env` from the linked project
-to load `VERCEL_OIDC_TOKEN` and the role configuration (back up local overrides
-first). Refresh the token with the same command when it expires, then restart
-the dev server. Deployed functions obtain the token from Vercel's request
-context. When `AWS_ROLE_ARN` is unset, the SDK uses its default credential chain,
-such as a local AWS profile or `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY`.
-An OIDC failure does not fall back to static credentials. See `.env.example`.
+For local OIDC development, run `vercel env pull .env.local` from the linked
+project to load `VERCEL_OIDC_TOKEN` and the role configuration. The `dev` script
+loads this file into Node's environment because Vercel's credentials provider
+reads the token from `process.env`. Refresh the token with the same command when
+it expires, then restart the dev server. Deployed functions obtain the token
+from Vercel's request context. When `AWS_ROLE_ARN` is unset, the SDK uses its
+default credential chain, such as a local AWS profile or `AWS_ACCESS_KEY_ID` /
+`AWS_SECRET_ACCESS_KEY`. An OIDC failure does not fall back to static
+credentials. See `.env.example`.
 
 If SES reports `MessageRejected: Email address is not verified`, verify
 `notifications@noreply.rizexor.com` or a covering domain identity in the same
