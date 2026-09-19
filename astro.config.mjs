@@ -11,7 +11,7 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
 
 // The following configuration for rehype-autolink-headings was taken from https://github.com/withastro/docs/blob/main/astro.config.ts
-import aws from "astro-sst";
+import vercel from "@astrojs/vercel";
 
 const AnchorLinkIcon = h(
   "svg",
@@ -82,5 +82,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   output: "static",
-  adapter: aws(),
+  adapter: vercel(),
 });
