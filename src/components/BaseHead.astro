@@ -9,6 +9,7 @@ export interface Props {
 }
 
 import {ClientRouter} from "astro:transitions";
+import Analytics from "@vercel/analytics/astro";
 import '@fontsource-variable/inter/index.css';
 import '../styles/global.css';
 
@@ -39,5 +40,7 @@ const {title, description, image = "/open_graph_image.png"} = Astro.props;
 <meta property="twitter:title" content={title}/>
 <meta property="twitter:description" content={description}/>
 <meta property="twitter:image" content={new URL(image, Astro.url)}/>
+
+<Analytics/>
 
 <!--<ClientRouter/>-->
