@@ -27,6 +27,7 @@ export default $config({
 
     const api = new sst.aws.Function("MyApi", {
       handler: "sender.handler",
+      runtime: "nodejs24.x",
       link: [email, secret],
       url: {
         cors: {
