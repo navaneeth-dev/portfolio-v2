@@ -38,11 +38,5 @@
     "@tailwindcss/typography": "^0.5.20",
     "@types/aws-lambda": "^8.10.161",
     "rehype-autolink-headings": "^6.1.1"
-  },
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "10.15.0"
-    }
   }
 }
