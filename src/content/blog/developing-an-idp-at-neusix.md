@@ -12,6 +12,8 @@ author: Navaneeth
 isDraft: false
 ---
 
+**Discussion Links: [r/devopsindia](https://www.reddit.com/r/devopsindia/comments/1wm52ww/platform_engineers_anyone_building_a_idp_at_work/)**
+
 I built a continuous deployment UI with Backstage which uses Kargo and Gitlab CI behind the scenes.
 
 ![Backstage Deploy Page](../../images/backstage-neusix-1.png)
