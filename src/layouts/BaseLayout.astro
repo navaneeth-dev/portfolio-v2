@@ -3,12 +3,16 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import {SITE_TITLE, SITE_DESCRIPTION} from "../config";
+
+const {frontmatter = {}} = Astro.props;
+const title = frontmatter.title ? `${frontmatter.title} | Navaneeth` : SITE_TITLE;
+const description = frontmatter.description ?? SITE_DESCRIPTION;
 ---
 
 <!doctype html>
 <html lang="en">
 <head>
-  <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/>
+  <BaseHead {title} {description}/>
 </head>
 <body>
 <Header/>

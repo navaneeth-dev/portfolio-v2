@@ -14,6 +14,34 @@ import '@fontsource-variable/inter/index.css';
 import '../styles/global.css';
 
 const {title, description, image = "/open_graph_image.png"} = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const socialImageUrl = new URL(image, canonicalUrl);
+const showPersonSchema = Astro.url.pathname === "/";
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Navaneeth",
+  url: "https://rizexor.com",
+  jobTitle: "Senior Platform Engineer",
+  worksFor: {
+    "@type": "Organization",
+    name: "NeuSix",
+  },
+  knowsAbout: [
+    "Platform Engineering",
+    "Site Reliability Engineering",
+    "DevOps",
+    "Kubernetes",
+    "Internal Developer Platforms",
+    "Cloud Infrastructure",
+    "Observability",
+  ],
+  sameAs: [
+    "https://github.com/navaneeth-dev",
+    "https://x.com/navaneethstwt",
+  ],
+};
+const serializedPersonSchema = JSON.stringify(personSchema).replace(/</g, "\\u003c");
 ---
 
 <!-- Global Metadata -->
@@ -26,20 +54,26 @@ const {title, description, image = "/open_graph_image.png"} = Astro.props;
 <title>{title}</title>
 <meta name="title" content={title}/>
 <meta name="description" content={description}/>
+<link rel="canonical" href={canonicalUrl}/>
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website"/>
-<meta property="og:url" content={Astro.url}/>
+<meta property="og:url" content={canonicalUrl}/>
 <meta property="og:title" content={title}/>
 <meta property="og:description" content={description}/>
-<meta property="og:image" content={new URL(image, Astro.url)}/>
+<meta property="og:image" content={socialImageUrl}/>
+<meta property="og:image:alt" content={title}/>
+<meta property="og:site_name" content="Navaneeth"/>
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image"/>
-<meta property="twitter:url" content={Astro.url}/>
+<meta property="twitter:creator" content="@navaneethstwt"/>
+<meta property="twitter:url" content={canonicalUrl}/>
 <meta property="twitter:title" content={title}/>
 <meta property="twitter:description" content={description}/>
-<meta property="twitter:image" content={new URL(image, Astro.url)}/>
+<meta property="twitter:image" content={socialImageUrl}/>
+
+{showPersonSchema && <script type="application/ld+json" set:html={serializedPersonSchema}/>}
 
 <Analytics/>
 

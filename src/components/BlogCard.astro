@@ -58,7 +58,7 @@ if (!images[imagePath])
       href={"/blog/" + post.id}
       class="bg-black text-white border border-gray-200 rounded inline-flex items-center justify-center px-4 py-2 hover:shadow-[5px_5px_0_rgba(0,0,0,0.2)] transition-shadow"
     >
-      Read More
+      Read <span class="sr-only">{post.data.title}</span>
       <ArrowUp />
     </a>
   </div>
