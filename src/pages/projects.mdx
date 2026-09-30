@@ -1,8 +1,30 @@
 ---
 layout: ../layouts/BaseLayout.astro
+title: Selected Platform Engineering Work
+description: Selected work by Navaneeth across internal developer platforms, Kubernetes infrastructure, Linux tooling, and FOSS services.
 ---
 
-# Projects
+# Selected Platform Engineering Work
 
-- BirthdayBot
-- Attendance Monitoring
+## NeuSix Internal Developer Platform
+
+Built a Backstage-based interface for deployment visibility and self-service environment promotion. The platform integrates Keycloak authentication, Kubernetes deployment data, Kargo promotion workflows, and OpenTelemetry observability while keeping deployment execution in the systems that own it.
+
+Extended the platform with a GitLab CI promotion path: the IDP validates an engineer's request and delegates execution to the repository's existing pipeline, while GitLab remains the source for execution state and logs.
+
+- [Case study: Building the NeuSix IDP](/blog/developing-an-idp-at-neusix)
+- [Case study: Adding GitLab pipeline promotions](/blog/developing-an-idp-at-neusix-2)
+
+## Production-Grade Kubernetes on Oracle Cloud
+
+Designed and documented a highly available, private Kubernetes environment on Oracle Cloud Infrastructure's Free Tier. The implementation uses Talos Linux, Terraform, OCI Bastion, private load balancers, and Pulumi to bootstrap Argo CD. A Taskfile coordinates infrastructure provisioning and cluster configuration, and Renovate manages dependency updates.
+
+[Read the architecture and implementation guide](/blog/free-production-kubernetes-cluster)
+
+## Flatcar Cloud-Init-to-Butane Tooling
+
+Working as an LFX mentee with Flatcar Container Linux on a transpiler that converts Cloud-Init YAML configuration to Butane YAML. The work focuses on configuration tooling for an immutable, container-focused Linux distribution.
+
+## Linux Mirrors and FOSS Infrastructure
+
+Launched [FOSS India services](https://fossindia.ovh) and operated Linux distribution mirror infrastructure in India. This included the first Indian Fedora Linux mirror and an official Indian [Arch Linux mirror](https://mirror.fossindia.ovh/archlinux) during 2024–2025.
