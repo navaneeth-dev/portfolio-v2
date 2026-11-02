@@ -4,15 +4,25 @@
 @theme {
   --color-primary: #ea2027;
   --font-sans: "Inter Variable", sans-serif;
-  --animate-bounce-slow: bounce-slow 2.5s infinite;
   --animate-scroll: scroll 10s linear infinite;
+  --animate-pixel-pop: pixel-pop 3s ease-in-out infinite;
+  --animate-pixel-flash: pixel-flash 3s ease-in-out infinite;
 
-  @keyframes bounce-slow {
-    0%, 100% {
-      transform: translateY(5%);
+  @keyframes pixel-pop {
+    0%, 50%, 100% {
+      opacity: 0;
     }
-    50% {
-      transform: translateY(0);
+    65%, 75% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes pixel-flash {
+    0%, 60%, 100% {
+      fill: var(--color-neutral-200);
+    }
+    70%, 80% {
+      fill: var(--color-primary);
     }
   }
 
