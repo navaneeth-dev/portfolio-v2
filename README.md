@@ -1,100 +1,93 @@
-# Astro Portfolio V2
+# Navaneeth's personal site
 
-```
-npm create astro@latest -- --template blog
-```
+[rizexor.com](https://rizexor.com) is a place to share what I build, what I learn,
+and what catches my attention across infrastructure, platform engineering,
+immutable systems, and reverse engineering.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/withastro/astro/tree/latest/examples/blog)
+## Who this is for
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Like-minded people who enjoy exploring how systems work. The goal is for someone
+to recognize a shared curiosity and think, "I'd enjoy talking to this person."
 
+This is not a recruiter-facing portfolio, an online résumé, or a SaaS landing
+page. A public résumé is not part of the plan. The site should make an impression
+through specific experiences, thoughtful writing, and personal taste—not sales
+copy, decorative dashboards, or generic polish.
 
-![blog](https://user-images.githubusercontent.com/4677417/186189140-4ef17aac-c3c9-4918-a8c2-ce86ba1bb394.png)
+## Cool features to explore
 
-Features:
+Some ideas that could make this place more personal and interesting. These are
+possibilities, not a roadmap, a to-do list, or a claim that they already exist.
+They could live as their own sections, rather than all competing for space on the
+homepage.
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+### About
 
-## Deployment
+A page about how I think, not just where I work:
 
-The site deploys to Vercel as static Astro pages with one on-demand route at
-`/api/contact`. Connect this repository to Vercel for production and preview
-deployments, then enable Web Analytics in the project dashboard.
+- What pulls me into a rabbit hole?
+- Why infrastructure, immutable systems, and reverse engineering?
+- What do I explore outside work?
+- What experiences shaped my preferences and changed my mind?
 
-Configure these environment variables in Vercel:
+Specific personal details rather than a job description or a résumé timeline.
 
-- `HCAPTCHA_SECRET`
-- `AWS_REGION=ap-south-1`
-- `AWS_ROLE_ARN`
+### Finds
 
-The SES client uses Vercel's OIDC credentials provider when `AWS_ROLE_ARN` is
-set. Configure the role to trust your Vercel project's OIDC identity and allow
-`ses:SendEmail` on the verified sender identity. Scope its trust policy to the
-intended team, project, and environments, including `development` for local
-OIDC testing. Follow [Vercel's AWS OIDC setup](https://vercel.com/docs/oidc/aws).
+A curated collection of interesting articles, podcasts, talks, tools, and other
+things worth sharing—even things I disagree with when they raise a useful
+question.
 
-For local OIDC development, run `vercel env pull .env.local` from the linked
-project to load `VERCEL_OIDC_TOKEN` and the role configuration. The `dev` script
-loads this file into Node's environment because Vercel's credentials provider
-reads the token from `process.env`. Refresh the token with the same command when
-it expires, then restart the dev server. Deployed functions obtain the token
-from Vercel's request context. When `AWS_ROLE_ARN` is unset, the SDK uses its
-default credential chain, such as a local AWS profile or `AWS_ACCESS_KEY_ID` /
-`AWS_SECRET_ACCESS_KEY`. An OIDC failure does not fall back to static
-credentials. See `.env.example`.
+An entry could include:
 
-If SES reports `MessageRejected: Email address is not verified`, verify
-`notifications@noreply.rizexor.com` or a covering domain identity in the same
-AWS account and region used by the client (`ap-south-1` by default). In the SES
-sandbox, the recipient `me@rizexor.com` must also be verified. OIDC supplies
-credentials; it does not verify email identities. See
-[AWS SES identity verification](https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html).
+- A title and a link to the original source.
+- The creator or publication, where relevant.
+- A short personal annotation: why it caught my attention, what it changed my
+  mind about, or the question it left me with.
 
-## 🚀 Project Structure
+The annotation matters more than a summary: a glimpse into my taste, not
+a bookmark dump or a generic resources directory. A small, considered
+collection is better than a large unannotated list. There is no publishing quota.
 
-Inside of your Astro project, you'll see the following folders and files:
+"Finds" is the working name; "Worth your time" is another option.
 
-```
-├── public/
-├── src/
-│   ├── components/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
+### Notes
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Short things I've learned that do not need a full blog post: a surprising Linux
+behavior, a debugging discovery, a command with context, or an architectural
+tradeoff I'm still thinking through.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Exploratory thoughts without needing an essay's worth of polish.
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Blog
 
-## 🧞 Commands
+The existing home for developed explanations, build stories, and arguments
+grounded in actual work. Alongside Finds and Notes, the distinction could be:
 
-All commands are run from the root of the project, from a terminal:
+- **Finds:** something someone else made, with my perspective.
+- **Notes:** something I discovered or worked out.
+- **Blog:** a developed explanation or argument.
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:3000`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro --help` | Get help using the Astro CLI                     |
+### Now
 
-## 👀 Want to learn more?
+A small, dated page about what currently has my attention: what I'm building,
+exploring, reading, or trying to understand.
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+A natural conversation opener: "I saw you're exploring that—I am too." Something
+to update when there's something to share, not another publishing obligation.
 
-## Credit
+### Let's talk infrastructure
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+A more personal invitation to connect, with email easy to find. A conversation,
+not a service pitch:
+
+> Building an internal platform, running Kubernetes, or working on immutable
+> infrastructure? I'd like to compare notes.
+
+Meaningful replies, repeat readers, and conversations with people who share these
+interests matter more than raw traffic or engagement with an animation.
+
+## What makes it personal
+
+None of these ideas needs a wholesale redesign. The interesting part is
+specificity and taste: what I notice, question, and choose to share.
