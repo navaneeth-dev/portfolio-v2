@@ -5,7 +5,13 @@ import HeaderLink from "./HeaderLink.astro";
 
 <header class="border-b-2 border-primary h-14">
   <nav class="container px-12 mx-auto flex justify-between h-full">
-    <HeaderLink href="/" class="block py-4">Home</HeaderLink>
+    <HeaderLink href="/" class="flex items-center gap-x-2 py-4">
+      <svg viewBox="0 0 26 28" class="h-6 w-auto text-primary" fill="currentColor" aria-hidden="true">
+        <path d="M0 0H23L26 3V28H17V9H9Z"/>
+        <rect y="10" width="9" height="18"/>
+      </svg>
+      Home
+    </HeaderLink>
     <details class="h-full flex items-center">
       <summary class="list-none md:hidden cursor-pointer flex gap-x-1 select-none">
         <Menu/>
