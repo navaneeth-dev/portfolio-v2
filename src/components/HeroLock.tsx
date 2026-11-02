@@ -17,7 +17,7 @@ export default function HeroLock() {
 
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.25;
+    renderer.toneMappingExposure = 1;
     renderer.domElement.className = "absolute inset-0 h-full w-full";
     renderer.domElement.setAttribute("aria-hidden", "true");
     container.appendChild(renderer.domElement);
@@ -35,8 +35,8 @@ export default function HeroLock() {
     pmrem.dispose();
 
     const keyLight = new THREE.DirectionalLight(0xfff2d6, 4);
-    keyLight.position.set(-3, 5, 5);
-    const fillLight = new THREE.DirectionalLight(0xc5d5ff, 2);
+    keyLight.position.set(-6, 5, 2);
+    const fillLight = new THREE.DirectionalLight(0xc5d5ff, 0.25);
     fillLight.position.set(4, 1, -3);
     scene.add(keyLight, fillLight);
 
@@ -56,27 +56,35 @@ export default function HeroLock() {
     bodyShape.quadraticCurveTo(-1.15, -1.3, -0.95, -1.3);
 
     const keyhole = new THREE.Path();
-    keyhole.absarc(0, -0.05, 0.22, -Math.PI / 3, Math.PI * 4 / 3, false);
-    keyhole.lineTo(-0.15, -0.65);
-    keyhole.quadraticCurveTo(0, -0.78, 0.15, -0.65);
+    keyhole.absarc(0, -0.05, 0.3, -Math.PI / 3, Math.PI * 4 / 3, false);
+    keyhole.lineTo(-0.18, -0.7);
+    keyhole.quadraticCurveTo(0, -0.84, 0.18, -0.7);
     keyhole.closePath();
     bodyShape.holes.push(keyhole);
 
     const bodyGeometry = new THREE.ExtrudeGeometry(bodyShape, {
       depth: 0.58,
       bevelEnabled: true,
-      bevelThickness: 0.09,
-      bevelSize: 0.08,
-      bevelSegments: 5,
+      bevelThickness: 0.16,
+      bevelSize: 0.1,
+      bevelSegments: 8,
       curveSegments: 32,
     });
     bodyGeometry.translate(0, 0, -0.29);
     const bodyMaterial = new THREE.MeshStandardMaterial({
-      color: 0x515568,
-      metalness: 0.8,
-      roughness: 0.28,
+      color: 0x2e313c,
+      metalness: 0,
+      roughness: 0.7,
+      envMapIntensity: 0.12,
     });
     lock.add(new THREE.Mesh(bodyGeometry, bodyMaterial));
+
+    // A dark plate inside the body so the keyhole reads as a hole, not a window.
+    const keyholeGeometry = new THREE.PlaneGeometry(0.8, 1.2);
+    const keyholeMaterial = new THREE.MeshBasicMaterial({color: 0x050507, side: THREE.DoubleSide});
+    const keyholePlate = new THREE.Mesh(keyholeGeometry, keyholeMaterial);
+    keyholePlate.position.set(0, -0.35, 0.2);
+    lock.add(keyholePlate);
 
     const shacklePath = new THREE.CurvePath<THREE.Vector3>();
     shacklePath.add(new THREE.LineCurve3(
@@ -95,9 +103,10 @@ export default function HeroLock() {
     ));
     const shackleGeometry = new THREE.TubeGeometry(shacklePath, 96, 0.15, 20, false);
     const shackleMaterial = new THREE.MeshStandardMaterial({
-      color: 0xeebc38,
+      color: 0xc8901a,
       metalness: 1,
-      roughness: 0.22,
+      roughness: 0.3,
+      envMapIntensity: 0.9,
     });
     lock.add(new THREE.Mesh(shackleGeometry, shackleMaterial));
 
@@ -185,6 +194,8 @@ export default function HeroLock() {
       document.removeEventListener("visibilitychange", updateAnimation);
       bodyGeometry.dispose();
       bodyMaterial.dispose();
+      keyholeGeometry.dispose();
+      keyholeMaterial.dispose();
       shackleGeometry.dispose();
       shackleMaterial.dispose();
       environmentMap.dispose();
