@@ -1,8 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
-import ArrowUp from "../components/ArrowUp.astro";
-import { Calendar, Tags } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 interface Props {
   post: CollectionEntry<"blog">;
@@ -18,48 +17,51 @@ if (!images[imagePath])
   throw new Error(
     `"${imagePath}" does not exist in glob: "src/images/*.{jpeg,jpg,png,webp}"`,
   );
+
+const readingMinutes = Math.max(
+  1,
+  Math.round((post.body ?? "").split(/\s+/).length / 200),
+);
 ---
 
-<div class="bg-black/5 rounded-lg flex flex-col gap-3 h-full mb-3">
-  <div class="w-full">
-    <Image src={images[imagePath]()} alt={post.data.title} class="rounded-lg" />
-  </div>
-  <div class="px-4 py-2 flex flex-col gap-1 items-start">
-    <time
-      datetime={post.data.pubDate.toString()}
-      class="text-sm text-gray-700 block flex gap-1 items-center"
-    >
-      <Calendar />
-      {new Date(post.data.pubDate).toLocaleDateString("en-us", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      })}
-    </time>
+<div class="flex flex-col h-full bg-black/5 rounded-lg overflow-hidden">
+  <Image src={images[imagePath]()} alt={post.data.title} />
+  <div class="p-4 flex flex-col gap-2 flex-1">
     <a
       href={"/blog/" + post.id}
-      class="text-xl font-bold mb-2 text-primary hover:underline"
+      class="text-xl font-bold leading-snug hover:underline"
     >
       {post.data.title}
     </a>
-    <div>
+    <p class="text-sm text-neutral-600">
+      <time datetime={post.data.pubDate.toISOString()}>
+        {post.data.pubDate.toLocaleDateString("en-us", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })}
+      </time>{" · "}{readingMinutes} min read
+    </p>
+    <div class="flex flex-wrap gap-1.5">
       {post.data.tags.map((tag: string) => (
         <a
-          class="mr-2 inline-flex gap-1 border border-neutral-700 uppercase text-sm text-neutral-700 hover:bg-neutral-200 px-2 items-center justify-center text-center"
           href={"/tag/" + tag}
+          class="text-xs uppercase border border-neutral-400 text-neutral-700 rounded px-1.5 py-0.5 hover:border-black hover:text-black"
         >
-          <Tags />
           {tag}
         </a>
       ))}
     </div>
-    <p>{post.data.description}</p>
+    <p class="text-neutral-800 line-clamp-3">{post.data.description}</p>
     <a
       href={"/blog/" + post.id}
-      class="btn btn-secondary"
+      class="group mt-auto pt-2 inline-flex items-center gap-1 font-semibold text-primary self-start"
     >
-      Read <span class="sr-only">{post.data.title}</span>
-      <ArrowUp />
+      Read article <span class="sr-only">{post.data.title}</span>
+      <ArrowRight
+        className="size-4 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transform-none"
+        aria-hidden="true"
+      />
     </a>
   </div>
 </div>
