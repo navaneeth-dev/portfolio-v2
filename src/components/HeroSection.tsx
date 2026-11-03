@@ -128,14 +128,14 @@ export default function HeroSection() {
           >
             <a
               href="/contact"
-              className="inline-flex items-center gap-1.5 md:gap-2 bg-primary text-white px-3 md:px-4 py-2 border border-black rounded hover:shadow-[5px_5px_0_rgba(0,0,0,1)] transition-shadow"
+              className="btn btn-primary gap-1.5 md:gap-2 px-3 md:px-4"
             >
               <PenLine className="size-4" aria-hidden="true" />
               Connect with me
             </a>
             <a
               href="/blog"
-              className="inline-flex items-center gap-1.5 md:gap-2 bg-white text-black px-3 md:px-4 py-2 border border-black rounded hover:shadow-[5px_5px_0_rgba(0,0,0,1)] transition-shadow"
+              className="btn btn-secondary gap-1.5 md:gap-2 px-3 md:px-4"
             >
               <BookOpen className="size-4" aria-hidden="true" />
               Read my work
