@@ -63,4 +63,4 @@ Have AI like Opus 5.5 review your code and long of CI checks for linting and syn
 
 ## Have Proper Alertings
 
-I personally use Discord, 
+I use Victoria Metrics alerts and custom alerts like for Postgres & Blackbox exporter, Disk usage low etc. Service down. I also have external uptime monitors and a status page.
